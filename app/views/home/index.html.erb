@@ -4,7 +4,7 @@
 
 <%if current_user && current_user.admin %>
     <p>Herramientas de administrador</p>
-    <%= render "administrador/herramientas_administrador" %>
+    <%= render "herramientas_administrador" %>
 <% end %>
 
 <%if current_user && current_user.super%>
