@@ -1,0 +1,12 @@
+<h1>Home</h1>
+
+<%= render "home/header" %>
+
+<%if current_user && current_user.admin %>
+    <p>Herramientas de administrador</p>
+    <%= render "administrador/herramientas_administrador" %>
+<% end %>
+
+<%if current_user && current_user.super%>
+    <p>Herramientas de supervisor</p>
+ <% end %>
