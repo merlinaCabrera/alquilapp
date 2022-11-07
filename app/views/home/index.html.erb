@@ -1,17 +1,21 @@
 <%= stylesheet_link_tag 'style.css' %>
+<%= render partial: "home/header" %>
 <div class="centrar">
     <%= link_to "Alquilapp", root_path, class:"logo" %>
     <div class="contenedor">
-
-    <% if  !current_user %>
-        <%= link_to "Iniciar Sesión", new_user_session_path, class: "boton inicio"%>
-        <%= link_to "Registrarse", new_user_registration_path, class: "boton inicio"%>
-    <% else %>
-        <div class="sesion_actual">
-            <%= button_to "Sign Out", destroy_user_session_path, :method => :delete, class:"boton inicio" %>
-            <%= button_to "Editar Perfil", edit_user_registration_path, class: "boton inicio"%>
-        </div>
-    <% end %> 
+        <% if  !current_user %>
+            <div class= iniciar_crear>
+                <%= render "devise/sessions/new"%>
+                <div class="lineavertical"></div>
+                <%= render "devise/registrations/new"%>
+            </div>
+            <div class="ayuda-sesion"><%= render "devise/shared/links" %></div>
+        <% else %>
+            <div class="sesion_actual">
+                <%= button_to "Sign Out", destroy_user_session_path, :method => :delete, class:"boton inicio" %>
+                <%= button_to "Editar Perfil", edit_user_registration_path, class: "boton inicio"%>
+            </div>
+        <% end %> 
     </div>       
 </div>
 
