@@ -1,0 +1,77 @@
+*{
+    font-family: 'Varela Round', sans-serif;
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    background-image: url("mapa.png");
+    background-size: cover;
+}
+
+.contenedor{
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+.ingreso{
+    background-color: #ededed;
+    border-radius: 10px;
+    border: none;
+    padding: 15px;
+}
+
+
+.field{
+    text-align: center;
+    margin: 10px;
+}
+
+.boton{
+    width: 90%;
+    background-color: orange;
+    border-radius: 15px;
+    border:none;
+    padding: 15px;
+    transition: 0.3s;
+}
+
+.boton:hover{
+    cursor: pointer;
+    background-color: rgb(255,185,0);
+}
+
+.inicio{
+    margin: 15px;
+}
+
+.volver{
+    height: 25px;
+    width: auto;
+    border-radius: 50%;
+    background-color: #ededed;
+    padding: 15px;
+    transition: 0.3s;
+}
+
+.volver:hover{
+    background-color: #DBDBDB;
+}
+
+.horizontal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.horizontal h2{
+    margin-left: 15px;
+}
