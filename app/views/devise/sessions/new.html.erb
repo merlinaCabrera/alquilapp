@@ -1,7 +1,12 @@
-<%= stylesheet_link_tag 'sesion.css' %>
+<%= stylesheet_link_tag 'style.css' %>
 <div class ="centrar">
   <div class="contenedor">
-    <h2>Iniciar Sesión</h2>
+    <div class="horizontal">
+      <%= link_to :back do %>
+        <%= image_tag "arrow-left.svg", class:"volver" %>
+      <% end %>
+      <h2>Iniciar Sesión</h2>
+    </div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">

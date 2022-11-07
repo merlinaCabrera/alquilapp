@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get '/eliminar_supervisor', to: 'home#eliminar_supervisor', as: 'eliminar_s'
   get '/modificar_supervisor', to: 'home#modificar_supervisor', as: 'modificar_s'
   # Defines the root path route ("/")
-  root "home#index"
+  
+  root to: "home#index"
 end
