@@ -2,6 +2,37 @@
     font-family: 'Varela Round', sans-serif;
 }
 
+.barra-navegacion{
+    background-color: grey;
+    height: 150px;
+}
+
+.logo{
+    background-image: url("alquilapp-logo.svg");
+    height: 50px;
+    width: auto;
+}
+
+.sesion{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.iniciar_crear{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ayuda-sesion{
+    margin-top: 50px;
+}
+
+.lineavertical{
+    border-left: 0.5px solid grey;
+  height: auto;
+}
+
 .centrar{
     display: flex;
     justify-content: center;
@@ -29,7 +60,6 @@
     padding: 15px;
 }
 
-
 .field{
     text-align: center;
     margin: 10px;
@@ -37,16 +67,16 @@
 
 .boton{
     width: 90%;
-    background-color: orange;
+    background-color: #e7c078;
     border-radius: 15px;
     border:none;
     padding: 15px;
     transition: 0.3s;
 }
 
-.boton:hover{
+.active, .boton:hover{
     cursor: pointer;
-    background-color: rgb(255,185,0);
+    background-color: #e7c078;
 }
 
 .inicio{
