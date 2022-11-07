@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag 'style.css' %>
+<div class="sesion">
+  <!--
+  <div class="horizontal">
+    <%= link_to :back do %>
+      <%= image_tag "arrow-left.svg", class:"volver" %>
+    <% end %>
+    <h2>Iniciar Sesión</h2>
+  </div>
+  -->
+
+  <h2>Iniciar Sesión</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"ingreso" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class:"ingreso" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <br>
+      <%= f.submit "Iniciar Sesión", class:"boton" %>
+    </div>
+  <% end %>
+</div>
