@@ -1,4 +1,4 @@
-var coll = document.getElementsByClassName("ppp");
+var coll = document.getElementsByClassName("recuperar");
 var i;
 
 for (i = 0; i < coll.length; i++) {
