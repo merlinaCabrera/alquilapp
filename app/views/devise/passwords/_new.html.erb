@@ -1,11 +1,4 @@
-<%= stylesheet_link_tag 'style.css' %>
-
-<div class="horizontal">
-  <%= link_to root_path do %>
-    <%= image_tag "arrow-left.svg", class:"volver" %>
-  <% end %>
-  <h2>Recuperar Cuenta</h2>
-</div>
+<h2>Recuperar Cuenta</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
