@@ -1,0 +1,31 @@
+<%= form_with model: @vehiculo do |form|  %>
+    <% @vehiculo.errors.full_messages.each do |error| %>
+        <div>
+        <%= error %>
+        </div>
+    <% end %>
+         
+    <div>
+    <%= form. label :marca %>
+    <%= form. text_field :marca %>
+    </div>
+    <div>
+    <%= form. label :modelo %>
+    <%= form. text_field :modelo %>
+    </div>
+    <div>
+    <%= form. label :color %>
+    <%= form. text_field :color %>
+    </div>
+    <div>
+    <%= form. label :precio %>
+    <%= form. number_field :precio %>
+    </div>
+    <div>
+    <%= form. label :description %>
+    <%= form. text_area :descripcion %>
+    </div>
+    
+    <%= form. submit %>
+    
+    <% end %>

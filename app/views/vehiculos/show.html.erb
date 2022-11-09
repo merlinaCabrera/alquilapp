@@ -1,0 +1,13 @@
+<%= @vehiculo.marca %>
+<%= @vehiculo.modelo %>
+<%= @vehiculo.color %>
+<%= @vehiculo.precio %>$
+<div>
+<%= @vehiculo.descripcion%>
+</div>
+<div>
+<%= link_to 'editar auto', edit_vehiculo_path(@vehiculo) %>
+<%= link_to 'deshabilitar auto', vehiculo_path(@vehiculo), data: {
+ turbo_method: :delete,
+ turbo_confirm: '¿Estas seguro?' } %>
+</div >

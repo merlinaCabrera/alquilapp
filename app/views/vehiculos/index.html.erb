@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag 'style.css' %>
+
+<div class="fondo">
+    <%= render "/home/menu_lateral"%>
+
+    <h1 class="titulo_seccion">Vehículos</h1>
+
+    <%= link_to 'Agregar +' , new_vehiculo_path %>
+
+    <ul class="listado">
+        <% @vehiculos.each do |vehiculo| %>
+                <li class="listado_item">
+                    <%= link_to vehiculo_path( vehiculo.id ) do %>
+                    <h2><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
+                    <% end %>
+                </li>  
+                <div class="lineahorizontal"></div>
+        <% end %>
+    </ul>
+</div>

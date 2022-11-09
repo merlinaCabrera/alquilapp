@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag 'style.css' %>
+
+<div class="fondo">
+    <%= render "/home/menu_lateral"%>
+
+    <h1 class="titulo_seccion">Supervisores</h1>
+
+    <%= link_to "Agregar +", agregar_s_path  %>
+
+    <ul class="listado">
+        <% User.all.each do |user| %>
+            <% if user.super %>
+                <li class="listado_item">
+                    Usuario: <%= user.email%> <br>
+                    Administrador: <%= user.admin%> <br>
+                    Supervisor: <%= user.super%> <br>
+
+                    <%= link_to "Eliminar", eliminar_s_path  %>
+                    <%= link_to "Modificar", modificar_s_path  %>
+                </li>  
+                <div class="lineahorizontal"></div>
+            <% end %>
+        <% end %>
+    </ul>
+</div>
