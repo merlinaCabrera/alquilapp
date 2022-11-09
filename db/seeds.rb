@@ -19,3 +19,9 @@ User.create(nombreUsuario:"nombre2",dni:11111111, email: "c2@admin.com", passwor
 User.create(nombreUsuario:"nombre3",dni:11111111, email: "c3@admin.com", password:"123456",password_confirmation:"123456")
 User.create(nombreUsuario:"nombre4",dni:11111111, email: "c4@admin.com", password:"123456",password_confirmation:"123456")
 User.create(nombreUsuario:"nombre5",dni:11111111, email: "c5@admin.com", password:"123456",password_confirmation:"123456")
+
+Vehiculo.create(marca: "honda", modelo: "civic", color:"negro", descripcion:"buen auto", patente:"AA 01 BB")
+Vehiculo.create(marca: "ford", modelo: "ka", color:"gris", descripcion:"facil andar" , patente:"BB 02 CC")
+Vehiculo.create(marca: "volkswagen", modelo: "suran", color:"blanco", descripcion:"auto espacioso", patente:"CC 03 DD")
+Vehiculo.create(marca: "audi", modelo: "a3", color:"azul", descripcion:"confortable", patente:"DD 04 EE")
+Vehiculo.create(marca: "fiat", modelo: "palio", color:"gris", descripcion:"seguro", patente:"EE 05 FF")

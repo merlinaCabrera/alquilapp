@@ -15,6 +15,7 @@ Rails.application.configure do
   config.hosts << "3000-darriux-alquilapp-okw6f7jiq9k.ws-us74.gitpod.io"
   config.hosts << "3000-darriux-alquilapp-okw6f7jiq9k.ws-us75.gitpod.io"
   config.hosts << "3000-darriux-alquilapp-mq3mzogkc0c.ws-us75.gitpod.io"
+  config.hosts << "3000-ezebaez-alquilapp-8pn9ofolsv0.ws-us75.gitpod.io"
 
   # Show full error reports.
   config.consider_all_requests_local = true
