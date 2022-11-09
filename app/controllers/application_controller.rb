@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base
-    before_action :permitir_avatar,
-        if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-    protected
+  protected
 
-    def permitir_avatar
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar])
-        devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
-    end 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nombreUsuario,:dni])
+  end
 end

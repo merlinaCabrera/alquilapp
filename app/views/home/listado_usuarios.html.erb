@@ -8,7 +8,9 @@
     <ul class="listado">
         <% User.all.each do |user| %>
                 <li class="listado_item">
-                Usuario: <%= user.email%> <br>
+                <%= user.nombreUsuario%>
+                <%= user.dni%>
+                <%= user.email%>
                 </li>  
                 <div class="lineahorizontal"></div>
         <% end %>
