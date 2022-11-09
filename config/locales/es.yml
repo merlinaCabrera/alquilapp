@@ -1,0 +1,26 @@
+es:
+  activerecord:
+    models:
+      vehiculo: Vehiculo
+    atrributes:
+      vehiculo:
+        marca: 'Marca'
+        modelo: 'Modelo'
+        color: 'Color'
+        descripcion: 'Descripcion'
+        patente: 'Patente'
+    errors:
+      models:
+        vehiculo:
+          attributes:
+            marca:
+              blank: 'no puede estar vacio'
+            modelo:
+              blank: 'no puede estar vacio'
+            color:
+              blank: 'no puede estar vacio'
+            descripcion:
+              blank: 'no puede estar vacio'
+            patente:
+              blank: 'no puede estar vacio'
+              

@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_215647) do
     t.text "descripcion", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "patente", null: false
+    t.string "patente"
   end
 
   create_table "views", force: :cascade do |t|
