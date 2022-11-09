@@ -2,11 +2,9 @@
 
 <div class="fondo">
     <%= render "/home/menu_lateral"%>
-
-    <div style="padding-top:200px;">
+    <h1 class="titulo_seccion"> Billetera </h1>
         <%= form_with model: @article do |form| %>
             <%= form.number_field :price, step: 0.01 %>
 <%= form.submit "Search" %>
         <% end %>
-    </div>
 </div>

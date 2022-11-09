@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get '/agregar_supervisor', to: 'home#agregar_supervisor', as: 'agregar_s'
   get '/eliminar_supervisor', to: 'home#eliminar_supervisor', as: 'eliminar_s'
   get '/modificar_supervisor', to: 'home#modificar_supervisor', as: 'modificar_s'
+
   get '/billetera', to: 'home#billetera', as: 'bille'
+  get '/listado_usuarios', to: 'home#listado_usuarios', as: 'listado_clientes'
   
   # Defines the root path route ("/")
   
