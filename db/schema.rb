@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_09_053622) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_09_162432) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -56,6 +56,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_053622) do
     t.string "nombreUsuario"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vehiculos", force: :cascade do |t|
+    t.string "marca", null: false
+    t.string "modelo", null: false
+    t.string "color", null: false
+    t.integer "precio", null: false
+    t.text "descripcion", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "views", force: :cascade do |t|
