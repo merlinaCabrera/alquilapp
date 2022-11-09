@@ -32,6 +32,27 @@
       <%= f.password_field :current_password, autocomplete: "current-password" %>
     </div>
 
+    <div class="field">
+      <% if @user.imagen_perfil.attached? && @user.imagen_perfil.representable? %> <!--usuario tiene imagen? es de un formato compatible? -->
+        <%= image_tag user.imagen_perfil.variant(resize: '100x100').processed %> <!--cambiar tamaño de imagen -->
+        <div>
+          <%= link_to '#', class:'cambiar_imagen' do%> Cambiar imagen actual <% end %>
+          <%= link_to 'Eliminar imagen sin reemplazar',
+            eliminar_imagen_user_url(image_id: @user.imagen_perfil.id),
+            method: :delete,
+            data: {confirm: '¿Seguro?' },
+            class: 'eliminar_imagen'
+          %>
+        </div>
+      <% else %>
+        <div style="height: 100px; width:100px; background:#ccc;"></div>
+      <% end %>
+
+      <div style="height: 100%; width: 100%;">
+        <%= f.file_field :imagen_perfil %>
+      </div>
+    </div>
+
     <div class="actions">
       <%= f.submit "Update" %>
     </div>

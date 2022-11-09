@@ -4,5 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         has_one_attached :image
+  #cada perfil tiene una sola imagen adhosada, dependent destroy significa que al eliminar el perfil, se elimina la imagen
+  has_one_attached :imagen_perfil, dependent: :destroy
+
+  #active_storage_validation nos permite crear estas validaciones custom
+  validates :imagen_perfil, content_type: [:png, :jpg ,:jpeg]
 end
