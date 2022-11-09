@@ -1,21 +1,52 @@
+/*variables--------------------*/
 :root{
     --radioBordes: 10px;
     --colorEnfasis: #e7c078;
 }
 
+/*Fuente Utilizada en toda la app/web--------------------*/
 *{
     font-family: 'Varela Round', sans-serif;
 }
 
-
-
-body {
-    font-family: "Lato", sans-serif;
+/*cuerpo--------------------*/
+body{
+    margin: 0;
+    background-color: blue;
     background-image: url("mapa.png");
-    background-size: cover;
-  }
-  
-  .barralateral {
+}
+
+/*fondo pagina--------------------*/
+.fondo{
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+}
+
+/*Barra superior--------------------*/
+.barra_superior{
+    position:fixed;
+    width: 100%;
+    top: 0;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 5px 0px 5px 30px; /*top right bottom left*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    width: 95%;
+    border-radius: var(--radioBordes);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    margin: 15px auto 0px auto; /*top right bottom left*/
+
+}
+
+/*Barra lateral--------------------*/
+.barralateral {
     height: 100%;
     width: 0;
     position: fixed;
@@ -26,60 +57,85 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-  }
+    box-shadow: 10px 0px 10px rgba(0,0,0,0.3);
+    border-radius: var(--radioBordes);
+}
   
-  .barralateral a {
+
+.barralateral a:hover {
+    color: #f1f1f1;
+}
+  
+.barralateral .closebtn {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: black;
     display: block;
     transition: 0.3s;
-  }
-  
-  .barralateral a:hover {
-    color: #f1f1f1;
-  }
-  
-  .barralateral .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+.closebtn:hover{
+    color: #444;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
   }
-  
-  .abrir_menu_lateral {
-    font-size: 20px;
+
+.opciones_lateral{
+    padding: 15px;
+    font-size: large;
+    transition: 0.3s;
+    border:none;
+    width: 100%;
+    background-color: white;
+    text-align: left;
+    list-style: none;
+}
+
+.sub_opciones_lateral{
+    padding: 15px;
+    font-size: 15px;
+    transition: 0.3s;
+    border:none;
+    background-color: #dbdbdb;
+    text-align: left;
+    color: black;
+    width: 100%;
+    text-decoration: none;
+}
+
+.opciones_lateral:hover, .sub_opciones_lateral:hover{
+    background-color: var(--colorEnfasis);
     cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-  }
+}
   
-  .abrir_menu_lateraln:hover {
+.abrir_menu_lateral {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    background-color: white;
+    border:none;
+    fill: grey;
+}
+  
+.burger {
+    height:45px;
+}
+
+.abrir_menu_lateraln:hover {
     background-color: #444;
-  }
+}
   
-  #main {
-    transition: margin-left .5s;
-    padding: 16px;
-  }
-
-.opciones{
-
-}
 
 
-
-
-
-
-.sesion_actual{
-    bottom: 0;
-}
-
+/*Interfaz para recuperar contraseña--------------------*/
 .recuperar {
     background-color: white;
     cursor: pointer;
@@ -92,7 +148,7 @@ body {
     margin-top: 20px;
     border: 3px solid var(--colorEnfasis);
     transition:0.3s;
-  }
+}
     
 .interfaz_recupero {
     max-height: 0;
@@ -104,13 +160,11 @@ body {
     margin-left: 20px;
 }
 
+/*Logo y texto--------------------*/
 .logo_principal{
     display: flex;
     flex-direction: row;
     width: fit-content;
-    background-color: black;
-    padding: 10px;
-    border-radius: var(--radioBordes);
 }
 
 .logo_principal h1{
@@ -123,6 +177,11 @@ body {
     width: auto;
 }
 
+.titulo_logo{
+    text-decoration: none;
+}
+
+/*Interfaz inicio de sesión--------------------*/
 .sesion{
     margin-left: 25px;
     margin-right: 25px;
@@ -138,22 +197,33 @@ body {
     justify-content: space-between;
 }
 
+/*Separador vertical--------------------*/
 .lineavertical{
-    border-left: 0.5px solid grey;
-  height: auto;
+    border-left: 0.5px solid #dbdbdb;
+    height: auto;
 }
 
+/*Separador horizontal--------------------*/
+.lineahorizontal{
+    border: 0.25px solid #dbdbdb;
+    width: auto;
+}
+
+/*Posiciona el elemento al centro de la pantalla--------------------*/
 .centrar{
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    min-height: 98vh;
+    background-image: url("mapa.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 100vh;
 }
 
 .contenedor{
     width: fit-content;
-    height: fit-content;
     background-color: white;
     border-radius: var(--radioBordes);
     padding: 20px;
@@ -168,11 +238,13 @@ body {
     padding: 15px;
 }
 
+/*Posiciona elementos del formulario de ingreso/creación--------------------*/
 .field{
     text-align: center;
     margin: 10px;
 }
 
+/*Estilo de botones--------------------*/
 .boton{
     width: 90%;
     background-color: var(--colorEnfasis);
@@ -191,12 +263,7 @@ body {
     margin: 15px;
 }
 
-
-
-.volver:hover{
-    background-color: #DBDBDB;
-}
-
+/*Alinear elementos horizontalmente--------------------*/
 .horizontal{
     display: flex;
     flex-direction: row;
@@ -207,6 +274,14 @@ body {
     margin-left: 15px;
 }
 
+/*pagina para modificar datos--------------------*/
+.interfaz_editar{
+    margin-top: 100px;
+    background-color: white;
+    height: 100%;
+    margin-top:-20px;
+    padding-top: 100px;
+}
 
 
 /* a usar proximamente (tal vez)
@@ -217,6 +292,10 @@ body {
     background-color: #ededed;
     padding: 15px;
     transition: 0.3s;
+}
+
+.volver:hover{
+    background-color: #DBDBDB;
 }
 
 */

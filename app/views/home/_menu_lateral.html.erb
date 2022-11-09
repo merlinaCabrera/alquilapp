@@ -1,29 +1,49 @@
 <div id="mySidebar" class="barralateral">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    <%= link_to root_path do %>
-      <div class="logo_principal">
-        <%= image_tag "alquilapp-logo.svg", class:"logo" %>
-        <h1>Alquilapp</h1>
-      </div>
-    <% end %>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
-    <h2><%= render "/home/balance" %></h2>
+  <%= button_to "Billetera", bille_path, :method => :get, class:"opciones_lateral"  %>
 
-    <a class="opciones">Opciones de Sesión ⟩</a>
-    <div class="sesion_actual">
-        <%= button_to "Sign Out", destroy_user_session_path, :method => :delete, class:"boton inicio" %>
-        <%= button_to "Editar Perfil", edit_user_registration_path, class: "boton inicio"%>
-    </div>
+  <div class="lineahorizontal"></div>
 
-    <%if current_user && current_user.admin %>
-        <a href="#">Opciones de administrador</a>
-        <%= render "herramientas_administrador" %>
+  <details>
+    <summary onselectstart="return false", class="opciones_lateral"> Cuenta de Usuario </summary>
+    <%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"sub_opciones_lateral" %>
+    <%= button_to "Editar Perfil", edit_user_registration_path, :method => :get, class:"sub_opciones_lateral" %>
+  </details>
+
+  <div class="lineahorizontal"></div>
+
+  <%if current_user %>
+    <% if current_user.super%>
+      <p>Herramientas de supervisor</p>
     <% end %>
-    <%if current_user && current_user.super%>
-        <a href="#">Herramientas de supervisor</a>
+  <% else %>
+    <% if current_user.admin%>
+      <p>Herramientas de administrador</p>
     <% end %>
+  <% end %>
+  
 </div>
 
-<div id="main"><button class="abrir_menu_lateral" onclick="openNav()">☰</button></div>
+<div class="barra_superior">
+  <div id="main">
 
+    <div style="display: flex; flex-direction: row; align-items:center;">
+      <button class="abrir_menu_lateral" onclick="openNav()">
+        <%= image_tag "menu-burger.svg", class:"burger" %>
+      </button>
+      <%= link_to root_path do %>
+        <div class="logo_principal">
+          <%= image_tag "alquilapp-logo.svg", class:"logo" %>
+          <h1 class="titulo_logo">Alquilapp</h1>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <h1 style="margin-right: 15px;">$<%= current_user.balance %></h1>
+    </div>
+
+  </div>
+</div>
 <script src="<%= asset_path 'menu_Lateral' %>"></script>
