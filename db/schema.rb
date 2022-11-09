@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_09_181323) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_09_215647) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -63,10 +63,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_181323) do
     t.string "marca", null: false
     t.string "modelo", null: false
     t.string "color", null: false
-    t.integer "precio", null: false
     t.text "descripcion", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "patente"
   end
 
   create_table "views", force: :cascade do |t|

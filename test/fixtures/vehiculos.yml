@@ -4,12 +4,12 @@ one:
   marca: MyString
   modelo: MyString
   color: MyString
-  precio: 1
+  patente: MyString
   descripcion: MyText
 
 two:
   marca: MyString
   modelo: MyString
   color: MyString
-  precio: 1
+  patente: MyString
   descripcion: MyText

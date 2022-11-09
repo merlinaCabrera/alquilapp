@@ -4,7 +4,7 @@ class CreateVehiculos < ActiveRecord::Migration[7.0]
       t.string :marca
       t.string :modelo
       t.string :color
-      t.integer :precio
+      t.string :patente
       t.text :descripcion
 
       t.timestamps
