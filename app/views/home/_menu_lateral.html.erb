@@ -10,13 +10,16 @@
     <%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"sub_opciones_lateral" %>
     <%= button_to "Editar Perfil", edit_user_registration_path, :method => :get, class:"sub_opciones_lateral" %>
   </details>
-
   <div class="lineahorizontal"></div>
 
-  <%if current_user && current_user.admin %>
-    <p>Herramientas de administrador</p>
-    <%= render "home/herramientas_administrador" %>
-  <% end %>
+  <%if current_user && current_user.admin%>
+    <details>
+      <summary onselectstart="return false", class="opciones_lateral"> Herramientas de Administrador </summary>
+      <%= button_to "Ver usuarios registrados", listado_clientes_path, :method => :get, class:"sub_opciones_lateral" %>
+    </details>
+      <div class="lineahorizontal"></div>
+
+
   
 </div>
 
