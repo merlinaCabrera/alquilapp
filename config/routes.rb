@@ -4,14 +4,17 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
 
-  # supervisores
-  delete 'users/:id', to: 'users#destroy'
-  patch '/users/:id', to: 'users#update'
-  post '/users' , to: 'users#create'
-  get '/users/new', to: 'users#new', as: 'crear_super'
-  get '/users', to: 'users#index', as: 'listado_super'
-  get '/users/:id', to: 'users#show', as: 'supervisores'
-  get 'users/:id/edit', to: 'users#edit', as: 'editar_super'
+    # supervisores
+    delete '/users/:id', to: 'users#destroy', as: 'eliminar_super'
+    patch '/users/:id', to: 'users#update'
+    post '/users' , to: 'users#create'
+    get '/users/new', to: 'users#new', as: 'crear_super'
+    get '/users', to: 'users#index', as: 'listado_super'
+    get '/users/:id', to: 'users#show', as: 'supervisores'
+    get '/users/:id/edit', to: 'users#edit', as: 'editar_super'
+  
+ 
+
 
   # home
   get '/billetera', to: 'home#billetera', as: 'bille'

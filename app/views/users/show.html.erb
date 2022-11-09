@@ -1,0 +1,7 @@
+<%= @user.email %>
+
+<%= link_to 'Editar supervisor', editar_super_path(@user) %>
+<%= link_to 'Deshabilitar supervisor', supervisores_path(@user), data: {
+ turbo_method: :delete,
+ turbo_confirm: '¿Estas seguro?' } %>
+</div >

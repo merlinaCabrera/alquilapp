@@ -5,11 +5,16 @@
 
     <h1 class="titulo_seccion">Supervisores</h1>
 
+    <%= button_to 'Agregar +', crear_super_path %>
+
     <ul class="listado">
         <% User.all.each do |user| %>
             <% if user.super %>
                 <li class="listado_item">
                     Supervisor: <%= user.email%> <br>
+                    
+                    <%= button_to 'Modificar', editar_super_path(user) %> <br>
+                    <%= button_to 'Eliminar', eliminar_super_path(user) %>
                 </li>  
                 <div class="lineahorizontal"></div>
             <% end %>
