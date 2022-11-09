@@ -11,7 +11,7 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  config.hosts << "3000-merlinacabrer-alquilapp-ovlnu326tp4.ws-us74.gitpod.io"
+  config.hosts << "3000-merlinacabrer-alquilapp-wp8vyvbe61c.ws-us75.gitpod.io"
   config.hosts << "3000-darriux-alquilapp-okw6f7jiq9k.ws-us74.gitpod.io"
   config.hosts << "3000-darriux-alquilapp-okw6f7jiq9k.ws-us75.gitpod.io"
   config.hosts << "3000-darriux-alquilapp-mq3mzogkc0c.ws-us75.gitpod.io"
