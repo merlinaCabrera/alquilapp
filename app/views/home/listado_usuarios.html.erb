@@ -1,0 +1,16 @@
+<%= stylesheet_link_tag 'style.css' %>
+
+<div class="fondo">
+    <%= render "/home/menu_lateral"%>
+
+    <h1 class="titulo_seccion">Usuarios Registrados</h1>
+
+    <ul class="listado">
+        <% User.all.each do |user| %>
+                <li class="listado_item">
+                Usuario: <%= user.email%> <br>
+                </li>  
+                <div class="lineahorizontal"></div>
+        <% end %>
+    </ul>
+</div>
