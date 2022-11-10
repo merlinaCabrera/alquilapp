@@ -17,6 +17,10 @@ body{
 }
 
 /*fondo pagina--------------------*/
+.fondo.vehiculo {
+    height: fit-content;
+  }
+  
 .fondo{
     background-color: white;
     position: absolute;
@@ -303,7 +307,7 @@ details summary::-webkit-details-marker {
 }
 
 
-/* a usar proximamente (tal vez)
+
 .volver{
     height: 25px;
     width: auto;
@@ -316,5 +320,3 @@ details summary::-webkit-details-marker {
 .volver:hover{
     background-color: #DBDBDB;
 }
-
-*/
