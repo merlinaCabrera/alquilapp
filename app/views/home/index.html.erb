@@ -29,6 +29,7 @@
         <div class="centrar">
             <div class="contenedor">
                 <%= render 'home/primer_sesion'%>
+                <%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"sub_opciones_lateral" %>
             </div>
     <% else %>
         <%= render "/home/menu_lateral"%>
