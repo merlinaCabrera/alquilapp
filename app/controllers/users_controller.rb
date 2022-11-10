@@ -40,13 +40,15 @@ class UsersController < ApplicationController
     def destroy
         @user = Vehiculo.find(params[:id])
         @user.destroy
-   
         redirect_to supervisores_path, notice: 'Supervisor eliminado', status: :see_other
     end
-       
-    private
     
     def user_params
         params.require(:user).permit(:nombreUsuario,:dni,:imagen_perfil)
+    end
+
+    def sumarBalance
+        @user = User.find(params[:id]).update()
+        @user.balance = @user.balance + @user.carga
     end
 end

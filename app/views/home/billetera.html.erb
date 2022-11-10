@@ -1,8 +1,36 @@
 <%= stylesheet_link_tag 'style.css' %>
 
 <div class="fondo">
-    <%= render "/home/menu_lateral"%>
-    <h1 class="titulo_seccion"> Billetera </h1>
+    <%= render "/home/menu_lateral"%>   
+
+    <%= form_with model: @tarjeta do |form|  %>
+
+         
+    <div>
+
+    <%= form. text_field :nombre, placeholder:"Nombre", :required => true, class:"ingreso" %>
+    </div>
+    <div>
+
+    <%= form. text_field :apellido, placeholder:"Apellido", :required => true, class:"ingreso" %>
+    </div>
+    <div>
+
+    <%= form. number_field :numeros16, in: 1000000000000000..9999999999999999, placeholder:"Números en la tarjeta", :required => true, class:"ingreso" %>
+    </div>
+    <div>
+    <p>vencimiento</p>
+    <%= form. number_field :venc_dia, placeholder:"Día", in: 1..31, :required => true, class:"ingreso" %>
+    <%= form. number_field :venc_mes, placeholder:"Mes", in: 1..12, :required => true, class:"ingreso" %>
+    </div>
+
+    <p>Cuanto deseas cargar?</p>
+    
+    
+    <%= form. submit %>
+    
+    <% end %>
+
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -11,7 +39,7 @@
             </div>
 
             <div class="actions">
-                <%= f.submit "Update" %>
+                <%= f.submit "Cargar saldo", class:"boton" %>
             </div>
 
             <div class="field">
