@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TarjetaTest < ActiveSupport::TestCase
+class TarjetumTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

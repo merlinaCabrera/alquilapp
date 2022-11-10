@@ -1,4 +1,4 @@
-class Datostarjeta < ActiveRecord::Migration[7.0]
+class DatosTarjeta < ActiveRecord::Migration[7.0]
   def change
     add_column :tarjeta, :nombre, :string
     add_column :tarjeta, :apellido, :string
