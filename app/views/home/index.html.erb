@@ -25,7 +25,19 @@
         </div>
     </div>
 <% else %>
-    <%= render "/home/menu_lateral"%>
-<% end %>     
-
+    <% if !current_user.licencia.attached? || !current_user.dni_tarjeta.attached? %>
+        <div class="centrar">
+            <div class="contenedor">
+                <%= render 'home/primer_sesion'%>
+            </div>
+    <% else %>
+        <%= render "/home/menu_lateral"%>
+        <div class="catalogo_cercania">
+            <div class="auto 1"></div>
+            <div class="auto 2"></div>
+            <div class="auto 3"></div>
+            <div class="auto 4"></div>
+        </div>
+    <% end %>
+<% end %>
 <script src="<%= asset_path 'colapsar' %>"></script>
