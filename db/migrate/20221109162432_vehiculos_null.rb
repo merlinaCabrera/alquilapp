@@ -5,5 +5,6 @@ class VehiculosNull < ActiveRecord::Migration[7.0]
     change_column_null :vehiculos , :color, false
     change_column_null :vehiculos , :patente, false
     change_column_null :vehiculos , :descripcion, false
+    change_column_null :vehiculos , :cercania, false
   end
 end
