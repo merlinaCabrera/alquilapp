@@ -1,18 +1,25 @@
-<%= @vehiculo.marca %>
-<%= @vehiculo.modelo %>
-<%= @vehiculo.color %>
-<%= @vehiculo.patente %>
-<div>
-<%= @vehiculo.descripcion%>
-</div>
-<div>
-<%if current_user.admin%>
-  <%= link_to 'editar auto', edit_vehiculo_path(@vehiculo) %>
-<%end%>
+<%= stylesheet_link_tag 'style.css' %>
 
- <%if current_user.super%>
-     <%= link_to 'deshabilitar auto', vehiculo_path(@vehiculo), data: {
+<div class="fondo">
+     <%= render "/home/menu_lateral"%>
+     <%= link_to :back do %>
+     <%= image_tag "arrow-left.svg", class:"volver" %>    
+     <% end %>
+
+     
+   <p> Marca: <%= @vehiculo.marca %></p>
+   <p> Modelo: <%= @vehiculo.modelo %></p>
+   <p> Color: <%= @vehiculo.color %> </p>
+   <p> Patente: <%= @vehiculo.patente %></p>
+   <p> Descripcion: <%= @vehiculo.descripcion%></p>
+
+   <%if current_user.admin%>
+     <%= button_to 'editar auto', edit_vehiculo_path(@vehiculo), :method => :get %>
+   <%end%>
+
+   <%if current_user.super%>
+     <%= button_to 'deshabilitar auto', vehiculo_path(@vehiculo), :method => :delete,  data: {
       turbo_method: :delete,
      turbo_confirm: '¿Estas seguro?' } %>
- <%end%>
-</div >
+   <%end%>
+</div>
