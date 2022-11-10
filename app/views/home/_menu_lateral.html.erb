@@ -3,13 +3,7 @@
 
   <%= button_to "Billetera", bille_path, :method => :get, class:"opciones_lateral"  %>
 
-  <div class="lineahorizontal"></div>
-
-  <details>
-    <summary onselectstart="return false", class="opciones_lateral"> Cuenta de Usuario </summary>
-    <%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"sub_opciones_lateral" %>
-    <%= button_to "Editar Perfil", edit_user_registration_path, :method => :get, class:"sub_opciones_lateral" %>
-  </details>
+  
   <div class="lineahorizontal"></div>
 
   <%if current_user && current_user.admin%>
@@ -27,6 +21,30 @@
   <%end%>
 
 
+  <%if current_user && !current_user.admin && !current_user.super %>
+      <%= button_to "Ver vehículos", listado_vehiculos_path, :method => :get, class:"opciones_lateral" %>
+      </details>
+  <%end%>
+
+
+  <%if current_user.super%>
+   <details>
+     <summary onselectstart="return false", class="opciones_lateral"> Herramientas de Supervisor </summary>
+
+     <%= button_to "Ver vehículos", listado_vehiculos_path, :method => :get, class:"sub_opciones_lateral" %>
+     <div class="lineahorizontal"></div>
+   </details>
+  <%end%>
+
+  <div class="lineahorizontal"></div>
+
+  <details>
+    <summary onselectstart="return false", class="opciones_lateral"> Cuenta de Usuario </summary>
+    <%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"sub_opciones_lateral" %>
+    <%= button_to "Editar Perfil", edit_user_registration_path, :method => :get, class:"sub_opciones_lateral" %>
+  </details>
+
+
   
 </div>
 
@@ -40,7 +58,8 @@
       <%= link_to root_path do %>
         <div class="logo_principal">
           <%= image_tag "alquilapp-logo.svg", class:"logo" %>
-          <h1 class="titulo_logo">Alquilapp</h1>
+          <h1 class="titulo_logo"><FONT COLOR="orange">Alquilapp </FONT>
+          <br></h1>
         </div>
       <% end %>
     </div>

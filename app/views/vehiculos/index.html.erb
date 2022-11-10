@@ -5,7 +5,9 @@
 
     <h1 class="titulo_seccion">Vehículos</h1>
 
-    <%= link_to 'Agregar +' , new_vehiculo_path %>
+    <%if current_user.super%>
+     <%= button_to 'Agregar +',  new_vehiculo_path, :method => :get %>
+    <%end%>
 
     <ul class="listado">
         <% @vehiculos.each do |vehiculo| %>

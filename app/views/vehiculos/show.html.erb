@@ -1,13 +1,18 @@
 <%= @vehiculo.marca %>
 <%= @vehiculo.modelo %>
 <%= @vehiculo.color %>
-<%= @vehiculo.patente %>$
+<%= @vehiculo.patente %>
 <div>
 <%= @vehiculo.descripcion%>
 </div>
 <div>
-<%= link_to 'editar auto', edit_vehiculo_path(@vehiculo) %>
-<%= link_to 'deshabilitar auto', vehiculo_path(@vehiculo), data: {
- turbo_method: :delete,
- turbo_confirm: '¿Estas seguro?' } %>
+<%if current_user.admin%>
+  <%= link_to 'editar auto', edit_vehiculo_path(@vehiculo) %>
+<%end%>
+
+ <%if current_user.super%>
+     <%= link_to 'deshabilitar auto', vehiculo_path(@vehiculo), data: {
+      turbo_method: :delete,
+     turbo_confirm: '¿Estas seguro?' } %>
+ <%end%>
 </div >

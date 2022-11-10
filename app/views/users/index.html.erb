@@ -4,8 +4,9 @@
     <%= render "/home/menu_lateral"%>
 
     <h1 class="titulo_seccion">Supervisores</h1>
+    
+    <%= button_to 'Agregar +',  crear_super_path, :method => :get %>
 
-    <%= button_to 'Agregar +', crear_super_path %>
 
     <ul class="listado">
         <% User.all.each do |user| %>
