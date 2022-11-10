@@ -8,7 +8,6 @@
     <%if current_user.super%>
      <%= button_to 'Agregar +',  new_vehiculo_path, :method => :get %>
     <%end%>
-
     <ul class="listado">
         <% @vehiculos.each do |vehiculo| %>
                 <li class="listado_item">
