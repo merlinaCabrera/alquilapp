@@ -265,7 +265,7 @@ details summary::-webkit-details-marker {
     border-radius: var(--radioBordes);
     border: none;
     padding: 15px;
-    margin:15px;
+    margin:10px;
 }
 
 /*Posiciona elementos del formulario de ingreso/creación--------------------*/
