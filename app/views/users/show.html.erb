@@ -3,15 +3,20 @@
 <div class="fondo">
      <%= render "/home/menu_lateral"%>
      <%= link_to :back do %>
-     <%= image_tag "arrow-left.svg", class:"volver" %>    
+        <center><%= image_tag "arrow-left.svg", class:"volver"%></center>    
      <% end %>
 
-     
-   <p> Email: <%= @user.email %></p>
+   <center>
+   <h3> Nombre: <%= User.find(@user.id).nombreUsuario %></h3>
+   <h3> Email: <%= @user.email %></h3>
+   <h3> DNI: <%= @user.dni %> </h3>
+   <h3> Supervisor: <%= @user.super %></h3>
 
-
-     <%= button_to 'Editar supervisor', editar_super_path(@user), :method => :get %>
-     <%= button_to 'deshabilitar auto', supervisores_path(@user), :method => :delete,  data: {
-        turbo_method: :delete,
-        turbo_confirm: '¿Estas seguro?' } %>
+   <%if current_user && current_user.admin%>
+     <%= button_to 'Modificar', editar_super_path(@user), :method => :get, class:"boton" %><br>
+     <%= button_to 'Eliminar', eliminar_super_path(@user), :method => :delete, class:"boton",  data: {
+      turbo_method: :delete,
+      turbo_confirm: '¿Estas seguro?' } %>
+   <%end%>
+   </center>
 </div>

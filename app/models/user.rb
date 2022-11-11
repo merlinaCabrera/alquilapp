@@ -10,8 +10,4 @@ class User < ApplicationRecord
 
   validates :licencia, content_type: [:png,:jpg,:jpeg]
   validates :dni_tarjeta, content_type: [:png,:jpg,:jpeg]
-
-  has_many :tarjeta, dependent: :destroy
-
-
 end

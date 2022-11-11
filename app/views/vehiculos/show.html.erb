@@ -1,17 +1,20 @@
 <%= stylesheet_link_tag 'style.css' %>
 
+<center>
 <div class="fondo">
      <%= render "/home/menu_lateral"%>
      <%= link_to :back do %>
-     <%= image_tag "arrow-left.svg", class:"volver" %>    
+        <%= image_tag "arrow-left.svg", class:"volver" %>    
      <% end %>
-
      
-   <p> Marca: <%= @vehiculo.marca %></p>
-   <p> Modelo: <%= @vehiculo.modelo %></p>
-   <p> Color: <%= @vehiculo.color %> </p>
-   <p> Patente: <%= @vehiculo.patente %></p>
-   <p> Descripcion: <%= @vehiculo.descripcion%></p>
+
+   <h3> Marca: <%= @vehiculo.marca %></h3>
+   <h3> Modelo: <%= @vehiculo.modelo %></h3>
+   <h3> Color: <%= @vehiculo.color %> </h3>
+   <h3> Patente: <%= @vehiculo.patente %></h3>
+   <h3> Cercania: <%= @vehiculo.cercania%></h3>
+   <h3> Descripcion: <%= @vehiculo.descripcion%></h3>
+
    
 
    <%if current_user.admin%>
@@ -19,8 +22,10 @@
    <%end%>
 
    <%if current_user.super%>
-     <%= button_to 'deshabilitar auto', vehiculo_path(@vehiculo), :method => :delete,  data: {
+     <%= button_to 'Eliminar auto', vehiculo_path(@vehiculo), :method => :delete, class:"boton",  data: {
       turbo_method: :delete,
      turbo_confirm: '¿Estas seguro?' },class:"boton" %>
    <%end%>
+
+   </center>
 </div>

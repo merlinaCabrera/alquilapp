@@ -4,6 +4,7 @@
     <%= render "/home/menu_lateral"%>
 
     <div class="encabezadoSupervisores">
+
         <h1 class="titulo_seccion">Vehículos</h1>
         <% if current_user.super %>
           <%= link_to new_vehiculo_path do %>

@@ -1,7 +1,54 @@
+<%= stylesheet_link_tag 'style.css' %>
 <div class="fondo">
-     <%= render "/home/menu_lateral"%>
-     <%= link_to :back do %>
-     <%= image_tag "arrow-left.svg", class:"volver" %>    
-     <% end %>
+<%= render "/home/menu_lateral"%>
 
-<%= render 'form' %>
+<h1 class="titulo_seccion"> Modificar Cuenta</h1>
+<center>
+<%= link_to listado_super_path do %>
+<%= image_tag "arrow-left.svg", class:"volver" %>    
+<% end %>
+</center>
+  
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+
+    <div class="field">
+          <%= f.text_field :nombreUsuario, autofocus: true, placeholder:"Nombre de Usuario", class:"ingreso"  %>
+    </div>
+
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, placeholder:"E-mail", autocomplete: "email", class:"ingreso" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "new-password", placeholder:"Contraseña nueva", class:"ingreso" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"ingreso", placeholder:"Confirmar contraseña" %>
+    </div>
+
+    <div class="field">
+      <p>Por motivos de seguridad, ingrese nuevamente su contraseña</p>
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
+
+     <center>
+    <div class="actions">
+      <br><%= f.submit "Update", class:"boton" %>
+    </div>
+    </center>
+  <% end %>
+
+</div>
+
