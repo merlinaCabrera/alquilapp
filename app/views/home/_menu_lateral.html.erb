@@ -27,7 +27,7 @@
   <%end%>
 
 
-  <%if current_user.super%>
+  <%if current_user && current_user.super%>
    <details>
      <summary onselectstart="return false", class="opciones_lateral"> Herramientas de Supervisor </summary>
 
@@ -65,7 +65,10 @@
     </div>
 
     <div>
+    
+    <% if current_user %>
       <h1 style="margin-right: 15px;"><%= current_user.nombreUsuario %>, $<%= current_user.balance %></h1>
+    <% end %>
     </div>
 
   </div>
