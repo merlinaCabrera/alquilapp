@@ -21,6 +21,7 @@
         <% @vehiculos.each do |vehiculo| %>
             <tr>
                 <td class="item">
+                    
                     <% if current_user.admin || current_user.super %>
                     <FONT COLOR="e7c078">
                         <%= link_to vehiculo_path( vehiculo.id ) do %>
