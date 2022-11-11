@@ -6,11 +6,12 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create(nombreUsuario:"nombreA1",dni:11111111, email: "a1@admin.com", password:"123456",password_confirmation:"123456", admin: true)
+User.create(nombreUsuario:"Francisco Administrador",dni:35244938, email: "francisco@alquilapp.com", password:"123456",password_confirmation:"123456", admin: true)
+User.create(nombreUsuario:"Eduardo Administrador",dni:29290428, email: "eduardo@alquilapp.com", password:"123456",password_confirmation:"123456", admin: true)
 
-User.create(nombreUsuario:"nombreS1",dni:22222222, email: "s1@admin.com", password:"123456",password_confirmation:"123456", super: true)
-User.create(nombreUsuario:"nombreS2",dni:33333333, email: "s2@admin.com", password:"123456",password_confirmation:"123456", super: true)
-User.create(nombreUsuario:"nombreS3",dni:44444444, email: "s3@admin.com", password:"123456",password_confirmation:"123456", super: true)
+User.create(nombreUsuario:"Diaz, Juan Luis",dni:28556238, email: "juanluisdiaz@alquilapp.com", password:"123456",password_confirmation:"123456", super: true)
+User.create(nombreUsuario:"Crespo, Franco",dni:40206285, email: "franco_crespo@alquilapp.com", password:"123456",password_confirmation:"123456", super: true)
+User.create(nombreUsuario:"Sanchez, Juliana",dni:39923224, email: "juliana.s@alquilapp.com", password:"123456",password_confirmation:"123456", super: true)
 User.create(nombreUsuario:"nombreS4",dni:55555555, email: "s4@admin.com", password:"123456",password_confirmation:"123456", super: true)
 User.create(nombreUsuario:"nombreS5",dni:66666666, email: "s5@admin.com", password:"123456",password_confirmation:"123456", super: true)
 

@@ -5,8 +5,10 @@
 
     <div class="encabezadoSupervisores">
         <h1 class="titulo_seccion"> Vehículos </h1>
-        <%= link_to new_vehiculo_path do %>
-            <%= image_tag "plus.svg", class:"ag_super" %>    
+        <%if current_user.super%>
+            <%= link_to new_vehiculo_path do %>
+                <%= image_tag "plus.svg", class:"ag_super" %>    
+            <% end %>
         <% end %>
     </div> <br>
     <div class="lineahorizontal"></div>
