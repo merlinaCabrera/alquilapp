@@ -7,22 +7,24 @@
         <%= image_tag "arrow-left.svg", class:"volver" %>    
      <% end %>
      
+
    <h3> Marca: <%= @vehiculo.marca %></h3>
    <h3> Modelo: <%= @vehiculo.modelo %></h3>
    <h3> Color: <%= @vehiculo.color %> </h3>
    <h3> Patente: <%= @vehiculo.patente %></h3>
    <h3> Cercania: <%= @vehiculo.cercania%></h3>
    <h3> Descripcion: <%= @vehiculo.descripcion%></h3>
+
    
 
    <%if current_user.admin%>
-     <%= button_to 'editar auto', edit_vehiculo_path(@vehiculo), :method => :get %>
+     <%= button_to 'editar auto', edit_vehiculo_path(@vehiculo), :method => :get,class:"boton" %>
    <%end%>
 
    <%if current_user.super%>
      <%= button_to 'Eliminar auto', vehiculo_path(@vehiculo), :method => :delete, class:"boton",  data: {
       turbo_method: :delete,
-     turbo_confirm: '¿Estas seguro?' } %>
+     turbo_confirm: '¿Estas seguro?' },class:"boton" %>
    <%end%>
 
    </center>

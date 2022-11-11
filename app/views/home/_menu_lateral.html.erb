@@ -8,7 +8,15 @@
 
   <%if current_user && current_user.admin%>
     <details>
-      <summary onselectstart="return false", class="opciones_lateral"> Administrador </summary>
+      <summary onselectstart="return false", class="opciones_lateral"> 
+      Herramientas de 
+      
+      <% if current_user.super %>
+        Supervisor
+      <% else %>
+        Administrador
+      <% end %>
+     </summary>
       <%= button_to "Usuarios registrados", listado_clientes_path, :method => :get, class:"sub_opciones_lateral" %>
       <div class="lineahorizontal"></div>
 
@@ -18,7 +26,9 @@
       <%= button_to "Vehículos", listado_vehiculos_path, :method => :get, class:"sub_opciones_lateral" %>
       <div class="lineahorizontal"></div>
     </details>
-  <%end%>
+  <% end %>
+  
+  
 
 
   <%if current_user && !current_user.admin && !current_user.super %>
@@ -26,15 +36,6 @@
       </details>
   <%end%>
 
-
-  <%if current_user && current_user.super%>
-   <details>
-     <summary onselectstart="return false", class="opciones_lateral"> Herramientas de Supervisor </summary>
-
-     <%= button_to "Ver vehículos", listado_vehiculos_path, :method => :get, class:"sub_opciones_lateral" %>
-     <div class="lineahorizontal"></div>
-   </details>
-  <%end%>
 
   <div class="lineahorizontal"></div>
 
@@ -58,14 +59,16 @@
       <%= link_to root_path do %>
         <div class="logo_principal">
           <%= image_tag "alquilapp-logo.svg", class:"logo" %>
-          <h1 class="titulo_logo"><FONT COLOR="#e7c078">Alquilapp </FONT>
-          <br></h1>
+
+          <h1 class="titulo_logo", style="">
+          <FONT COLOR="black">Alquilapp </FONT>
+          </h1>
+
         </div>
       <% end %>
     </div>
 
     <div>
-    
     <% if current_user %>
       <h1 style="margin-right: 15px;"><%= current_user.nombreUsuario %>, $<%= current_user.balance %></h1>
     <% end %>
