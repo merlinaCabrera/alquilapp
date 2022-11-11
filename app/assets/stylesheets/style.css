@@ -346,6 +346,17 @@ details summary::-webkit-details-marker {
     align-items: center;
 }
 
+.form{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.actions{
+    margin: 0 auto;
+}
+
 /*Estilo de botones--------------------*/
 .boton{
     background-color: var(--colorEnfasis);
@@ -370,6 +381,7 @@ details summary::-webkit-details-marker {
     background-color: #ededed;
     padding: 15px;
     transition: 0.3s;
+    margin-left: 5%;
 }
 
 .volver:hover{
