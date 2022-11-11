@@ -3,19 +3,48 @@
 <div class="fondo vehiculo">
     <%= render "/home/menu_lateral"%>
 
-    <h1 class="titulo_seccion">Vehículos</h1>
-
-    <%if current_user.super%>
-     <%= button_to 'Agregar +',  new_vehiculo_path, :method => :get %>
-    <%end%>
-    <ul class="listado">
-        <% @vehiculos.each do |vehiculo| %>
-                <li class="listado_item">
-                    <%= link_to vehiculo_path( vehiculo.id ) do %>
-                    <h2><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
-                    <% end %>
-                </li>  
-                <div class="lineahorizontal"></div>
+    <div class="encabezadoSupervisores">
+        <h1 class="titulo_seccion">Vehículos</h1>
+        <% if current_user.super %>
+          <%= link_to new_vehiculo_path do %>
+            <%= image_tag "plus.svg", class:"ag_super" %>    
+          <% end %>
         <% end %>
-    </ul>
+    </div>
+
+    <table class="listado">
+        <tr>
+            <th class="item">Vehículos</th>
+            <th class="item">Estado</th>
+        </tr>
+        <% @vehiculos.each do |vehiculo| %>
+            <tr>
+                <td class="item">
+                    
+                    <% if current_user.admin || current_user.super %>
+                        <%= link_to vehiculo_path( vehiculo.id ) do %>
+                            <h2><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
+                        <% end %>
+                    <% else %> 
+                        <% if vehiculo.cercano <= 5 && !vehiculo.ocupado %>
+                            <%= link_to vehiculo_path( vehiculo.id ) do %>
+                                <h2><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
+                            <% end %>
+                        <% else %>
+                            <p>Alejado del rango de búsqueda</p>
+                        <% end %>
+                    <% end %>                  
+                </td>
+                <td class="item">
+                    
+                    <% if vehiculo.ocupado %>
+                        <p>Ocupado</p>
+                    <% else %>
+                    <p>Libre</p>
+                    <% end %>
+                    
+                </td>
+            </tr>  
+        <% end %>
+    </table>
 </div>

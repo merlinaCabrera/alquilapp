@@ -1,31 +1,30 @@
-<%= form_with model: @vehiculo do |form|  %>
+
+<%= form_with model: @vehiculo do |f|  %>
     <% @vehiculo.errors.full_messages.each do |error| %>
         <div>
         <%= error %>
         </div>
     <% end %>
          
-    <div>
-    <%= form. label :marca %>
-    <%= form. text_field :marca %>
+    <div class="field">
+    <%= f.text_field :marca, autofocus: true, placeholder:"Marca", class:"ingreso", :required => true %>
+    </div> 
+    <div class="field">
+    <%= f.text_field :modelo, autofocus: true, placeholder:"Modelo", class:"ingreso", :required => true %>
     </div>
-    <div>
-    <%= form. label :modelo %>
-    <%= form. text_field :modelo %>
+    <div class="field">
+    <%= f.text_field :color, autofocus: true, placeholder:"Color", class:"ingreso", :required => true %>
     </div>
-    <div>
-    <%= form. label :color %>
-    <%= form. text_field :color %>
+    <div class="field">
+    <%= f.text_field :patente, autofocus: true, placeholder:"Patente", class:"ingreso", :required => true %>
+    </div> <div class="field">
+    <%= f.number_field :cercania, autofocus: true, placeholder:"Cercania", class:"ingreso", :required => true %>
     </div>
-    <div>
-    <%= form. label :patente %>
-    <%= form. text_field :patente %>
+    <div class="field">
+      <%= f.text_area :descripcion, autofocus: true, placeholder:"Descripcion", class:"ingreso", :required => true %>
     </div>
-    <div>
-    <%= form. label :description %>
-    <%= form. text_area :descripcion %>
-    </div>
-    
-    <%= form. submit %>
-    
+    <div class="actions">
+        <br>
+        <%= f.submit 'Confirmar' , class:"boton" %>
+      </div>
     <% end %>

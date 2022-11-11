@@ -185,7 +185,7 @@ details summary::-webkit-details-marker {
 }
 
 .titulo_logo{
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 /*Interfaz inicio de sesión--------------------*/
@@ -212,9 +212,10 @@ details summary::-webkit-details-marker {
     height: 75vh;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
     float:right;
-    margin-right: 1.7%;
+    margin-right: 4.05%;
     margin-top: var(--espacioDeBarraSuperior);
     overflow: auto;
+    text-align: center;
 }
 
 .auto{
@@ -222,9 +223,26 @@ details summary::-webkit-details-marker {
     width: 250px;
     border-radius: var(--radioBordes);
     margin: 15px;
-    background-color: blue;
+    background-color: var(--colorEnfasis);
+    background-image: url("car-side.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.3s;
 }
 
+.auto:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.ad{
+    background-color: #dbdbdb;
+}
+
+.txt{
+    text-align: center;
+}
 
 /*Separador vertical--------------------*/
 .lineavertical{

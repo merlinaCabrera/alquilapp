@@ -11,17 +11,16 @@
    <p> Modelo: <%= @vehiculo.modelo %></p>
    <p> Color: <%= @vehiculo.color %> </p>
    <p> Patente: <%= @vehiculo.patente %></p>
-   <p> Cercania: <%= @vehiculo.cercania%></p>
    <p> Descripcion: <%= @vehiculo.descripcion%></p>
    
 
    <%if current_user.admin%>
-     <%= button_to 'editar auto', edit_vehiculo_path(@vehiculo), :method => :get %>
+     <%= button_to 'editar auto', edit_vehiculo_path(@vehiculo), :method => :get,class:"boton" %>
    <%end%>
 
    <%if current_user.super%>
      <%= button_to 'deshabilitar auto', vehiculo_path(@vehiculo), :method => :delete,  data: {
       turbo_method: :delete,
-     turbo_confirm: '¿Estas seguro?' } %>
+     turbo_confirm: '¿Estas seguro?' },class:"boton" %>
    <%end%>
 </div>
