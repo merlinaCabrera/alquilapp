@@ -14,12 +14,8 @@ class UsersController < ApplicationController
  
   def create
       @user = User.create(user_params)   
- 
-      if @user.save
-         redirect_to supervisores_path, notice: 'Supervisor agregado con éxito' 
-      else
-          render :new , status: :unprocessable_entity
-      end
+      @user.save
+      flash[:notice] = 'Supervisor agregado con éxito' 
   end
  
   def edit
@@ -44,6 +40,6 @@ class UsersController < ApplicationController
   private
   
   def user_params
-      params.require(:user).permit(:nombreUsuario,:dni,:imagen_perfil)
+      params.require(:user).permit(:nombreUsuario,:dni, :email, :super)
   end
 end

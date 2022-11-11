@@ -1,8 +1,10 @@
 
 <div class="fondo">
 <%= render "/home/menu_lateral"%>
-<%= link_to :back do %>
-    <%= image_tag "arrow-left.svg", class:"volver" %>    
+<center>
+<%= link_to listado_super_path do %>
+<%= image_tag "arrow-left.svg", class:"volver" %>    
 <% end %>
+</center>
 
 <%= render 'form' %>

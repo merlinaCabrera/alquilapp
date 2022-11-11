@@ -13,6 +13,7 @@
    <h3> Supervisor: <%= @user.super %></h3>
 
    <%if current_user && current_user.admin%>
+     <%= button_to 'Modificar', editar_super_path(@user), :method => :get, class:"boton" %><br>
      <%= button_to 'Eliminar', eliminar_super_path(@user), :method => :delete, class:"boton",  data: {
       turbo_method: :delete,
       turbo_confirm: '¿Estas seguro?' } %>

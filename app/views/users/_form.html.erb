@@ -22,14 +22,12 @@
       <div class="field">
         <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmar contraseña", class:"ingreso" %>
       </div>
-
-      <div class="field">
-        <%= f.hidden_field :super, value: "true" %>
-      </div>
-
+ 
+    <center>
       <div class="actions">
         <br>
         <%= f.submit "Crear Cuenta", class:"boton" %>
       </div>
+      </center>
     
 <% end %>
