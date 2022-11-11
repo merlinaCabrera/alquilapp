@@ -22,6 +22,7 @@
             <tr>
                 <td class="item">
                     <% if current_user.admin || current_user.super %>
+                    <FONT COLOR="e7c078">
                         <%= link_to vehiculo_path( vehiculo.id ) do %>
                             <h2><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
                         <% end %>
@@ -30,6 +31,7 @@
                             <%= link_to vehiculo_path( vehiculo.id ) do %>
                                 <h2><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
                             <% end %>
+                            <FONT>
                         <% else %>
                             <p>Alejado del rango de búsqueda</p>
                         <% end %>

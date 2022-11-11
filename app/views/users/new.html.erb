@@ -7,4 +7,41 @@
 <% end %>
 </center>
 
-<%= render 'form' %>
+<%= form_with model: @user do |f|  %>
+         
+    <div class="field">
+      <%= f.text_field :nombreUsuario, autofocus: true, placeholder:"Nombre de Usuario", class:"ingreso", :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.number_field :dni, autofocus: true, placeholder:"DNI", class:"ingreso", :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"E-mail", class:"ingreso" %>
+    </div>
+
+    <div class="field">
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", placeholder:"Constraseña", class:"ingreso" %>
+    </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmar contraseña", class:"ingreso" %>
+      </div>
+
+      <div class="field">
+        <%= f.label "Supervisor" %> <br />
+        <%= f.check_box :super, {}, true, false %> <br />
+    </div>
+ 
+    <center>
+      <div class="actions">
+        <br>
+        <%= f.submit "Crear Cuenta", class:"boton" %>
+      </div>
+      </center>
+    
+<% end %>
