@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema[7.0].define(version: 2022_11_10_195118) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,9 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_195118) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-# Could not dump table "tarjeta" because of following StandardError
-#   Unknown type 'bignum' for column 'codigo'
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,13 +58,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_195118) do
   end
 
   create_table "vehiculos", force: :cascade do |t|
-    t.string "marca", null: false
-    t.string "modelo", null: false
-    t.string "color", null: false
-    t.text "descripcion", null: false
+    t.string "marca"
+    t.string "modelo"
+    t.string "color"
+    t.string "patente"
+    t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "patente"
+    t.integer "precio"
     t.integer "cercania"
   end
 

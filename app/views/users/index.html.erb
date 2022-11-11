@@ -8,25 +8,23 @@
         <%= link_to crear_super_path do %>
             <%= image_tag "plus.svg", class:"ag_super" %>    
         <% end %>
-    </div>
-    
+    </div> <br>
+    <div class="lineahorizontal"></div>
 
     <table class="listado">
-        <tr>
-        <th class="item">Supervisor</th>
-        <th class="item">E-mail</th>
-        <th class="item"></th>
-        <th class="item"></th>
-        </tr>
+        
+        <ul class="listado">
         <% User.all.each do |user| %>
             <% if user.super %>
-                <tr>
-                    <td class="item"><%= user.nombreUsuario%></td>
-                    <td class="item"><%= user.email%></td>
-                    <td class="item a"><%= button_to 'Modificar', editar_super_path(user), :method => :get, class:"boton" %></td>
-                    <td class="item a"><%= button_to 'Eliminar', eliminar_super_path(user), :method => :destroy, class:"boton" %></td>
-                </tr>
+                <li class="listado_item">
+                    <%= link_to supervisores_path( user.id ) do %>
+                    <h2><FONT COLOR="#e7c078"><%= user.nombreUsuario %></h2>
+                    <% end %>
+                    <div class="lineahorizontal"></div>
+                </li>  
             <% end %>
         <% end %>
+        </ul>
+
     </table>
 </div>

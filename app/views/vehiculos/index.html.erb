@@ -3,16 +3,19 @@
 <div class="fondo vehiculo">
     <%= render "/home/menu_lateral"%>
 
-    <h1 class="titulo_seccion">Vehículos</h1>
+    <div class="encabezadoSupervisores">
+        <h1 class="titulo_seccion"> Vehículos </h1>
+        <%= link_to new_vehiculo_path do %>
+            <%= image_tag "plus.svg", class:"ag_super" %>    
+        <% end %>
+    </div> <br>
+    <div class="lineahorizontal"></div>
 
-    <%if current_user.super%>
-     <%= button_to 'Agregar +',  new_vehiculo_path, :method => :get %>
-    <%end%>
     <ul class="listado">
         <% @vehiculos.each do |vehiculo| %>
                 <li class="listado_item">
                     <%= link_to vehiculo_path( vehiculo.id ) do %>
-                    <h2><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
+                    <h2><FONT COLOR="#e7c078"><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
                     <% end %>
                 </li>  
                 <div class="lineahorizontal"></div>
