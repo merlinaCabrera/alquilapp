@@ -21,7 +21,6 @@
         <% @vehiculos.each do |vehiculo| %>
             <tr>
                 <td class="item">
-                    
                     <% if current_user.admin || current_user.super %>
                         <%= link_to vehiculo_path( vehiculo.id ) do %>
                             <h2><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
