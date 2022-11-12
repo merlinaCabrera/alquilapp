@@ -15,7 +15,8 @@
 
     <table class="listado">
         <tr>
-            <th class="item">Vehículos</th>
+            <th class="item">Vehículo</th>
+            <th class="item">Patente</th>
             <th class="item">Estado</th>
         </tr>
         <% @vehiculos.each do |vehiculo| %>
@@ -23,7 +24,7 @@
                 <td class="item">
                     <% if current_user.admin || current_user.super %>
                         <%= link_to vehiculo_path( vehiculo.id ) do %>
-                            <h2><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
+                            <h2><%= vehiculo.marca %> <%= vehiculo.modelo %> </h2>
                         <% end %>
                     <% else %> 
                         <% if vehiculo.cercano <= 5 && !vehiculo.ocupado %>
@@ -36,11 +37,14 @@
                     <% end %>                  
                 </td>
                 <td class="item">
+                    <p><%= vehiculo.patente %></p>
+                </td>
+                <td class="item">
                     
                     <% if vehiculo.ocupado %>
                         <p>Ocupado</p>
                     <% else %>
-                    <p>Libre</p>
+                        <p>Libre</p>
                     <% end %>
                     
                 </td>

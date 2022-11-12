@@ -302,6 +302,13 @@ details summary::-webkit-details-marker {
     margin-left: 15px;
 }
 
+.modificarCuenta {
+    justify-content: space-around;
+    width: fit-content;
+    margin: 0 auto;
+    align-items: center;
+}
+
 /*titulos de las secciones--------------------*/
 .titulo_seccion{
     padding-left: 2.5%;
@@ -355,6 +362,12 @@ details summary::-webkit-details-marker {
 
 .actions{
     margin: 0 auto;
+}
+
+/*imagenes--------------------*/
+.imagen{
+    height: 100px;
+    width: 100px;
 }
 
 /*Estilo de botones--------------------*/

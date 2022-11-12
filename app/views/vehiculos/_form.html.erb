@@ -18,12 +18,18 @@
     </div>
     <div class="field">
     <%= f.text_field :patente, autofocus: true, placeholder:"Patente", class:"ingreso", :required => true %>
+    <div class="field">
+      <%= f.text_area :descripcion, autofocus: true, placeholder:"Descripcion", class:"ingreso", :required => true %>
+    </div>
+    <p>simulacion</p>
     </div> <div class="field">
     <%= f.number_field :cercania, autofocus: true, placeholder:"Cercania", class:"ingreso", :required => true %>
     </div>
     <div class="field">
-      <%= f.text_area :descripcion, autofocus: true, placeholder:"Descripcion", class:"ingreso", :required => true %>
+    <p>ocupado?</p>
+      <%= f.check_box :ocupado, {}, true, false %>
     </div>
+
     <div class="actions">
         <br>
         <%= f.submit 'Confirmar' , class:"boton" %>

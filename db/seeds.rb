@@ -9,11 +9,11 @@
 User.create(nombreUsuario:"Francisco Administrador",dni:35244938, email: "francisco@alquilapp.com", password:"123456",password_confirmation:"123456", admin: true)
 User.create(nombreUsuario:"Eduardo Administrador",dni:29290428, email: "eduardo@alquilapp.com", password:"123456",password_confirmation:"123456", admin: true)
 
-User.create(nombreUsuario:"nombreS1",dni:22222222, email: "s1@super.com", password:"123456",password_confirmation:"123456", super: true, admin:"true")
-User.create(nombreUsuario:"nombreS2",dni:33333333, email: "s2@super.com", password:"123456",password_confirmation:"123456", super: true, admin:"true")
-User.create(nombreUsuario:"nombreS3",dni:44444444, email: "s3@super.com", password:"123456",password_confirmation:"123456", super: true, admin:"true")
-User.create(nombreUsuario:"nombreS4",dni:55555555, email: "s4@super.com", password:"123456",password_confirmation:"123456", super: true, admin:"true")
-User.create(nombreUsuario:"nombreS5",dni:66666666, email: "s5@super.com", password:"123456",password_confirmation:"123456", super: true, admin:"true")
+User.create(nombreUsuario:"nombreS1",dni:22222222, email: "s1@super.com", password:"123456",password_confirmation:"123456", super: true, admin:"false")
+User.create(nombreUsuario:"nombreS2",dni:33333333, email: "s2@super.com", password:"123456",password_confirmation:"123456", super: true, admin:"false")
+User.create(nombreUsuario:"nombreS3",dni:44444444, email: "s3@super.com", password:"123456",password_confirmation:"123456", super: true, admin:"false")
+User.create(nombreUsuario:"nombreS4",dni:55555555, email: "s4@super.com", password:"123456",password_confirmation:"123456", super: true, admin:"false")
+User.create(nombreUsuario:"nombreS5",dni:66666666, email: "s5@super.com", password:"123456",password_confirmation:"123456", super: true, admin:"false")
 
 
 User.create(nombreUsuario:"nombreC1",dni:11111111, email: "c1@cliente.com", password:"123456",password_confirmation:"123456")
