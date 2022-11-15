@@ -1,12 +1,13 @@
 <div id="mySidebar" class="barralateral">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
-  <%= button_to "Billetera", bille_path, :method => :get, class:"opciones_lateral"  %>
-
+  <% if !current_user.super && !current_user.admin %>
+    <%= button_to "Billetera", bille_path, :method => :get, class:"opciones_lateral"  %>
+  <% end %>
   
   <div class="lineahorizontal"></div>
 
-  <%if current_user && current_user.admin%>
+  <%if current_user && (current_user.admin || current_user.super)%>
     <details>
       <summary onselectstart="return false", class="opciones_lateral"> 
       Herramientas de 
@@ -69,9 +70,14 @@
     </div>
 
     <div>
-    <% if current_user %>
-      <h1 style="margin-right: 15px;"><%= current_user.nombreUsuario %>, $<%= current_user.balance %></h1>
-    <% end %>
+
+      <h1 style="margin-right: 15px;">
+        <%= current_user.nombreUsuario %>
+        <% if !current_user.admin && !current_user.super %>
+          , $<%= current_user.balance %>
+          <% end %>
+      </h1>
+
     </div>
 
   </div>

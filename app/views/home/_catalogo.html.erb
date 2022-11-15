@@ -1,25 +1,27 @@
 <div class="catalogo_cercania">
     <%  Vehiculo.all.each do |vehiculo| %>   
         <% if vehiculo.cercano <= 5 && !vehiculo.ocupado %>
-            <p class="auto">
+            <%= link_to vehiculo_path( vehiculo.id ) do %>
+                <p class="auto">
                 <div class="txt">
                     <%= vehiculo.marca%>
                     <%= vehiculo.modelo%>
                 </div>
                 <br>
                 <i>  Ubicado a <%= vehiculo.cercano%> cuadras </i>
-            </p>
+            <% end %>
             <div class="lineahorizontal"></div>
         <% else %>
             <% if current_user.admin || current_user.super %>
+                <%= link_to vehiculo_path( vehiculo.id ) do %>
                 <p class="auto ad">
-                    <div class="txt">
-                        <%= vehiculo.marca%>
-                        <%= vehiculo.modelo%>
-                    </div>
-                    <br>
-                    <i>  Ubicado a <%= vehiculo.cercano%> cuadras </i>
-                </p> 
+                <div class="txt">
+                    <%= vehiculo.marca%>
+                    <%= vehiculo.modelo%>
+                </div>
+                <br>
+                <i>  Ubicado a <%= vehiculo.cercano%> cuadras </i>
+            <% end %>
                 <div class="lineahorizontal"></div> 
             <% end %>
         <% end %>
