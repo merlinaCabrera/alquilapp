@@ -353,6 +353,7 @@ details summary::-webkit-details-marker {
     align-items: center;
 }
 
+
 .form{
     display: grid;
     grid-template-columns: auto auto auto;
@@ -394,7 +395,6 @@ details summary::-webkit-details-marker {
     background-color: #ededed;
     padding: 15px;
     transition: 0.3s;
-    margin-left: 5%;
 }
 
 .volver:hover{
