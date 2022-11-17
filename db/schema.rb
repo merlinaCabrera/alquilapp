@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2022_11_15_202008) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2022_11_11_025749) do
+>>>>>>> cc8680d014427ae63d1303fb072e7358e033d67e
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -61,13 +65,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_202008) do
   end
 
   create_table "vehiculos", force: :cascade do |t|
-    t.string "marca", null: false
-    t.string "modelo", null: false
-    t.string "color", null: false
-    t.string "patente", null: false
-    t.text "descripcion", null: false
+    t.string "marca"
+    t.string "modelo"
+    t.string "color"
+    t.string "patente"
+    t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "precio"
     t.integer "cercano", default: 0
     t.boolean "ocupado", default: false
   end
