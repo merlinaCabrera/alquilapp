@@ -8,6 +8,11 @@ class User < ApplicationRecord
   has_one_attached :licencia, dependent: :destroy
   has_one_attached :dni_tarjeta, dependent: :destroy
 
-  validates :licencia, content_type: [:png,:jpg,:jpeg]
-  validates :dni_tarjeta, content_type: [:png,:jpg,:jpeg]
+  validates :licencia, content_type: [ :png, :jpg, :jpeg ]
+  validates :dni_tarjeta, content_type: [ :png, :jpg, :jpeg ]
+
+  validates :dni, uniqueness: true, presence: true
+  validates :nombreUsuario, uniqueness: true, presence: true
+
+  enum :estadoDocumentos, [:pendiente, :aprobado, :rechazado] # -> 0, 1, 2
 end

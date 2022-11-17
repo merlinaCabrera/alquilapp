@@ -370,6 +370,27 @@ details summary::-webkit-details-marker {
     width: 100px;
 }
 
+/*Página de espera de Aprobación--------------------*/
+.esperarAprobacion{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255, 0.5);
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100vh;
+}
+
+.espera{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    padding: 25px;
+    background-color: white;
+    border-radius: var(--radioBordes);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+}
+
 /*Estilo de botones--------------------*/
 .boton{
     background-color: var(--colorEnfasis);

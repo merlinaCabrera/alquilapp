@@ -14,13 +14,13 @@ es:
         vehiculo:
           attributes:
             marca:
-              blank: 'no puede estar vacio'
+              blank: 'Marca requerida'
             modelo:
-              blank: 'no puede estar vacio'
+              blank: 'Modelo requerido'
             color:
-              blank: 'no puede estar vacio'
+              blank: 'Color requerido'
             descripcion:
-              blank: 'no puede estar vacio'
+              blank: 'Descripción requerida'
             patente:
-              blank: 'no puede estar vacio'
+              blank: 'Patente requerida'
               

@@ -12,6 +12,7 @@ gem "cancan"
 gem "mini_magick"
 gem 'active_storage_validations'
 gem 'aws-sdk-s3', require: false
+gem 'devise-i18n'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
