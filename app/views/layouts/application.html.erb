@@ -20,15 +20,12 @@
   
   <body>
     <%= render 'home/flash' %>
-    
     <% if current_user %>
       <% if (current_user.licencia.attached? && current_user.dni_tarjeta.attached?) %>
         <%= render '/home/menu_lateral' %>
-      <% else %> 
-        <% if  current_user.admin || current_user.super %>
+      <% elsif  current_user.admin || current_user.super %>
           <%= render '/home/menu_lateral' %>
-        <% end %>
-      <% end %>    
+      <% end %>   
     <% end %>
     <%= yield %>
   </body>

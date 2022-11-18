@@ -48,6 +48,6 @@ class VehiculosController < ApplicationController
     private
 
     def vehiculo_params
-        params.require(:vehiculo).permit(:marca, :modelo, :color, :descripcion, :patente, :cercania )
+        params.require(:vehiculo).permit(:marca, :modelo, :color, :descripcion, :patente, :cercano )
     end 
 end

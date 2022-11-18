@@ -1,25 +1,43 @@
 <%= stylesheet_link_tag 'style.css' %>
 
 <% if current_user %>
-    <% if !current_user.licencia.attached? && !current_user.dni_tarjeta.atached? && !current_user.admin && !current_user.super%>
-        <div class="centrar">
+    <% if !current_user.admin && !current_user.super %>
+        <% if !current_user.licencia.attached? && !current_user.dni_tarjeta.atached? %>
+            <div class="centrar">
                 <div class="contenedor">
                     <p><%= render 'home/primer_sesion'%>
-                    |
+                    <br>
                     <%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"boton" %>
                     </p>
                 </div>
             </div>
+        <% else %>
+            <%= render '/home/catalogo' %>
+            <% if current_user.estadoDocumentos == "pendiente" %>
+            <div class="esperarAprobacion">
+                <div class="espera">
+                    Documentos enviados correctamente.<br>Los mismos serán revisados por nuestro personal y una vez aprobados podrás hacer uso de nuestros servicios.
+                    <br><br><%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"boton" %>
+                </div>
+            </div>
+            <% elsif current_user.estadoDocumentos == "rechazado" %>
+                <div class="esperarAprobacion">
+                        <div class="espera">
+                            Documentos rechazados, por favor suba otras imagenes de su licencia y DNI
+                            <br><br>
+                            <%= render 'home/primer_sesion'%>
+                        </div>
+            </div>
+            <% end %>
+        <% end %>
     <% else %>
-        <%= render '/home/catalogo' %>    
+        <%= render '/home/catalogo' %>
     <% end %>
 <% else %>
-
     <div class="centrar">
         <div class="contenedor">
             <%= render "/home/iniciar_crear" %>
         </div>
     </div>
-    
 <% end %>
 <script src="<%= asset_path 'colapsar' %>"></script>

@@ -6,7 +6,7 @@
     <div class="encabezadoSupervisores">
 
         <h1 class="titulo_seccion">Vehículos</h1>
-        <% if current_user.super %>
+        <% if current_user.super || current_user.admin %>
           <%= link_to new_vehiculo_path do %>
             <%= image_tag "plus.svg", class:"ag_super" %>    
           <% end %>
@@ -28,6 +28,11 @@
                         <%= link_to vehiculo_path( vehiculo.id ) do %>
                             <h2><%= vehiculo.marca %> <%= vehiculo.modelo %> </h2>
                         <% end %>
+<<<<<<< HEAD
+                    <% elsif vehiculo.cercano <= 5 && !vehiculo.ocupado %>
+                        <%= link_to vehiculo_path( vehiculo.id ) do %>
+                            <h2><%= vehiculo.marca %> <%= vehiculo.modelo %></h2>
+=======
                     <% else %> 
                         <% if vehiculo.cercano <= 5 && !vehiculo.ocupado %>
                             <%= link_to vehiculo_path( vehiculo.id ) do %>
@@ -36,20 +41,22 @@
                             <FONT>
                         <% else %>
                             <p>Alejado del rango de búsqueda</p>
+>>>>>>> cc8680d014427ae63d1303fb072e7358e033d67e
                         <% end %>
-                    <% end %>                  
-                </td>
+                    <% end %>  
+                </td>                
+                
                 <td class="item">
                     <p><%= vehiculo.patente %></p>
                 </td>
-                <td class="item">
-                    
+
+                <td class="item">   
                     <% if vehiculo.ocupado %>
                         <p>Ocupado</p>
                     <% else %>
                         <p>Libre</p>
                     <% end %>
-                    
+
                 </td>
             </tr>  
         <% end %>
