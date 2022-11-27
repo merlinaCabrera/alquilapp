@@ -3,7 +3,7 @@
 <div class="fondo">
     <%= render "/home/menu_lateral"%>
 
-    <div class="encabezadoSupervisores">
+    <div class="encabezado">
         <h1 class="titulo_seccion"> Supervisores </h1>
         <%= link_to crear_super_path do %>
             <%= image_tag "plus.svg", class:"ag_super" %>    
@@ -11,19 +11,13 @@
     </div>
     
 
-    <table class="listado">        
-        <ul class="listado">
-        <div class="lineahorizontal"></div>
+    
         <% User.all.each do |user| %>
             <% if user.super %>
-                <li class="listado_item">
                     <%= link_to supervisores_path( user.id ) do %>
                     <h2><FONT COLOR="e7c078"><%= user.nombreUsuario %><FONT></h2>
-                    <% end %>
-                </li>  
+                    <% end %>  
             <% end %>
         <% end %>
-        </ul>
 
-    </table>
 </div>

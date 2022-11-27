@@ -4,15 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #cada perfil tiene una sola imagen adhosada, dependent destroy significa que al eliminar el perfil, se elimina la imagen
+  # cada perfil tiene una sola imagen adhosada, dependent destroy -> al eliminar el perfil, se elimina la imagen
   has_one_attached :licencia, dependent: :destroy
   has_one_attached :dni_tarjeta, dependent: :destroy
 
-  validates :licencia, content_type: [ :png, :jpg, :jpeg ]
-  validates :dni_tarjeta, content_type: [ :png, :jpg, :jpeg ]
+  validates :licencia, content_type: %i[png jpg jpeg]
+  validates :dni_tarjeta, content_type: %i[png jpg jpeg]
+  validates :nombreUsuario, uniqueness: true
+  validates :dni, uniqueness: true
 
-  validates :dni, uniqueness: true, presence: true
-  validates :nombreUsuario, uniqueness: true, presence: true
-
-  enum :estadoDocumentos, [:pendiente, :aprobado, :rechazado] # -> 0, 1, 2
+  enum :estadoDocumentos, %i[pendiente aprobado rechazado] # -> 0, 1, 2
 end

@@ -4,74 +4,43 @@
   
   <h1 class="titulo_seccion"> Modificar Cuenta</h1>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="horizontal modificarCuenta">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div style="margin: 15px;">
-        <div class="field">
-          <%= f.text_field :nombreUsuario, class:"ingreso"%>
-        </div>
-
-        <div class="field">
-          <%= f.email_field :email, autofocus: true, placeholder:"E-mail", autocomplete: "email", class:"ingreso" %>
-        </div>
-
-        <div class="field">
-          <%= f.password_field :password, autocomplete: "new-password", placeholder:"Contraseña nueva", class:"ingreso" %>
-          <% if @minimum_password_length %>
-            <br />
-            <em><%= @minimum_password_length %> caracteres como mínimo</em>
-          <% end %>
-        </div>
-
-        <div class="field">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"ingreso", placeholder:"Confirmar contraseña" %>
-        </div>
-      </div>
-
-      <div class="lineavertical"></div>
-
-      <div style="margin: 15px;">
-          <% if current_user.licencia.attached? %>
-            <%= image_tag(current_user.licencia,class:"imagen")%>
-          <% end %>
-
-          <% if current_user.dni_tarjeta.attached? %>
-            <%= image_tag(current_user.dni_tarjeta,class:"imagen")%>
-          <% end %>
-
-        <div class="field">
-          <%= f.file_field :licencia %>
-        </div>
-        <div class="field">
-          <%= f.file_field :dni_tarjeta %>
-        </div>
-      </div>
-
-      <div style="margin: 15px;">
-        <h3>Eliminar Cuenta</h3>
-        <p>Quieres Eliminar tu cuenta? El dinero no será devuelto :)<br></p>
-        <%= button_to "Eliminar", registration_path(resource_name), data: { confirm: "Seguro?" }, method: :delete, class:"boton" %>
-        </div>
+  <div class="field">
+    <p>e-mail<%= f.email_field :email, autofocus: false, class:"ingreso" %></p>
   </div>
 
-    </div>
+  <div class="field">
+    <p>Nombre de Usuario<%= f.text_field :nombreUsuario, class:"ingreso" %></p>
+  </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
+  <div class="field">
+    <p>Contraseña Nueva
+      <%= f.password_field :password, class:"ingreso" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </p>
+  </div>
 
-    <div class="horizontal modificarCuenta">
-      <div class="field">
-        <p>Ingrese nuevamente su contraseña <br> para cambiar sus datos</p>
-        <%= f.password_field :current_password, autocomplete: "current-password", class:"ingreso" %>
-      </div>
+  <div class="field">
+    <p>Confirmar contraseña nueva<%= f.password_field :password_confirmation, class:"ingreso"%></p>
+    
+  </div>
 
-      <div class="actions" style="margin: 15px;">
-        <%= f.submit "Actualizar Datos", class:"boton" %>
-      </div>
-    </div>
-  <% end %>  
-</div>
+  <div class="field">
+    <p>Contraseña actual<br><i>(Requerida para confirmar los cambios)</i><%= f.password_field :current_password,class:"ingreso" %></p>
+  </div>
 
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
