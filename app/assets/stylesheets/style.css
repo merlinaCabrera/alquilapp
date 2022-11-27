@@ -142,6 +142,48 @@ details summary::-webkit-details-marker {
     background-color: #444;
 }
 
+/*Alertas--------------------*/
+.alerta {
+    pointer-events: none;
+    position: absolute;
+}
+
+.info {
+    display: flex;
+    background: lightpink;
+    border-radius: 15px;
+    padding: 15px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.alert-flag {
+    display: none;
+}
+
+.alert-flag:checked ~ .cerrar,
+.alert-flag:checked ~ .info {
+    display: none;
+}
+
+.cerrar {
+    pointer-events: all;
+    background-color:green;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+.error{
+    position: absolute;
+}
+
+.error li{
+    list-style: none;
+    margin: 15px;
+}
+
 /*Interfaz para recuperar contraseña--------------------*/
 .recuperar {
     background-color: white;
@@ -347,7 +389,7 @@ details summary::-webkit-details-marker {
 }
 
 /*Pagina listado Supervisores--------------------*/
-.encabezadoSupervisores{
+.encabezado{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -390,6 +432,21 @@ details summary::-webkit-details-marker {
     background-color: white;
     border-radius: var(--radioBordes);
     box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+}
+
+/*preguntas frecuentes--------------------*/
+.preguntas{
+    width: 80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.preguntas li{
+    list-style: none;
+}
+
+.preguntas h2{
+    margin-bottom: 0px;
 }
 
 /*Estilo de botones--------------------*/

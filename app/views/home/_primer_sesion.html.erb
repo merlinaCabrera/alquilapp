@@ -1,8 +1,8 @@
 <h1>Para poder acceder a nuestros servicios<br>requerimos de fotos de su DNI y Licencia de Conducir</h1>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
+  <div class="field">
         <p>LICENCIA</p>
         <%= f.file_field :licencia %>
     </div>
@@ -12,12 +12,11 @@
         <%= f.file_field :dni_tarjeta %>
     </div>
 
-    <div class="field">
-       <p>Por motivos de seguridad, ingrese nuevamente su contraseña</p>
-        <%= f.password_field :current_password, autocomplete: "current-password", class:"ingreso", placeholder: "Contraseña" %>
-    </div>
+  <div class="field">
+    <p>Contraseña actual<br><i>(Requerida para confirmar los cambios)</i><%= f.password_field :current_password,class:"ingreso" %></p>
+  </div>
 
-    <div class="actions">
-        <%= f.submit "Update", class:"boton" %>
-    </div>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
 <% end %>

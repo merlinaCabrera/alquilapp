@@ -47,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:balance, :licencia, :dni_tarjeta])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[balance licencia dni_tarjeta])
   end
 
   # The path used after sign up.
@@ -59,14 +59,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  def after_sign_up_path_for(resource)
-    '/home/index.html.erb'
+
+  # def after_sign_up_path_for(_resource)
+  #  '/home/index.html.erb'
+  # end
+
+  # def after_sign_out_path_for(resource)
+  #  '/home/index.html.erb'
+  # end
+
+  def create
+    @user = User.create(dato_usuario)
+    if @user.save
+      redirect_to root_path, notice: 'Usuario creado. Ya puede iniciar sesión!'
+    else
+      render '/home/index', status: :see_other
+    end
   end
 
-  def after_sign_out_path_for(resource)
-    '/home/index.html.erb'
+  private
+
+  def dato_usuario
+    params.require(:user).permit(:nombreUsuario, :dni, :email, :password, :password_confirmation)
   end
-
-
-
 end

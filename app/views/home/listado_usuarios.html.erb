@@ -21,18 +21,27 @@
                         <td class="item"><%= user.email%></td>
                         <td class="item">
                             <% if user.licencia.attached? %>
-                                <%= image_tag(user.licencia, height:"20px", width:"20px") %>
+                                <%= link_to image_tag(user.licencia, height:"20px", width:"20px"), user.licencia, target: :_blank %>
                             <% else %>
                                 <div>Falta Licencia de conducir</div>
                             <% end %>
 
                             <% if user.dni_tarjeta.attached? %>
-                                <%= image_tag(user.dni_tarjeta, height:"20px", width:"20px")%>
+                                <%= link_to image_tag(user.dni_tarjeta, height:"20px", width:"20px"), user.dni_tarjeta, target: :_blank%>
+                                
                             <% else %>
                                 <div>Falta DNI</div>
                             <% end %>
                         </td>
-                        <td class="item"></td>
+                        <td class="item">
+                            <%= form_with model: @user do |f|  %>
+                                <%= f.select(:estadoDocumentos, options_for_select([['Pendiente','pendiente'],['Aprobado','aprobado'],['Rechazado','rechazado']]))%>
+                                    <div class="actions">
+                                        <br>
+                                        <%= f.submit "Guardar cambios", class:"boton" %>
+                                    </div>
+                                    <% end %>
+                        </td>
                     </tr>
                 <% end %>
         <% end %>

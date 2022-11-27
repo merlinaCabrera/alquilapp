@@ -1,52 +1,56 @@
 <div id="mySidebar" class="barralateral">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <% if current_user %>
+    <% if !current_user.super && !current_user.admin %>
+      <%= button_to "Billetera", bille_path, :method => :get, class:"opciones_lateral"  %>
+    <% end %>
+    
+    <div class="lineahorizontal"></div>
 
-  <% if !current_user.super && !current_user.admin %>
-    <%= button_to "Billetera", bille_path, :method => :get, class:"opciones_lateral"  %>
-  <% end %>
-  
-  <div class="lineahorizontal"></div>
+    <%if current_user.admin || current_user.super%>
+      <details>
+        <summary onselectstart="return false", class="opciones_lateral"> 
+        Herramientas de 
+        
+        <% if current_user.super %>
+          Supervisor
+        <% else %>
+          Administrador
+        <% end %>
+      </summary>
+        <%= button_to "Usuarios registrados", listado_clientes_path, :method => :get, class:"sub_opciones_lateral" %>
+        <div class="lineahorizontal"></div>
 
-  <%if current_user && (current_user.admin || current_user.super)%>
-    <details>
-      <summary onselectstart="return false", class="opciones_lateral"> 
-      Herramientas de 
-      
-      <% if current_user.super %>
-        Supervisor
-      <% else %>
-        Administrador
-      <% end %>
-     </summary>
-      <%= button_to "Usuarios registrados", listado_clientes_path, :method => :get, class:"sub_opciones_lateral" %>
-      <div class="lineahorizontal"></div>
+        <%= button_to "Supervisores", listado_super_path, :method => :get, class:"sub_opciones_lateral" %>
+        <div class="lineahorizontal"></div>
 
-      <%= button_to "Supervisores", listado_super_path, :method => :get, class:"sub_opciones_lateral" %>
-      <div class="lineahorizontal"></div>
-
-      <%= button_to "Vehículos", listado_vehiculos_path, :method => :get, class:"sub_opciones_lateral" %>
-      <div class="lineahorizontal"></div>
-    </details>
-  <% end %>
-  
-  
-
-
-  <%if current_user && !current_user.admin && !current_user.super %>
+        <%= button_to "Vehículos", listado_vehiculos_path, :method => :get, class:"sub_opciones_lateral" %>
+        <div class="lineahorizontal"></div>
+      </details>
+    <% end %>
+    <%if !current_user.admin && !current_user.super %>
       <%= button_to "Ver vehículos", listado_vehiculos_path, :method => :get, class:"opciones_lateral" %>
       </details>
-  <%end%>
-
-
-  <div class="lineahorizontal"></div>
+    <%end%>
+    <div class="lineahorizontal"></div>
+  <% end %>
+  
 
   <details>
     <summary onselectstart="return false", class="opciones_lateral"> Cuenta de Usuario </summary>
-    <%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"sub_opciones_lateral" %>
-    <%= button_to "Editar Perfil", edit_user_registration_path, :method => :get, class:"sub_opciones_lateral" %>
+      <%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"sub_opciones_lateral" %>
+      <%= button_to "Editar Perfil", edit_user_registration_path, :method => :get, class:"sub_opciones_lateral" %>
   </details>
+  <div class="lineahorizontal"></div>
 
+  <details>
+    <summary onselectstart="return false", class="opciones_lateral"> Ayuda </summary>
+      <%= button_to "Preguntas Frecuentes", preguntas_path, :method => :get, class:"sub_opciones_lateral" %>
 
+  </details>
+  <div class="lineahorizontal"></div>
+
+  
   
 </div>
 
