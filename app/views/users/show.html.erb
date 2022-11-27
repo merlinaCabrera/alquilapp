@@ -12,10 +12,10 @@
    <p> DNI: <%= @user.dni %> </p>
    <p> Supervisor: <%= @user.super %></p>
 
-   <%if current_user.admin%>
-   <%= button_to 'Modificar', editar_super_path(@user), method: :get, class:"boton" %>
-     <%= button_to 'Eliminar', eliminar_super_path(@user), method: :delete, class:"boton",  data: {
-      turbo_method: :delete,
-     turbo_confirm: '¿Estas seguro?' } %>
-   <%end%>
+   <% if current_user && current_user.admin %>
+        <%= button_to 'Modificar', editar_super_path(@user), method: :get, class:"boton" %>
+        <%= button_to 'Eliminar', eliminar_super_path(@user), method: :delete, class:"boton",  data: {
+            turbo_method: :delete,
+            turbo_confirm: '¿Estas seguro?' } %>
+   <% end %>
 </div>
