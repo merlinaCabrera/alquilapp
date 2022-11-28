@@ -25,8 +25,14 @@
     <%= f.number_field :cercano, autofocus: true, placeholder:"Cercania", class:"ingreso", :required => true %>
     </div>
     <div class="field">
-    <p>ocupado?</p>
-      <%= f.check_box :ocupado, {}, true, false %>
+      <% opciones = {'si' => 'true' , 'no' => ' false'} %> 
+        <p>¿ocupado?</p>
+        <% lista = opciones.sort %>
+        <% lista.each do |ocupado| %>
+         <%= f.radio_button :ocupado, ocupado[1] %>
+         <label for="<%= ocupado[1] %>"><%= ocupado[0] %></label>
+         
+        <% end %>
     </div>
 
     <div class="actions">
