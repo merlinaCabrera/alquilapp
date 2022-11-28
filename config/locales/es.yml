@@ -23,4 +23,6 @@ es:
               blank: 'Descripción requerida'
             patente:
               blank: 'Patente requerida'
+            patente:
+             taken: 'Patente ya existente'
               

@@ -69,8 +69,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_140635) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "precio"
-    t.integer "cercano"
-    t.boolean "ocupado"
+    t.integer "cercano", default: 0
+    t.boolean "ocupado", default: false
   end
 
   create_table "views", force: :cascade do |t|

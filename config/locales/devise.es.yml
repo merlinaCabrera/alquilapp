@@ -7,7 +7,10 @@ es:
         user:
           attributes:
             email:
+              blank: "Completa el email"
               taken: "E-mail ya registrado"
+            password:
+              blank: "Pon una contraseña" 
             password_confirmation:
               confirmation: "Contraseñas no coinciden"
             nombreUsuario: 

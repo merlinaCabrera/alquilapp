@@ -6,13 +6,6 @@
     <% end %>
     
     <div class="lineahorizontal"></div>
-
-  <% if current_user && !current_user.super && !current_user.admin %>
-    <%= button_to "Billetera", bille_path, :method => :get, class:"opciones_lateral"  %>
-  <% end %>
-  
-  <div class="lineahorizontal"></div>
-
   
 
   <%if current_user && (current_user.admin || current_user.super)%>
@@ -51,18 +44,7 @@
       <% end %>
     </details>
   <% end %>
-
-  
-  
-
-
-  <%if current_user && !current_user.admin && !current_user.super %>
-      <%= button_to "Ver vehículos", listado_vehiculos_path, :method => :get, class:"opciones_lateral" %>
-      </details>
-    <%end%>
-    <div class="lineahorizontal"></div>
   <% end %>
-  
 
   <details>
     <summary onselectstart="return false", class="opciones_lateral"> Cuenta de Usuario </summary>
