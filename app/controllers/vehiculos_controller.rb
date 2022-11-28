@@ -39,15 +39,25 @@ class VehiculosController < ApplicationController
 
     def destroy
         @vehiculo = Vehiculo.find(params[:id])
-
-        @vehiculo.destroy
-
-        redirect_to vehiculos_path, notice: 'Auto eliminado', status: :see_other
+        if @vehiculo.ocupado
+            redirect_to vehiculos_path, notice: 'No es posible eliminarlo , ya que esta en uso ', status: :unprocessable_entity
+        else
+             @vehiculo.destroy
+            redirect_to vehiculos_path, notice: 'Auto eliminado', status: :see_other
+        end
     end
-    
+
+    #def alquilar 
+    #    if ( ( horas * 200 ) > saldo ) 
+    #        redirect_to vehiculo, notice 'saldo insuficiente', status: :unprocessable_entity
+    #    else
+    #        @vehiculo.ocupado = true 
+    #end
+
+
     private
 
     def vehiculo_params
-        params.require(:vehiculo).permit(:marca, :modelo, :color, :descripcion, :patente, :cercano )
+        params.require(:vehiculo).permit(:marca, :modelo, :color, :descripcion, :patente, :cercano, :ocupado )
     end 
 end

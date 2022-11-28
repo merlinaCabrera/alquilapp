@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag 'style.css' %>
+
+<div class="fondo">
+<%= render "/home/menu_lateral"%>
+<%= link_to :back do %>
+    <%= image_tag "arrow-left.svg", class:"volver" %>    
+<% end %>
+
+ <%= form_with model: @alquiler do |f|  %>  
+
+<h3> La pagina esta en mantenimiento , disculpe las molestias! </h3>
+ </div> <div class="field">
+    <%= f.number_field :horas , autofocus: true, placeholder:"Horas", class:"ingreso", :required => true %>
+    </div>
+    
+    
+
+        <% end %>
+</div>

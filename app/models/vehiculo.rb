@@ -4,7 +4,8 @@ class Vehiculo < ApplicationRecord
     validates :color , presence:true
     validates :patente, uniqueness: true, presence:true
     validates :descripcion , presence:true
-
+    validates :ocupado , inclusion: { in: [true, false] }
     has_one_attached :foto_interior
     validates :foto_interior, content_type: [ :png, :jpg, :jpeg ]
+    
 end

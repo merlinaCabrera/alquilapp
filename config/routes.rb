@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get '/vehiculos', to: 'vehiculos#index', as: 'listado_vehiculos'
   get '/vehiculos/:id', to: 'vehiculos#show', as: :vehiculo
   get 'vehiculos/:id/edit', to: 'vehiculos#edit', as: :edit_vehiculo
+  get 'vehiculos/:id/alquilar', to: 'vehiculos#alquilar', as: :alquilar_vehiculo
+
 
   # preguntas frecuentes
   get '/preguntas_frecuentes', to: 'home#preguntas_frecuentes', as: 'preguntas'

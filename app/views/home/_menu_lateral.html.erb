@@ -46,6 +46,10 @@
   <% end %>
   <% end %>
 
+  <% if current_user.super || current_user.admin %> 
+   <div class="lineahorizontal"></div>
+  <% end %>
+
   <details>
     <summary onselectstart="return false", class="opciones_lateral"> Cuenta de Usuario </summary>
       <%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"sub_opciones_lateral" %>
