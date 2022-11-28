@@ -29,5 +29,10 @@
             <% end %>
         <% end %>
     <% end %>
-    <% end %>        
+
+    <% @A = Vehiculo.where(ocupado: true).count %>
+    <% @B = Vehiculo.all.count %>
+    <% if @A == @B %>
+                <p>No hay vehículos disponibles dentro de este radio. Por favor, elija otra distancia.</p>
+    <% end %>
 </div>

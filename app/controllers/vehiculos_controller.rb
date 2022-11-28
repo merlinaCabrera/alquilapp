@@ -1,6 +1,15 @@
 class VehiculosController < ApplicationController
     def index 
-     @vehiculos = Vehiculo.all
+     @vehiculos = Vehiculo.all.sort_by{|vehiculo| vehiculo.cercano}
+    end
+
+    def index_autos
+        @vehiculos = Vehiculo.all.sort_by{|vehiculo| vehiculo.cercano}
+        
+        if params[:radio].present?
+         @radio = params[:radio]
+            @vehiculos = @vehiculos.where("cercano <= ?", params[:radio])
+        end
     end
 
     def show

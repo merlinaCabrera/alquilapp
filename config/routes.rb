@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # home
   get '/billetera', to: 'home#billetera', as: 'bille'
   get '/listado_usuarios', to: 'home#listado_usuarios', as: 'listado_clientes'
+  post '/listado_usuarios', to: 'home#listado_usuarios'
   get '/index', to: 'home#index', as: :inicio
 
   # vehiculos
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   get '/vehiculos/:id', to: 'vehiculos#show', as: :vehiculo
   get 'vehiculos/:id/edit', to: 'vehiculos#edit', as: :edit_vehiculo
   get 'vehiculos/:id/alquilar', to: 'vehiculos#alquilar', as: :alquilar_vehiculo
+
 
 
   # preguntas frecuentes
