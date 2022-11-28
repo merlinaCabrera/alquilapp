@@ -14,14 +14,16 @@
    <h3> Patente: <%= @vehiculo.patente %></h3>
    <!--<h3> Cercania: <%= @vehiculo.cercano%></h3>-->
    <h3> Descripcion: <%= @vehiculo.descripcion%></h3>
+   <% if @vehiculo.ocupado %>
+      <h3> Estado: Ocupado </h3>
+    <% else %>
+     <h3> Estado: Libre</h3>
+   <% end %>
 
    
 
    <%if current_user.admin%>
      <%= button_to 'editar auto', edit_vehiculo_path(@vehiculo), :method => :get,class:"boton" %>
-   <%end%>
-
-   <%if current_user.super%>
      <%= button_to 'Eliminar auto', vehiculo_path(@vehiculo), :method => :delete, class:"boton",  data: {
       turbo_method: :delete,
      turbo_confirm: '¿Estas seguro?' },class:"boton" %>
