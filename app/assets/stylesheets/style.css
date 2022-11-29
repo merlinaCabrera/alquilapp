@@ -320,6 +320,11 @@ details summary::-webkit-details-marker {
     text-align: center;
 }
 
+.advertencia{
+    font-size: 10px;
+    width: 80%;
+}
+
 .ingreso{
     background-color: #ededed;
     border-radius: var(--radioBordes);

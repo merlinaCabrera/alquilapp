@@ -12,8 +12,12 @@
         <%= f.file_field :dni_tarjeta %>
     </div>
 
+      <div class="field">
+        <%= f.hidden_field :estadoDocumentos, value:"pendiente"%>
+      </div>
+
   <div class="field">
-    <p>Contraseña actual<br><i>(Requerida para confirmar los cambios)</i><%= f.password_field :current_password,class:"ingreso" %></p>
+    <%= f.hidden_field :current_password, value:"123456"%>
   </div>
 
   <div class="actions">

@@ -1,34 +1,57 @@
 <div class="catalogo_cercania">
-    <% if !current_user.super && !current_user.admin %>
-    <%  Vehiculo.all.each do |vehiculo| %>   
-        <% if vehiculo.cercano <= 5 && !vehiculo.ocupado %>
-            <%= link_to vehiculo_path( vehiculo.id ) do %>
-                <p class="auto">
-                <div class="txt">
-                    <%= vehiculo.marca.capitalize%>
-                    <%= vehiculo.modelo.capitalize%>
-                    <%= " , " %>
-                    <%= vehiculo.patente %>
-                </div>
-                <br>
-                <i>  Ubicado a <%= vehiculo.cercano%> cuadras </i>
-            <% end %>
-            <div class="lineahorizontal"></div>
-        <% else %>
-            <% if current_user.admin || current_user.super %>
-                <%= link_to vehiculo_path( vehiculo.id ) do %>
-                <p class="auto ad">
-                <div class="txt">
-                    <%= vehiculo.marca%>
-                    <%= vehiculo.modelo%>
-                </div>
-                <br>
-                    <%= vehiculo.patente %> <br>
-            <% end %>
-                <div class="lineahorizontal"></div> 
-            <% end %>
-        <% end %>
+
+    
+    
+    <h1 class="titulo_seccion">Vehículos disponibles</h1>
+    <p style="font-size: 10px; width: 80%; margin: 0 auto;">Por defecto se muestran vehículos a 5 o menos cuadras de distancia </p>
+    <br>
+
+    <%= form_with url: index_autos_path, method: :get do |form| %>
+        <%= form.number_field :radio, placeholder:"Distancia deseada", in: 0..30, 
+           onChange: 'this.form.requestSubmit()',
+           value: params[:radio] %>
     <% end %>
+    
+    <% if params[:radio].present? %>
+        <p> Vehículos a menos de<p><%=params[:radio]%></p> cuadras: </p>
+        <%  Vehiculo.all.each do |vehiculo| %> 
+        <% if !vehiculo.ocupado && vehiculo.cercano <= params[:radio].to_i %>
+                <%= link_to vehiculo_path( vehiculo.id ) do %>
+                    <p class="auto">
+                    <div class="txt">
+                        <%= vehiculo.marca.capitalize%>
+                        <%= vehiculo.modelo.capitalize%>
+                        <%= " , " %>
+                        <%= vehiculo.patente %>
+                    </div>  <br>
+                    <i>  Ubicado a <%= vehiculo.cercano%> cuadras </i>
+                <% end %>
+                <div class="lineahorizontal"></div>
+        <% end %>
+    <%end%>
+    <% else %>
+        <p> Ingrese la distancia (número de cuadras) máximo ,menor a 30 </p>
+        <%  Vehiculo.all.each do |vehiculo| %> 
+        <% if !vehiculo.ocupado && vehiculo.cercano <= 5 %>
+                <%= link_to vehiculo_path( vehiculo.id ) do %>
+                    <p class="auto">
+                    <div class="txt">
+                        <%= vehiculo.marca.capitalize%>
+                        <%= vehiculo.modelo.capitalize%>
+                        <%= " , " %>
+                        <%= vehiculo.patente %>
+                    </div>  <br>
+                    <i>  Ubicado a <%= vehiculo.cercano%> cuadras </i>
+                <% end %>
+                <div class="lineahorizontal"></div>
+        <% end %>
+    <%end%>
+    <% end %>
+
+    <br>
+    
+
+<div class="lineahorizontal"></div> 
 
     <% @A = Vehiculo.where(ocupado: true).count %>
     <% @B = Vehiculo.all.count %>

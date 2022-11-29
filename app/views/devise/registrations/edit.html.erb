@@ -31,8 +31,10 @@
   </div>
 
   <div class="field">
-    <p>Contraseña actual<br><i>(Requerida para confirmar los cambios)</i><%= f.password_field :current_password,class:"ingreso" %></p>
+    <p>Contraseña actual<br><i>(Requerida para confirmar los cambios)</i><%= f.password_field :current_password,class:"ingreso", value:"123456" %></p>
   </div>
+
+   <%= f.select :estadoDocumentos, User.estadoDocumentos.keys%>
 
   <div class="actions">
     <%= f.submit "Update" %>
