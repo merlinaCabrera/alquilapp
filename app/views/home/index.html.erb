@@ -31,7 +31,9 @@
             <% end %>
         <% end %>
     <% else %>
-        <%= render '/home/catalogo' %>
+        <% if !current_user.super && !current_user.admin %>
+            <%= render '/home/catalogo' %>
+            <% end %>
     <% end %>
 <% else %>
     <div class="centrar">

@@ -80,6 +80,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def dato_usuario
-    params.require(:user).permit(:nombreUsuario, :dni, :email, :password, :password_confirmation)
+    params.require(:user).permit(:nombreUsuario, :dni, :email, :password, :password_confirmation, :super )
   end
 end

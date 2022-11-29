@@ -7,31 +7,31 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # admins
-User.create(nombreUsuario: 'Francisco Administrador', dni: 35_244_938, email: 'francisco@alquilapp.com', password: '123456',
+User.create(nombreUsuario: 'Francisco Administrador', dni: 35244938, email: 'francisco@alquilapp.com', password: '123456',
             password_confirmation: '123456', admin: true)
-User.create(nombreUsuario: 'Eduardo Administrador', dni: 29_290_428, email: 'eduardo@alquilapp.com', password: '123456',
+User.create(nombreUsuario: 'Eduardo Administrador', dni: 29290428, email: 'eduardo@alquilapp.com', password: '123456',
             password_confirmation: '123456', admin: true)
 # superusuarios
-User.create(nombreUsuario: 'nombreS1', dni: 11_111_111, email: 's1@super.com', password: '123456',
+User.create(nombreUsuario: 'nombreS1', dni: 11111111, email: 's1@super.com', password: '123456',
             password_confirmation: '123456', super: true, admin: 'false')
-User.create(nombreUsuario: 'nombreS2', dni: 11_111_112, email: 's2@super.com', password: '123456',
+User.create(nombreUsuario: 'nombreS2', dni: 11111112, email: 's2@super.com', password: '123456',
             password_confirmation: '123456', super: true, admin: 'false')
-User.create(nombreUsuario: 'nombreS3', dni: 11_111_113, email: 's3@super.com', password: '123456',
+User.create(nombreUsuario: 'nombreS3', dni: 11111113, email: 's3@super.com', password: '123456',
             password_confirmation: '123456', super: true, admin: 'false')
-User.create(nombreUsuario: 'nombreS4', dni: 11_111_114, email: 's4@super.com', password: '123456',
+User.create(nombreUsuario: 'nombreS4', dni: 11111114, email: 's4@super.com', password: '123456',
             password_confirmation: '123456', super: true, admin: 'false')
-User.create(nombreUsuario: 'nombreS5', dni: 11_111_115, email: 's5@super.com', password: '123456',
+User.create(nombreUsuario: 'nombreS5', dni: 11111115, email: 's5@super.com', password: '123456',
             password_confirmation: '123456', super: true, admin: 'false')
 # clientes
-User.create(nombreUsuario: 'nombreC1', dni: 22_222_221, email: 'c1@cliente.com', password: '123456',
+User.create(nombreUsuario: 'nombreC1', dni: 22222221, email: 'c1@cliente.com', password: '123456',
             password_confirmation: '123456')
-User.create(nombreUsuario: 'nombreC2', dni: 22_222_222, email: 'c2@cliente.com', password: '123456',
+User.create(nombreUsuario: 'nombreC2', dni: 22222222, email: 'c2@cliente.com', password: '123456',
             password_confirmation: '123456')
-User.create(nombreUsuario: 'nombreC3', dni: 22_222_223, email: 'c3@cliente.com', password: '123456',
+User.create(nombreUsuario: 'nombreC3', dni: 22222223, email: 'c3@cliente.com', password: '123456',
             password_confirmation: '123456')
-User.create(nombreUsuario: 'nombreC4', dni: 22_222_224, email: 'c4@cliente.com', password: '123456',
+User.create(nombreUsuario: 'nombreC4', dni: 22222224, email: 'c4@cliente.com', password: '123456',
             password_confirmation: '123456')
-User.create(nombreUsuario: 'nombreC5', dni: 22_222_225, email: 'c5@cliente.com', password: '123456',
+User.create(nombreUsuario: 'nombreC5', dni: 22222225, email: 'c5@cliente.com', password: '123456',
             password_confirmation: '123456')
 # vehiculos
 Vehiculo.create(marca: 'honda', modelo: 'civic', color: 'negro', descripcion: 'buen auto', patente: 'AA 01 BB',

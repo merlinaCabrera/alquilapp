@@ -2,6 +2,8 @@
 Rails.application.routes.draw do
   devise_for :views
   devise_for :users, controllers: { registrations: 'users/registrations' }
+  resource :contacto
+  get :send_order_mail, to: 'home#send_order_mail', as: :send_order_mail
 
   # supervisores
   delete 'users/:id', to: 'users#destroy', as: 'eliminar_super'
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
   get 'vehiculos/:id/edit', to: 'vehiculos#edit', as: :edit_vehiculo
   get 'vehiculos/:id/alquilar', to: 'vehiculos#alquilar', as: :alquilar_vehiculo
 
-
+  get '/index', to: 'vehiculos#index_autos', as: 'index_autos'
 
   # preguntas frecuentes
   get '/preguntas_frecuentes', to: 'home#preguntas_frecuentes', as: 'preguntas'
