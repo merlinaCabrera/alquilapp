@@ -2,20 +2,19 @@
 
 <div class="fondo">
      <%= render "/home/menu_lateral"%>
+     <center>
      <%= link_to :back do %>
      <%= image_tag "arrow-left.svg", class:"volver" %>    
      <% end %>
-
      
-   <p> Nombre: <%= User.find(@user.id).nombreUsuario %></p>
-   <p> Email: <%= @user.email %></p>
-   <p> DNI: <%= @user.dni %> </p>
-   <p> Supervisor: <%= @user.super %></p>
+     <h3> Nombre: <%= User.find(@user.id).nombreUsuario %></h3>
+     <h3> Email: <%= @user.email %></h3>
+     <h3> DNI: <%= @user.dni %> </h3>
+     </br>
 
-   <% if current_user && current_user.admin %>
-        <%= button_to 'Modificar', editar_super_path(@user), method: :get, class:"boton" %>
-        <%= button_to 'Eliminar', eliminar_super_path(@user), method: :delete, class:"boton",  data: {
-            turbo_method: :delete,
-            turbo_confirm: '¿Estas seguro?' } %>
-   <% end %>
+     <%= button_to 'Modificar Supervisor', edit_user_registration_path(@user), method: :get, class:"boton" %></br>
+     <%= button_to 'Eliminar Supervisor', eliminar_super_path(@user), method: :delete, class:"boton",  data: {
+          turbo_method: :delete,
+          turbo_confirm: '¿Estas seguro?' }, class:"boton" %>
+     </center>
 </div>

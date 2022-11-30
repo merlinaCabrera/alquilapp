@@ -3,18 +3,20 @@
     
     
     <h1 class="titulo_seccion">Vehículos disponibles</h1>
-    <p style="font-size: 10px; width: 80%; margin: 0 auto;">Por defecto se muestran vehículos a 5 o menos cuadras de distancia </p>
-    <br>
 
-    <%= form_with url: index_autos_path, method: :get do |form| %>
-        <%= form.number_field :radio, placeholder:"Distancia deseada", in: 0..30, 
-           onChange: 'this.form.requestSubmit()',
-           value: params[:radio] %>
-    <% end %>
     
     <% if params[:radio].present? %>
-        <p> Vehículos a menos de<p><%=params[:radio]%></p> cuadras: </p>
-        <%  Vehiculo.all.each do |vehiculo| %> 
+        <p> Ampliar radio, </p>
+
+        <%= form_with url: index_autos_path, method: :get do |form| %>
+            <%= form.number_field :radio, placeholder:"Distancia deseada", in: 0..30, 
+               onChange: 'this.form.requestSubmit()',
+               value: params[:radio] %>
+        <% end %>
+        
+
+        <p> Vehículos a menos de <%=params[:radio]%> cuadras: </p>
+        <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.cercano}.each do |vehiculo| %> 
         <% if !vehiculo.ocupado && vehiculo.cercano <= params[:radio].to_i %>
                 <%= link_to vehiculo_path( vehiculo.id ) do %>
                     <p class="auto">
@@ -26,13 +28,28 @@
                     </div>  <br>
                     <i>  Ubicado a <%= vehiculo.cercano%> cuadras </i>
                 <% end %>
+
                 <div class="lineahorizontal"></div>
         <% end %>
     <%end%>
+        <div class="lineahorizontal"></div>
+        <% if Vehiculo.all.where("cercano <= ?", params[:radio]).where(ocupado:false).count == 0 %>
+            <p>No hay vehículos disponibles dentro de este radio. Por favor, elija otra distancia.</p>
+        <% end %>
     <% else %>
-        <p> Ingrese la distancia (número de cuadras) máximo ,menor a 30 </p>
-        <%  Vehiculo.all.each do |vehiculo| %> 
-        <% if !vehiculo.ocupado && vehiculo.cercano <= 5 %>
+        <p style="font-size: 10px; width: 80%; margin: 0 auto;">Por defecto, verá vehículos en un radio de 5 cuadras o menos. </p>
+
+        <p> Ampliar radio (cuadras) </p>
+
+        <%= form_with url: index_autos_path, method: :get do |form| %>
+            <%= form.number_field :radio, placeholder:"Distancia deseada", in: 0..30, 
+               onChange: 'this.form.requestSubmit()',
+               value: params[:radio] %>
+        <% end %>
+        
+        <p> Vehículos a menos de 5 cuadras: </p>
+        <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.cercano}.each do |vehiculo| %> 
+            <% if !vehiculo.ocupado && vehiculo.cercano <= 5 %>
                 <%= link_to vehiculo_path( vehiculo.id ) do %>
                     <p class="auto">
                     <div class="txt">
@@ -44,18 +61,18 @@
                     <i>  Ubicado a <%= vehiculo.cercano%> cuadras </i>
                 <% end %>
                 <div class="lineahorizontal"></div>
-        <% end %>
-    <%end%>
+            <% end %>
+        <%end%>
     <% end %>
+    
+        <div class="lineahorizontal"></div>
+        <% if Vehiculo.all.where("cercano <= 5").where(ocupado:false).count == 0 %>
+            <p>No hay vehículos disponibles a menos de 5 cuadras. Por favor, elija otra distancia.</p>
+        <% end %>
 
     <br>
     
 
 <div class="lineahorizontal"></div> 
 
-    <% @A = Vehiculo.where(ocupado: true).count %>
-    <% @B = Vehiculo.all.count %>
-    <% if @A == @B %>
-                <p>No hay vehículos disponibles dentro de este radio. Por favor, elija otra distancia.</p>
-    <% end %>
 </div>

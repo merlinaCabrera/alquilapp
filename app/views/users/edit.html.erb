@@ -1,8 +1,46 @@
 <div class="fondo">
   <%= render "/home/menu_lateral"%>
   
-  <%= link_to :back do %>
-     <%= image_tag "arrow-left.svg", class:"volver" %>    
-     <% end %>
+  <center>
+  <%= link_to listado_super_path do %>
+  <%= image_tag "arrow-left.svg", class:"volver" %>    
+  <% end %>
+  </center>
 
-<%= render 'form' %>
+  <h1 class="titulo_seccion">Modificar Supervisor</h1>
+     
+  <%= form_for(resource, html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+     
+    <div class="field">
+      <p>e-mail<%= f.email_field :email, autofocus: false, class:"ingreso" %></p>
+    </div>
+     
+    <div class="field">
+      <p>Nombre de Usuario<%= f.text_field :nombreUsuario, class:"ingreso" %></p>
+    </div>
+     
+    <div class="field">
+      <p>Contraseña Nueva
+        <%= f.password_field :password, class:"ingreso" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+          </p>
+    </div>
+     
+    <div class="field">
+      <p>Confirmar contraseña nueva<%= f.password_field :password_confirmation, class:"ingreso"%></p>
+    </div>
+     
+       <div class="field">
+         <p>Contraseña actual<br><i>(Requerida para confirmar los cambios)</i><%= f.password_field :current_password,class:"ingreso", value:"123456" %></p>
+       </div>
+     
+        <%= f.select :estadoDocumentos, User.estadoDocumentos.keys%>
+     
+       <div class="actions">
+         <%= f.submit "Update" %>
+       </div>
+     <% end %>

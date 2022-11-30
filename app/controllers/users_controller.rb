@@ -14,9 +14,13 @@ class UsersController < ApplicationController
     end 
    
     def create
-        @user = User.create(user_params) 
-        @user.find(params[:id]).update(super: true)
-    end
+        @user = User.create(user_params)
+        if @user.save
+          redirect_to root_path, notice: 'Usuario creado. Ya puede iniciar sesión!'
+        else
+          render '/home/index', status: :see_other
+        end
+      end
    
     def edit
         @user = User.find(params[:id])

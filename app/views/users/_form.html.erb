@@ -1,4 +1,4 @@
-<%= form_with model: @user do |f|  %>
+<%= form_with(model: @user, method: "create") do |f|  %>
     <div class="field">
     <%= f.text_field :nombreUsuario, autofocus: true, placeholder:"Nombre de Usuario", class:"ingreso", :required => true %>
   </div>
@@ -8,26 +8,28 @@
   </div>
 
   <div class="field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"E-mail", class:"ingreso" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"E-mail", class:"ingreso", :required => true %>
   </div>
 
   <div class="field">
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", placeholder:"Constraseña", class:"ingreso" %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder:"Constraseña", class:"ingreso", :required => true %>
   </div>
 
     <div class="field">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmar contraseña", class:"ingreso" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmar contraseña", class:"ingreso", :required => true %>
     </div>
 
     <div class="field">
      <%= f.hidden_field :super, value:true %>
   </div>
 
+  <center>
   <div class="actions">
     <br>
-    <%= f.submit "Guardar cambios", class:"boton" %>
+    <%= f.submit "Crear Supervisor", class:"boton" %>
   </div>
   <% end %>
+</center>
