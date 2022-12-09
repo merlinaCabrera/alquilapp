@@ -18,8 +18,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
   
-  <body>
-    <%= render 'home/flash' %>
+  <body class="base">
     <% if current_user %>
       <% if (current_user.licencia.attached? && current_user.dni_tarjeta.attached?) %>
         <%= render '/home/menu_lateral' %>

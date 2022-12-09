@@ -19,7 +19,6 @@ class User < ApplicationRecord
 
   def inc_balance
     return unless balance_changed?
-
-    self.balance = balance + balance_was
+    self.balance = balance + balance_was  
   end
 end

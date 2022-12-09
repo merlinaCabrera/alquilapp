@@ -6,7 +6,7 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
          <div class="field">
-                <%= f.number_field :balance, class:"ingreso", step: 0.01%>
+                <%= f.number_field :balance, class:"ingreso", step: 0.01, in: 0.00..5000.00%>
             </div>
 
             <div class="actions">

@@ -3,11 +3,13 @@ Rails.application.routes.draw do
   devise_for :views
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resource :contacto
+  resource :users
+
   get :send_order_mail, to: 'home#send_order_mail', as: :send_order_mail
 
   # supervisores
   delete 'users/:id', to: 'users#destroy', as: 'eliminar_super'
-  patch '/users/:id', to: 'users#update'
+  patch '/users/:id', to: 'users#update', as: 'actualizarUsuario'
   post '/users', to: 'users#create'
   get '/users/new', to: 'users#new', as: 'crear_super'
   get '/users', to: 'users#index', as: 'listado_super'
@@ -28,12 +30,17 @@ Rails.application.routes.draw do
   get '/vehiculos', to: 'vehiculos#index', as: 'listado_vehiculos'
   get '/vehiculos/:id', to: 'vehiculos#show', as: :vehiculo
   get 'vehiculos/:id/edit', to: 'vehiculos#edit', as: :edit_vehiculo
-  get 'vehiculos/:id/alquilar', to: 'vehiculos#alquilar', as: :alquilar_vehiculo
+
+  get 'alquilar/index', to: 'alquilar#index', as: 'alquiler_de_auto'
+  post '/alquilar/index', to: 'alquilar#create'
 
   get '/index', to: 'vehiculos#index_autos', as: 'index_autos'
 
   # preguntas frecuentes
   get '/preguntas_frecuentes', to: 'home#preguntas_frecuentes', as: 'preguntas'
+
+
+
 
   root to: 'home#index'
 end

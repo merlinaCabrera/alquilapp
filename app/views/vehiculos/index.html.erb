@@ -28,7 +28,7 @@
                            <h2><%= vehiculo.marca.capitalize %> <%= vehiculo.modelo.capitalize %> </h2>
                         <% end %>
                     <% else %> 
-                        <% if vehiculo.cercano <=  5 && !vehiculo.ocupado %>
+                        <% if !vehiculo.ocupado %>
                             <%= link_to vehiculo_path( vehiculo.id ) do %>
                                 <h2><%= vehiculo.marca.capitalize %> <%= vehiculo.modelo.capitalize %> </h2>
                             <% end %>
