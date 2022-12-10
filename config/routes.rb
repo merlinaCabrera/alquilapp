@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   get 'alquilar/index', to: 'alquilar#index', as: 'alquiler_de_auto'
   post '/alquilar/index', to: 'alquilar#create'
+  delete 'alquilar/index', to: 'alquilar#destroy'
 
   get '/index', to: 'vehiculos#index_autos', as: 'index_autos'
 

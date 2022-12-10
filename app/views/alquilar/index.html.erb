@@ -19,33 +19,47 @@ input[type=number] {
         <%= image_tag "arrow-left.svg", class:"volver" %>    
     <% end %>
 
-    <%= form_with model: @alquilar do |f|  %>
+    <%@al = Alquilar.find_by_id_user(current_user.id) %>
+    <% if @al.nil? %>
+        <% if current_user.balance >= (params[:fin].to_i*200) %>
+            <%= form_with model: @alquilar do |f|  %>
     
-        <%= time=Time.now %>    
+                <%= time=Time.now %>    
 
-        <div class="field">
-            <%= f.text_field :id_vehiculo, value: params[:id_vehiculo]%>
-        </div> 
+                <div class="field">
+                    <%= f.text_field :id_vehiculo, value: params[:id_vehiculo]%>
+                </div> 
 
-        <div class="field">
-            <%= f.text_field :id_user, value: current_user.id %>
-        </div>
+                <div class="field">
+                    <%= f.text_field :id_user, value: current_user.id %>
+                </div>
 
-        <div class="field">
-            <%= f.text_field :inicio, value: time %>
-        </div>
+                <div class="field">
+                    <%= f.text_field :inicio, value: time %>
+                </div>
 
+                <div class="field">
+                    <%= f.text_field :fin, value: time %>          
+                </div>
 
-        <div class="field">
-            <%= f.text_field :fin, value: (time+5*60*60) %>          
-        </div>
+                <div class="field">
+                    <%= f.number_field :precio_alquiler, value: (params[:fin].to_i*200)%>
+                </div>
 
-        <div class="field">
-            <%= f.text_field :precio_alquiler, value:(5*200).to_i%>
-        </div>
+                <p>el precio total será de $<%= (params[:fin].to_i*200)%></p>
 
-        <div class="field">
-            <%= f.submit 'Confirmar' , class:"boton" %>
-        </div>
+                <div class="field">
+                    <%= f.submit 'Confirmar', class:"boton" %>
+                </div>
+            <% end %>
+        <% else %>
+            <p>No dispone del dinero necesario para alquilar el vehiculo</p>
+        <% end %>
+    <% else %>
+        <%= button_to 'Cancelar', alquiler_de_auto_path(@al), :method => :delete, class:"boton",  data: {
+        turbo_method: :delete,
+      turbo_confirm: '¿Estas seguro?' },class:"boton" %>
     <% end %>
+    
+    
 </div>

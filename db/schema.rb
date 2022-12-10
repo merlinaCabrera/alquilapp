@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_08_205914) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_10_093157) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -46,9 +46,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_205914) do
     t.integer "id_user"
     t.datetime "inicio", null: false
     t.datetime "fin", null: false
-    t.datetime "extension"
-    t.decimal "precio_alquiler", null: false
     t.decimal "precio_extension", default: "0.0"
+    t.float "precio_alquiler"
+    t.float "extension", default: 0.0
   end
 
   create_table "users", force: :cascade do |t|

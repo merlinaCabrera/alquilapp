@@ -12,7 +12,6 @@
                 </div>
             </div>
         <% else %>
-            <%= render '/home/catalogo' %>
             <% if current_user.estadoDocumentos == "pendiente" %>
             <div class="esperarAprobacion">
                 <div class="espera">
@@ -29,11 +28,8 @@
                         </div>
             </div>
             <% end %>
-        <% end %>
-    <% else %>
-        <% if !current_user.super && !current_user.admin %>
             <%= render '/home/catalogo' %>
-            <% end %>
+        <% end %>
     <% end %>
 <% else %>
     <div class="centrar">

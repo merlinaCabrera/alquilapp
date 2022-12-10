@@ -1,78 +1,49 @@
 <div class="catalogo_cercania">
-
-    
-    
-    <h1 class="titulo_seccion">Vehículos disponibles</h1>
-
-    
-    <% if params[:radio].present? %>
-        <p> Ampliar radio, </p>
-
-        <%= form_with url: index_autos_path, method: :get do |form| %>
-            <%= form.number_field :radio, placeholder:"Distancia deseada", in: 0..30, 
-               onChange: 'this.form.requestSubmit()',
-               value: params[:radio] %>
-        <% end %>
-        
-
-        <p> Vehículos a menos de <%=params[:radio]%> cuadras: </p>
-        <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.marca}.each do |vehiculo| %> 
-        <% if !vehiculo.ocupado %>
-                <%= link_to vehiculo_path( vehiculo.id ) do %>
-                    <p class="auto">
-                    <div class="txt">
-                        <%= vehiculo.marca.capitalize%>
-                        <%= vehiculo.modelo.capitalize%>
-                        <%= " , " %>
-                        <%= vehiculo.patente %>
-                    </div>  <br>
-                    <i>  Ubicado a NNN cuadras </i>
-                <% end %>
-
-                <div class="lineahorizontal"></div>
-        <% end %>
-    <%end%>
-        <div class="lineahorizontal"></div>
-        <% if Vehiculo.all.where(ocupado:false).count == 0 %>
-            <p>No hay vehículos disponibles dentro de este radio. Por favor, elija otra distancia.</p>
-        <% end %>
-    <% else %>
+    <% @alquilar = Alquilar.find_by_id_user(current_user.id) %>
+    <% if @alquilar.nil? %>
+        <h1 class="titulo_seccion">Vehículos disponibles</h1>
         <p style="font-size: 10px; width: 80%; margin: 0 auto;">Por defecto, verá vehículos en un radio de 5 cuadras o menos. </p>
-
         <p> Ampliar radio (cuadras) </p>
 
         <%= form_with url: index_autos_path, method: :get do |form| %>
             <%= form.number_field :radio, placeholder:"Distancia deseada", in: 0..30, 
-               onChange: 'this.form.requestSubmit()',
-               value: params[:radio] %>
+            onChange: 'this.form.requestSubmit()',
+            value: params[:radio] %>
         <% end %>
-        
+
         <p> Vehículos a menos de 5 cuadras: </p>
-        <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.marca}.each do |vehiculo| %> 
-            <% if !vehiculo.ocupado  %>
+        <%  Vehiculo.all.each do |vehiculo| %> 
+        <% if Alquilar.find_by_id_vehiculo(vehiculo.id).nil?  %>
                 <%= link_to vehiculo_path( vehiculo.id ) do %>
                     <p class="auto">
                     <div class="txt">
+                        <%= vehiculo.id%>
                         <%= vehiculo.marca.capitalize%>
                         <%= vehiculo.modelo.capitalize%>
                         <%= " , " %>
                         <%= vehiculo.patente %>
-                    </div>  <br>
-                    <i>  Ubicado a NNN cuadras </i>
+                    </div>
+                    <br>
                 <% end %>
                 <div class="lineahorizontal"></div>
             <% end %>
         <%end%>
-    <% end %>
-    
         <div class="lineahorizontal"></div>
-        <% if Vehiculo.all.where(ocupado:false).count == 0 %>
-            <p>No hay vehículos disponibles a menos de 5 cuadras. Por favor, elija otra distancia.</p>
-        <% end %>
-
-    <br>
-    
-
-<div class="lineahorizontal"></div> 
-
+            <% if Alquilar.all.count == Vehiculo.all.count %>
+                <p>No hay vehículos disponibles a menos de 5 cuadras. Por favor, elija otra distancia.</p>
+            <% end %>
+            <br>
+        <div class="lineahorizontal"></div> 
+    <% else %>
+        <% @ve = Vehiculo.find_by_id(@alquilar.id_vehiculo) %>
+        <p class="auto">
+            <div class="txt">
+                <%= @ve.marca.capitalize%>
+                <%= @ve.modelo.capitalize%>
+                <%= " , " %>
+                <%= @ve.patente %>
+            </div>
+        </p>
+        <%= button_to "Detalles de Alquiler", vehiculo_path(@ve.id), :method => :get, class:"boton"%>
+    <% end %>
 </div>
