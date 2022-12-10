@@ -12,7 +12,6 @@
    <h3> Modelo: <%= @vehiculo.modelo %></h3>
    <h3> Color: <%= @vehiculo.color %> </h3>
    <h3> Patente: <%= @vehiculo.patente %></h3>
-   <!--<h3> Cercania: <%= @vehiculo.cercano%></h3>-->
    <h3> Descripcion: <%= @vehiculo.descripcion%></h3>
     <% if @vehiculo.ocupado  %>
       <h3> Estado: Ocupado</h3>
@@ -29,7 +28,12 @@
    <%end%>
 
   <% if !current_user.super && !current_user.admin %>
-    <%= button_to 'alquilar auto', alquilar_vehiculo_path(@vehiculo), :method => :get,class:"boton" %>
+  <%= form_tag("/alquilar/index",method:"get") do %>
+    <%= hidden_field_tag(:id_vehiculo,@vehiculo.id) %>
+    <%= submit_tag("Alquilar2", :class=>"boton", :name=>"submit") %>
+    
+    <% end %>
+    <%= button_to 'alquilar auto', alquiler_de_auto_path(@vehiculo), :method => :get,class:"boton" %>
   <%end%>  
 
    </center>

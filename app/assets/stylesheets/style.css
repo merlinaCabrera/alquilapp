@@ -12,10 +12,11 @@
 }
 
 /*cuerpo--------------------*/
-body{
+.base{
     margin: 0;
     background-color: blue;
-    background-image: url("mapa.png");
+    height: 100%;
+    width: 100%;
 }
 
 /*fondo pagina--------------------*/
@@ -303,11 +304,7 @@ details summary::-webkit-details-marker {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("mapa.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
+    margin: auto;
     height: 100vh;
 }
 

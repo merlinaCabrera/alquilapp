@@ -1,0 +1,51 @@
+<%= stylesheet_link_tag 'style.css' %>
+<style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
+
+<div class="fondo">
+    <%= render "/home/menu_lateral"%>
+    <%= link_to :back do %>
+        <%= image_tag "arrow-left.svg", class:"volver" %>    
+    <% end %>
+
+    <%= form_with model: @alquilar do |f|  %>
+    
+        <%= time=Time.now %>    
+
+        <div class="field">
+            <%= f.text_field :id_vehiculo, value: params[:id_vehiculo]%>
+        </div> 
+
+        <div class="field">
+            <%= f.text_field :id_user, value: current_user.id %>
+        </div>
+
+        <div class="field">
+            <%= f.text_field :inicio, value: time %>
+        </div>
+
+
+        <div class="field">
+            <%= f.text_field :fin, value: (time+5*60*60) %>          
+        </div>
+
+        <div class="field">
+            <%= f.text_field :precio_alquiler, value:(5*200).to_i%>
+        </div>
+
+        <div class="field">
+            <%= f.submit 'Confirmar' , class:"boton" %>
+        </div>
+    <% end %>
+</div>

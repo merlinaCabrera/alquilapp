@@ -16,8 +16,8 @@
         
 
         <p> Vehículos a menos de <%=params[:radio]%> cuadras: </p>
-        <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.cercano}.each do |vehiculo| %> 
-        <% if !vehiculo.ocupado && vehiculo.cercano <= params[:radio].to_i %>
+        <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.marca}.each do |vehiculo| %> 
+        <% if !vehiculo.ocupado %>
                 <%= link_to vehiculo_path( vehiculo.id ) do %>
                     <p class="auto">
                     <div class="txt">
@@ -26,14 +26,14 @@
                         <%= " , " %>
                         <%= vehiculo.patente %>
                     </div>  <br>
-                    <i>  Ubicado a <%= vehiculo.cercano%> cuadras </i>
+                    <i>  Ubicado a NNN cuadras </i>
                 <% end %>
 
                 <div class="lineahorizontal"></div>
         <% end %>
     <%end%>
         <div class="lineahorizontal"></div>
-        <% if Vehiculo.all.where("cercano <= ?", params[:radio]).where(ocupado:false).count == 0 %>
+        <% if Vehiculo.all.where(ocupado:false).count == 0 %>
             <p>No hay vehículos disponibles dentro de este radio. Por favor, elija otra distancia.</p>
         <% end %>
     <% else %>
@@ -48,8 +48,8 @@
         <% end %>
         
         <p> Vehículos a menos de 5 cuadras: </p>
-        <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.cercano}.each do |vehiculo| %> 
-            <% if !vehiculo.ocupado && vehiculo.cercano <= 5 %>
+        <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.marca}.each do |vehiculo| %> 
+            <% if !vehiculo.ocupado  %>
                 <%= link_to vehiculo_path( vehiculo.id ) do %>
                     <p class="auto">
                     <div class="txt">
@@ -58,7 +58,7 @@
                         <%= " , " %>
                         <%= vehiculo.patente %>
                     </div>  <br>
-                    <i>  Ubicado a <%= vehiculo.cercano%> cuadras </i>
+                    <i>  Ubicado a NNN cuadras </i>
                 <% end %>
                 <div class="lineahorizontal"></div>
             <% end %>
@@ -66,7 +66,7 @@
     <% end %>
     
         <div class="lineahorizontal"></div>
-        <% if Vehiculo.all.where("cercano <= 5").where(ocupado:false).count == 0 %>
+        <% if Vehiculo.all.where(ocupado:false).count == 0 %>
             <p>No hay vehículos disponibles a menos de 5 cuadras. Por favor, elija otra distancia.</p>
         <% end %>
 

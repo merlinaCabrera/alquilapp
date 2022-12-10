@@ -29,6 +29,10 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmar contraseña", class:"ingreso" %>
       </div>
 
+      <div class="field">
+        <%= f.select(:estadoDocumentos, options_for_select([['Pendiente','pendiente'],['Aprobado','aprobado'],['Rechazado','aprobado']]))%>
+      </div>
+
       <div class="actions">
         <br>
         <%= f.submit "Crear Cuenta", class:"boton" %>

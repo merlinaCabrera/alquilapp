@@ -34,13 +34,15 @@
                             <% end %>
                         </td>
                         <td class="item">
-                            <%= form_with model: @user do |f|  %>
+                            <%= form_for(user, url: '/actualizarDocumentos/"#{user.id}"', html: { method: :get }) do |f| %>
+                            <%= f.hidden_field :id, value: user.id%>
                                 <%= f.select(:estadoDocumentos, options_for_select([['Pendiente','pendiente'],['Aprobado','aprobado'],['Rechazado','rechazado']]))%>
-                                    <div class="actions">
-                                        <br>
-                                        <%= f.submit "Guardar cambios", class:"boton" %>
-                                    </div>
-                                    <% end %>
+                                <div class="actions">
+                                    <br>
+                                    <%= f.submit "Guardar cambios", class:"boton" %>
+                                </div>
+
+                            <% end %>
                         </td>
                     </tr>
                 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_140635) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_205914) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_140635) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "alquilars", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "id_vehiculo"
+    t.integer "id_user"
+    t.datetime "inicio", null: false
+    t.datetime "fin", null: false
+    t.datetime "extension"
+    t.decimal "precio_alquiler", null: false
+    t.decimal "precio_extension", default: "0.0"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -50,10 +62,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_140635) do
     t.boolean "admin", default: false, null: false
     t.boolean "super", default: false, null: false
     t.float "balance", default: 0.0
-    t.float "carga"
     t.integer "dni"
     t.string "nombreUsuario"
     t.integer "estadoDocumentos", default: 0
+    t.integer "posicion"
     t.index ["dni"], name: "index_users_on_dni", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nombreUsuario"], name: "index_users_on_nombreUsuario", unique: true
@@ -68,9 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_140635) do
     t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "precio"
-    t.integer "cercano", default: 0
-    t.boolean "ocupado", default: false
+    t.integer "posicion"
+    t.boolean "ocupado"
   end
 
   create_table "views", force: :cascade do |t|
