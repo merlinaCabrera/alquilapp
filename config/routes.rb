@@ -22,6 +22,11 @@ Rails.application.routes.draw do
   post '/listado_usuarios', to: 'home#listado_usuarios'
   get '/index', to: 'home#index', as: :inicio
 
+  get '/ver_mi_alquiler', to: 'home#ver_mi_alquiler', as: 'ver_mi_alquiler'
+  get '/extender_horas', to: 'home#extender_horas', as: 'extender_horas'
+  get '/desbloquear_auto', to: 'home#desbloquear_auto', as: 'desbloquear_auto'
+  get '/finalizar_alquiler', to: 'home#finalizar_alquiler', as: 'finalizar_alquiler' 
+
   # vehiculos
   delete 'vehiculos/:id', to: 'vehiculos#destroy'
   patch '/vehiculos/:id', to: 'vehiculos#update'

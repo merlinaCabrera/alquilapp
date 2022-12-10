@@ -1,78 +1,79 @@
 <div class="catalogo_cercania">
+<center>
+    <% if Alquilar.all.where(id_user:current_user.id).count == 0 %>
+        <h1 class="titulo_seccion">Usted está alquilando un auto</h1>
+        <%= button_to "Ver mi alquiler", ver_mi_alquiler_path, :method => :get, class:"boton" %>
 
-    
-    
-    <h1 class="titulo_seccion">Vehículos disponibles</h1>
+        </br>
+    <% else %>     
+            <h1 class="titulo_seccion">Vehículos disponibles</h1>
 
-    
-    <% if params[:radio].present? %>
-        <p> Ampliar radio, </p>
+            <% if params[:radio].present? %>
 
-        <%= form_with url: index_autos_path, method: :get do |form| %>
-            <%= form.number_field :radio, placeholder:"Distancia deseada", in: 0..30, 
-               onChange: 'this.form.requestSubmit()',
-               value: params[:radio] %>
-        <% end %>
-        
-
-        <p> Vehículos a menos de <%=params[:radio]%> cuadras: </p>
-        <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.marca}.each do |vehiculo| %> 
-        <% if !vehiculo.ocupado %>
-                <%= link_to vehiculo_path( vehiculo.id ) do %>
-                    <p class="auto">
-                    <div class="txt">
-                        <%= vehiculo.marca.capitalize%>
-                        <%= vehiculo.modelo.capitalize%>
-                        <%= " , " %>
-                        <%= vehiculo.patente %>
-                    </div>  <br>
-                    <i>  Ubicado a NNN cuadras </i>
+                <%= form_with url: index_autos_path, method: :get do |form| %>
+                    <%= form.number_field :radio, placeholder:"Distancia deseada", in: 0..30, 
+                    onChange: 'this.form.requestSubmit()',
+                    value: params[:radio] %>
                 <% end %>
-
-                <div class="lineahorizontal"></div>
-        <% end %>
-    <%end%>
-        <div class="lineahorizontal"></div>
-        <% if Vehiculo.all.where(ocupado:false).count == 0 %>
-            <p>No hay vehículos disponibles dentro de este radio. Por favor, elija otra distancia.</p>
-        <% end %>
-    <% else %>
-        <p style="font-size: 10px; width: 80%; margin: 0 auto;">Por defecto, verá vehículos en un radio de 5 cuadras o menos. </p>
-
-        <p> Ampliar radio (cuadras) </p>
-
-        <%= form_with url: index_autos_path, method: :get do |form| %>
-            <%= form.number_field :radio, placeholder:"Distancia deseada", in: 0..30, 
-               onChange: 'this.form.requestSubmit()',
-               value: params[:radio] %>
-        <% end %>
         
-        <p> Vehículos a menos de 5 cuadras: </p>
-        <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.marca}.each do |vehiculo| %> 
-            <% if !vehiculo.ocupado  %>
-                <%= link_to vehiculo_path( vehiculo.id ) do %>
-                    <p class="auto">
-                    <div class="txt">
-                        <%= vehiculo.marca.capitalize%>
-                        <%= vehiculo.modelo.capitalize%>
-                        <%= " , " %>
-                        <%= vehiculo.patente %>
-                    </div>  <br>
-                    <i>  Ubicado a NNN cuadras </i>
+                <p> Vehículos a menos de <%=params[:radio]%> cuadras: </p>
+                <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.marca}.each do |vehiculo| %> 
+                <% if !vehiculo.ocupado %>
+                        <%= link_to vehiculo_path( vehiculo.id ) do %>
+                            <p class="auto">
+                            <div class="txt">
+                                <%= vehiculo.marca.capitalize%>
+                                <%= vehiculo.modelo.capitalize%>
+                                <%= " , " %>
+                                <%= vehiculo.patente %>
+                            </div>  <br>
+                            <i>  Ubicado a NNN cuadras </i>
+                        <% end %>
+
+                        <div class="lineahorizontal"></div>
                 <% end %>
+            <%end%>
                 <div class="lineahorizontal"></div>
+                <% if Vehiculo.all.where(ocupado:false).count == 0 %>
+                    <p>No hay vehículos disponibles dentro de este radio. Por favor, elija otra distancia.</p>
+                <% end %>
+            <% else %>
+                <p style="font-size: 10px; width: 80%; margin: 0 auto;">Por defecto, verá vehículos en un radio de 5 cuadras o menos. 
+                 Elegir radio: </p> </br>
+
+                <%= form_with url: index_autos_path, method: :get do |form| %>
+                    <%= form.number_field :radio, placeholder:"Distancia deseada", in: 0..30, 
+                       onChange: 'this.form.requestSubmit()',
+                       value: params[:radio] %>
+                <% end %>
+        
+                <p> Vehículos a menos de 5 cuadras: </p>
+                <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.marca}.each do |vehiculo| %> 
+                    <% if !vehiculo.ocupado  %>
+                        <%= link_to vehiculo_path( vehiculo.id ) do %>
+                            <p class="auto">
+                            <div class="txt">
+                                <%= vehiculo.marca.capitalize%>
+                                <%= vehiculo.modelo.capitalize%>
+                                <%= " , " %>
+                                <%= vehiculo.patente %>
+                            </div>  <br>
+                            <i>  Ubicado a NNN cuadras </i>
+                     <% end %>
+                        <div class="lineahorizontal"></div>
+                    <% end %>
+                <%end%>
             <% end %>
-        <%end%>
+    
+                <div class="lineahorizontal"></div>
+                <% if Vehiculo.all.where(ocupado:false).count == 0 %>
+                    <p>No hay vehículos disponibles a menos de 5 cuadras. Por favor, elija otra distancia.</p>
+                <% end %>
+
+            <br>
     <% end %>
     
-        <div class="lineahorizontal"></div>
-        <% if Vehiculo.all.where(ocupado:false).count == 0 %>
-            <p>No hay vehículos disponibles a menos de 5 cuadras. Por favor, elija otra distancia.</p>
-        <% end %>
-
-    <br>
-    
-
+</center>
 <div class="lineahorizontal"></div> 
 
 </div>

@@ -80,8 +80,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_205914) do
     t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "posicion"
+    t.integer "cercano"
     t.boolean "ocupado"
+    t.integer "posicion"
   end
 
   create_table "views", force: :cascade do |t|
