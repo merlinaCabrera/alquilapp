@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag 'style.css' %>
+
+<center>
+<div class="fondo">
+    <%= render "/home/menu_lateral"%>
+    <%= link_to :inicio do %>
+        <%= image_tag "arrow-left.svg", class:"volver" %>    
+    <% end %>
+
+    <h1 class="titulo_seccion">Tiempo restante:</h1>
+    <h1 class="titulo_seccion"> <%=Time.now.strftime("%H:%M")%> horas</h1>
+    
+    <%= button_to "Extender horas", extender_horas_path, :method => :get, class:"boton" %> </br>
+
+    <%= button_to "Desbloquear auto", desbloquear_auto_path, :method => :get, class:"boton" %> </br>
+
+    <%= button_to "Finalizar alquiler", finalizar_alquiler_path, :method => :get, class:"boton" %>
+
+
+</div>
+</center>
