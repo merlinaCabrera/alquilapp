@@ -1,4 +1,10 @@
 <%= stylesheet_link_tag 'style.css' %>
+<% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'>
+    <script>
+        document.addEventListener("DOMContentLoaded", initMap2);
+    </script>
+<% end %>
 <div class="sesion">
 
     <h2>Crear Cuenta</h2>
@@ -8,6 +14,17 @@
 
     <div class="field">
       <%= f.text_field :nombreUsuario, autofocus: true, placeholder:"Nombre de Usuario", class:"ingreso", :required => true %>
+    </div>
+
+    <script>
+      navigator.geolocation.getCurrentPosition((pos) => {document.querySelector("#location_point").value =`${pos.coords.latitude},${pos.coords.longitude}`;});
+    </script>
+
+    <div class="field">
+      <%= f.hidden_field :latitud %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :longitud %>
     </div>
 
     <div class="field">
@@ -30,7 +47,7 @@
       </div>
 
       <div class="field">
-        <%= f.select(:estadoDocumentos, options_for_select([['Pendiente','pendiente'],['Aprobado','aprobado'],['Rechazado','aprobado']]))%>
+        <%= f.hidden_field :estadoDocumentos, value:"pendiente" %>
       </div>
 
       <div class="actions">

@@ -1,15 +1,17 @@
 <h1>Para poder acceder a nuestros servicios<br>requerimos de fotos de su DNI y Licencia de Conducir</h1>
+<p>Únicamente serán aceptados archivos en formato .PNG, .JPG y .JPEG</p>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
         <p>LICENCIA</p>
-        <%= f.file_field :licencia %>
+        <%= f.file_field :licencia, class:"boton" %>
     </div>
         
     <div class="field">
         <p>DNI:</p>
-        <%= f.file_field :dni_tarjeta %>
+        <%= f.file_field :dni_tarjeta, class:"boton" %>
     </div>
 
 
@@ -17,7 +19,11 @@
     <%= f.hidden_field :current_password, value:"123456"%>
   </div>
 
+  <div class="field">
+    <%= f.hidden_field :estadoDocumentos, value:"pendiente"%>
+  </div>
+  <br>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Actualizar", class:"boton" %>
   </div>
 <% end %>

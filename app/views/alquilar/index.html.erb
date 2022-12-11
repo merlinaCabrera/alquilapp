@@ -1,17 +1,4 @@
 <%= stylesheet_link_tag 'style.css' %>
-<style>
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-</style>
 
 <div class="fondo">
     <%= render "/home/menu_lateral"%>
@@ -19,33 +6,49 @@ input[type=number] {
         <%= image_tag "arrow-left.svg", class:"volver" %>    
     <% end %>
 
-    <%= form_with model: @alquilar do |f|  %>
+    <%@al = Alquilar.where(id_user: current_user.id).find_by_activo(true) %>
+    <%@total=params[:aver].to_i*200%>
+    <p><%@total%></p>
+    <% if @al.nil? %>
+        <% if current_user.balance >= @total %>
+            <%= form_with model: @alquilar do |f|  %>
     
-        <%= time=Time.now %>    
+                <%= time=Time.now(in: '-03:00') %>    
 
-        <div class="field">
-            <%= f.text_field :id_vehiculo, value: params[:id_vehiculo]%>
-        </div> 
+                <div class="field">id vehiculo
+                    <%= f.text_field :id_vehiculo, value: params[:id_vehiculo]%>
+                </div> 
 
-        <div class="field">
-            <%= f.text_field :id_user, value: current_user.id %>
-        </div>
+                <div class="field"> id usuario
+                    <%= f.text_field :id_user, value: current_user.id %>
+                </div>
 
-        <div class="field">
-            <%= f.text_field :inicio, value: time %>
-        </div>
+                <div class="field"> hora inicio
+                    <%= f.text_field :inicio, value: time %>
+                </div>
 
+                <div class="field"> hora fin
+                    <%= f.text_field :fin, value: time+(params[:aver].to_i*60*60) %>          
+                </div>
 
-        <div class="field">
-            <%= f.text_field :fin, value: (time+5*60*60) %>          
-        </div>
+                <div class="field"> precio alquiler
+                    <%= f.number_field :precio_alquiler, value: @total%>
+                </div>
 
-        <div class="field">
-            <%= f.text_field :precio_alquiler, value:(5*200).to_i%>
-        </div>
+                <p>el precio total será de $<%= @total%></p>
 
-        <div class="field">
-            <%= f.submit 'Confirmar' , class:"boton" %>
-        </div>
+                <div class="field">
+                    <%= f.submit 'Confirmar', class:"boton" %>
+                </div>
+            <% end %>
+        <% else %>
+            <p>No dispone del dinero necesario para alquilar el vehiculo</p>
+        <% end %>
+    <% else %>
+        <%= button_to 'Cancelar', alquiler_de_auto_path(@al), :method => :delete, class:"boton",  data: {
+        turbo_method: :delete,
+      turbo_confirm: '¿Estas seguro?' },class:"boton" %>
     <% end %>
+    
+    
 </div>

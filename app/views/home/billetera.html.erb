@@ -3,20 +3,13 @@
 <div class="fondo">
     <%= render "/home/menu_lateral"%>  
 
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
-         <div class="field">
-                <%= f.number_field :balance, class:"ingreso", step: 0.01, in: 0.00..5000.00%>
-            </div>
-
-            <div class="actions">
-                <%= f.submit "Cargar saldo", class:"boton" %>
-            </div>
-
-            <div class="field">
-            <p> Ingrese su contraseña </p>
-            <%= f.password_field :current_password, autocomplete: "current-password", class:'ingreso' %>
-    </div>
-
-        <% end %>
+    <%= form_tag carga_path, method:"patch" do %>
+        <div class="field">
+            <%= number_field_tag(:balance, "", class:"ingreso") %>
+        </div>
+        
+        <div class="field">
+            <%= submit_tag('Confirmar' , class:"boton")  %>
+        </div>
+    <% end %>
 </div>

@@ -13,12 +13,15 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/users/new', to: 'users#new', as: 'crear_super'
   get '/users', to: 'users#index', as: 'listado_super'
-  get '/users/:id', to: 'users#show', as: 'supervisores'
+  get '/users/:id', to: 'users#show', as: 'supervisor'
   get 'users/:id/edit', to: 'users#edit', as: 'editar_super'
 
   # home
   get '/billetera', to: 'home#billetera', as: 'bille'
+  patch '/billetera', to: 'home#cargar_dinero', as: 'carga'
+  
   get '/listado_usuarios', to: 'home#listado_usuarios', as: 'listado_clientes'
+  get '/historial_uso_vehiculos', to: 'home#historial_uso_vehiculos', as: 'historial'
   post '/listado_usuarios', to: 'home#listado_usuarios'
   get '/index', to: 'home#index', as: :inicio
 
@@ -38,6 +41,8 @@ Rails.application.routes.draw do
 
   get 'alquilar/index', to: 'alquilar#index', as: 'alquiler_de_auto'
   post '/alquilar/index', to: 'alquilar#create'
+  delete 'alquilar/index', to: 'alquilar#destroy'
+  patch '/listado_usuarios', to: 'home#documentos', as: 'documentos'
 
   get '/index', to: 'vehiculos#index_autos', as: 'index_autos'
 

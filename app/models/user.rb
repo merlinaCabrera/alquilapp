@@ -13,12 +13,5 @@ class User < ApplicationRecord
   validates :nombreUsuario, uniqueness: true
   validates :dni, uniqueness: true
 
-  before_update :inc_balance
-
   enum :estadoDocumentos, %i[pendiente aprobado rechazado] # -> 0, 1, 2
-
-  def inc_balance
-    return unless balance_changed?
-    self.balance = balance + balance_was  
-  end
 end

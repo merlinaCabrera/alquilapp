@@ -1,12 +1,22 @@
 <div class="catalogo_cercania">
 <center>
-    <% if Alquilar.all.where(id_user:current_user.id).count == 0 %>
-        <h1 class="titulo_seccion">Usted está alquilando un auto</h1>
-        <%= button_to "Ver mi alquiler", ver_mi_alquiler_path, :method => :get, class:"boton" %>
-
-        </br>
+    <% @al = Alquilar.where(id_user: current_user.id).find_by_activo(true) %>
+    <% if !@al.nil? %>
+        <% @ve = Vehiculo.find_by_id(@al.id_vehiculo) %>
+        <h1 class="titulo_seccion">Alquilando:</h1>
+        <%= link_to vehiculo_path(@ve.id) do %>
+            <p class="auto">
+                <div class="txt">
+                    <%= @ve.marca.capitalize%>
+                    <%= @ve.modelo.capitalize%>
+                    <%= " , " %>
+                    <%= @ve.patente %>
+                </div>
+                <br>
+            </p>
+        <% end %>
     <% else %>     
-            <h1 class="titulo_seccion">Vehículos disponibles</h1>
+        <h1 class="titulo_seccion">Vehículos disponibles</h1>
 
             <% if params[:radio].present? %>
 

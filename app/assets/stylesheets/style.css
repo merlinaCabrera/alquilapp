@@ -11,10 +11,20 @@
     font-family: 'Varela Round', sans-serif;
 }
 
+.excedido{
+    color:red;
+}
+
+/*mapa--------------------*/
+#map {
+    width: 600px;
+    height: 400px;
+    background-color: #444;
+}
+
 /*cuerpo--------------------*/
 .base{
     margin: 0;
-    background-color: blue;
     height: 100%;
     width: 100%;
 }
