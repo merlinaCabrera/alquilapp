@@ -82,8 +82,8 @@
     <div>
       <% @al = Alquilar.where(id_user: current_user.id).find_by_activo(true)%>
       <% if !@al.nil? %>
-        <h1>
-          <%@fin = ( @al.fin - 3*60*60)%>
+        <% @fin = ( @al.fin - 3*60*60 )%>
+        <h1 class='<%= "excedido" if Time.now > @al.fin %>'> 
           <%= @fin.day %>/<%= @fin.month %>/<%= @fin.year %>, 
           <% if @fin.hour < 10 %>0<% end %><%= @fin.hour %>:<% if @fin.min < 10 %>0<% end %><%= @fin.min %>
         </h1>
@@ -95,6 +95,9 @@
           <%= current_user.nombreUsuario %>
           <% if !current_user.admin && !current_user.super %>
             , $<%= current_user.balance %>
+            <% if !@al.nil? %>
+              (-$ <%= @al.precio_alquiler + @al.precio_extension%> )
+            <% end %>
           <% end %>
       </h1>
       <%end%>
