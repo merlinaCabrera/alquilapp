@@ -4,11 +4,11 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="field">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"E-mail", class:"ingreso" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"E-mail", class:"ingreso", :required => true  %>
     </div>
 
     <div class="field">
-      <%= f.password_field :password, autocomplete: "current-password", placeholder:"Contraseña", class:"ingreso" %>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder:"Contraseña", class:"ingreso", :required => true  %>
     </div>
 
     <div class="field">
@@ -18,7 +18,10 @@
       `${pos.coords.latitude},${pos.coords.longitude}`;
   });
 </script>
-      <%= f.hidden_field :posicion %>
+      <%= f.hidden_field :latitud %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :longitud %>
     </div>
 
     <% if devise_mapping.rememberable? %>

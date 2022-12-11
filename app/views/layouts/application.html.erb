@@ -11,8 +11,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js"></script>
+    <script>
+      mapboxgl.accessToken = "sk.eyJ1IjoiZGFycml1eCIsImEiOiJjbGJqMGw2YzMweWxqM3FwNXh2MXhjejFhIn0.JSOP2KvFvRUUo9gxcVad_g";
+    </script>
+    <script src="<%= asset_path 'mapkick' %>"></script>
   </head>
 
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -20,7 +26,7 @@
   
   <body class="base">
     <% if current_user %>
-      <% if (current_user.licencia.attached? && current_user.dni_tarjeta.attached?) %>
+      <% if (current_user.estadoDocumentos=="aprobado") %>
         <%= render '/home/menu_lateral' %>
       <% elsif  current_user.admin || current_user.super %>
           <%= render '/home/menu_lateral' %>
@@ -29,4 +35,5 @@
     <%= render '/home/flash'%>
     <%= yield %>
   </body>
+  
 </html>

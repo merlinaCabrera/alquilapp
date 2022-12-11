@@ -13,8 +13,7 @@
             <th class="item">Documentación</th>
             <th class="item">Estado</th>
         </tr>
-            <% User.all.each do |user| %>
-                <% if !user.admin && !user.super %>
+            <% User.all.where(super:false).where(admin:false).each do |user| %>
                     <tr>
                         <td class="item"><%= user.nombreUsuario%></td>
                         <td class="item"><%= user.dni%></td>
@@ -34,18 +33,18 @@
                             <% end %>
                         </td>
                         <td class="item">
-                            <%= form_for(user, url: '/actualizarDocumentos/"#{user.id}"', html: { method: :get }) do |f| %>
-                            <%= f.hidden_field :id, value: user.id%>
-                                <%= f.select(:estadoDocumentos, options_for_select([['Pendiente','pendiente'],['Aprobado','aprobado'],['Rechazado','rechazado']]))%>
-                                <div class="actions">
-                                    <br>
-                                    <%= f.submit "Guardar cambios", class:"boton" %>
+                            <%= form_tag documentos_path(), method:"patch" do %>
+                                <div class="field">
+                                    <%= select_tag(:estadoDocumentos, options_for_select([['Pendiente','pendiente'],['Aprobado','aprobado'],['Rechazado','rechazado']]), prompt: user.estadoDocumentos)%>
                                 </div>
-
+                                <%=hidden_field_tag(:id, user.id)%>
+                                <br>
+                                <div class="field">
+                                    <%= submit_tag('Confirmar' , class:"boton")  %>
+                                </div>
                             <% end %>
                         </td>
                     </tr>
-                <% end %>
         <% end %>
     </table>
 </div>

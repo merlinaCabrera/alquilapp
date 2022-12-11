@@ -10,7 +10,8 @@ es:
               blank: "Completa el email"
               taken: "E-mail ya registrado"
             password:
-              blank: "Pon una contraseña" 
+              blank: "Pon una contraseña"
+              too_short: "La contraseña debe tener al menos 6 caracteres" 
             password_confirmation:
               confirmation: "Contraseñas no coinciden"
             nombreUsuario: 

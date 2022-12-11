@@ -1,10 +1,12 @@
 <%= stylesheet_link_tag 'style.css' %>
-
 <% if current_user %>
     <% if !current_user.admin && !current_user.super %>
-        <% if !current_user.licencia.attached? && !current_user.dni_tarjeta.atached? %>
+        <% if !current_user.licencia.attached? && !current_user.dni_tarjeta.atached? || current_user.estadoDocumentos=="rechazado"%>
             <div class="centrar">
                 <div class="contenedor">
+                    <% if current_user.estadoDocumentos=="rechazado" %>
+                        Documentos rechazados, suba nuevas imágenes
+                    <% end %>
                     <p><%= render 'home/primer_sesion'%>
                     <br>
                     <%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"boton" %>
@@ -13,22 +15,16 @@
             </div>
         <% else %>
             <% if current_user.estadoDocumentos == "pendiente" %>
-            <div class="esperarAprobacion">
-                <div class="espera">
-                    Documentos enviados correctamente.<br>Los mismos serán revisados por nuestro personal y una vez aprobados podrás hacer uso de nuestros servicios.
-                    <br><br><%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"boton" %>
-                </div>
-            </div>
-            <% elsif current_user.estadoDocumentos == "rechazado" %>
                 <div class="esperarAprobacion">
-                        <div class="espera">
-                            Documentos rechazados, por favor suba otras imagenes de su licencia y DNI
-                            <br><br>
-                            <%= render 'home/primer_sesion'%>
-                        </div>
-            </div>
+                    <div class="espera">
+                        Documentos enviados correctamente.<br>Los mismos serán revisados por nuestro personal y una vez aprobados podrás hacer uso de nuestros servicios.
+                        <br><br><%= button_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:"boton" %>
+                    </div>
+                </div>
             <% end %>
-            <%= render '/home/catalogo' %>
+            <% if current_user.estadoDocumentos == "aprobado" %>
+              <%= render '/home/catalogo' %>
+            <% end %>
         <% end %>
     <% end %>
 <% else %>
@@ -38,4 +34,3 @@
         </div>
     </div>
 <% end %>
-<script src="<%= asset_path 'colapsar' %>"></script>

@@ -28,10 +28,10 @@
     <%end%>
 
     <% if !current_user.super && !current_user.admin%>
-      <% if Alquilar.find_by_id_user(current_user.id).nil? %>
+      <% if Alquilar.where(id_user: current_user.id).find_by_activo(true).nil? %>
         <%= form_tag("/alquilar/index", method: "get") do %>
           <%= hidden_field_tag(:id_vehiculo,@vehiculo.id) %>
-          <%= select_tag(:fin, options_for_select(1..24))%>
+          <%= select_tag(:aver, options_for_select(1..24))%>
           <%= submit_tag("Alquilar", :class=>"boton", :name=>"submit") %>
         <% end %>
       <% else %>

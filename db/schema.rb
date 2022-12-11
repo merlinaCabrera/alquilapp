@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_10_093157) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_11_072949) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_093157) do
     t.decimal "precio_extension", default: "0.0"
     t.float "precio_alquiler"
     t.float "extension", default: 0.0
+    t.boolean "activo"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,7 +66,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_093157) do
     t.integer "dni"
     t.string "nombreUsuario"
     t.integer "estadoDocumentos", default: 0
-    t.integer "posicion"
+    t.decimal "latitud"
+    t.decimal "longitud"
     t.index ["dni"], name: "index_users_on_dni", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nombreUsuario"], name: "index_users_on_nombreUsuario", unique: true
@@ -80,8 +82,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_093157) do
     t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "posicion"
     t.boolean "ocupado"
+    t.decimal "latitud"
+    t.decimal "longitud"
   end
 
   create_table "views", force: :cascade do |t|

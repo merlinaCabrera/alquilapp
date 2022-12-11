@@ -1,17 +1,4 @@
 <%= stylesheet_link_tag 'style.css' %>
-<style>
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-</style>
 
 <div class="fondo">
     <%= render "/home/menu_lateral"%>
@@ -19,34 +6,36 @@ input[type=number] {
         <%= image_tag "arrow-left.svg", class:"volver" %>    
     <% end %>
 
-    <%@al = Alquilar.find_by_id_user(current_user.id) %>
+    <%@al = Alquilar.where(id_user: current_user.id).find_by_activo(true) %>
+    <%@total=params[:aver].to_i*200%>
+    <p><%@total%></p>
     <% if @al.nil? %>
-        <% if current_user.balance >= (params[:fin].to_i*200) %>
+        <% if current_user.balance >= @total %>
             <%= form_with model: @alquilar do |f|  %>
     
-                <%= time=Time.now %>    
+                <%= time=Time.now(in: '-03:00') %>    
 
-                <div class="field">
+                <div class="field">id vehiculo
                     <%= f.text_field :id_vehiculo, value: params[:id_vehiculo]%>
                 </div> 
 
-                <div class="field">
+                <div class="field"> id usuario
                     <%= f.text_field :id_user, value: current_user.id %>
                 </div>
 
-                <div class="field">
+                <div class="field"> hora inicio
                     <%= f.text_field :inicio, value: time %>
                 </div>
 
-                <div class="field">
-                    <%= f.text_field :fin, value: time %>          
+                <div class="field"> hora fin
+                    <%= f.text_field :fin, value: time+(params[:aver].to_i*60*60) %>          
                 </div>
 
-                <div class="field">
-                    <%= f.number_field :precio_alquiler, value: (params[:fin].to_i*200)%>
+                <div class="field"> precio alquiler
+                    <%= f.number_field :precio_alquiler, value: @total%>
                 </div>
 
-                <p>el precio total será de $<%= (params[:fin].to_i*200)%></p>
+                <p>el precio total será de $<%= @total%></p>
 
                 <div class="field">
                     <%= f.submit 'Confirmar', class:"boton" %>

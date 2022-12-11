@@ -1,0 +1,47 @@
+<%= stylesheet_link_tag 'style.css' %>
+
+<div class="fondo">
+    <%= render "/home/menu_lateral"%>
+    <h1 class="titulo_seccion">Historial de Uso de Vehículos</h1>
+
+    <table class="listado">
+        <tr>
+            <th class="item">Vehículo</th>
+            <th class="item">Patente</th>
+            <th class="item">Inicio de Alquiler</th>
+            <th class="item">Fin de Alquiler</th>
+            <th class="item">Usuario</th>
+            <th class="item">Ingresos</th>
+            <th class="item">Estado</th>
+        </tr>
+        <% Alquilar.all.each do |alquilar| %>
+            <% @alv = Vehiculo.find_by_id(alquilar.id_vehiculo)%>
+            <tr>
+                <td class="item"><%= @alv.marca %> <%= @alv.modelo %></td>
+                <td class="item"><%= @alv.patente %></td>
+                <td class="item">
+                <%@inicio = ( alquilar.inicio - 3*60*60)%>
+                    <%= @inicio.day %>/<%= @inicio.month %>/<%= @inicio.year %>, 
+                    <% if @inicio.hour < 10 %>0<% end %><%= @inicio.hour %>:<% if @inicio.min < 10 %>0<% end %><%= @inicio.min %>
+                </td>
+                <td class="item">
+                <%@fin = ( alquilar.fin - 3*60*60)%>
+                    <% if alquilar.activo %>
+                        (Estimado)
+                    <% end %>
+                    <%= @fin.day %>/<%= @fin.month %>/<%= @fin.year %>, 
+                    <% if @fin.hour < 10 %>0<% end %><%= @fin.hour %>:<% if @fin.min < 10 %>0<% end %><%= @fin.min %>
+                </td>
+                <td class="item"><%= User.find_by_id(alquilar.id_user).nombreUsuario %></td>
+                <td class="item">$<%= alquilar.precio_extension+alquilar.precio_alquiler %></td>
+                <td class="item"> 
+                    <% if alquilar.activo %>
+                        En progreso
+                    <% else %>
+                        Finalizado
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+</div>

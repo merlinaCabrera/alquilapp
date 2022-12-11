@@ -10,15 +10,20 @@
     <%if current_user.admin%>
       <details>
         <summary onselectstart="return false", class="opciones_lateral"> 
-        Herramientas de Administrador
-      </summary>
+          Herramientas de Administrador
+        </summary>
         <%= button_to "Usuarios registrados", listado_clientes_path, :method => :get, class:"sub_opciones_lateral" %>
         <div class="lineahorizontal"></div>
 
         <%= button_to "Supervisores", listado_super_path, :method => :get, class:"sub_opciones_lateral" %>
         <div class="lineahorizontal"></div>
+
         <%= button_to "Vehículos", listado_vehiculos_path, :method => :get, class:"sub_opciones_lateral" %>
         <div class="lineahorizontal"></div>
+
+        <%= button_to "Historial de Uso de Vehículos", historial_path, :method => :get, class:"sub_opciones_lateral" %>
+        <div class="lineahorizontal"></div> 
+
       </details>
     <% elsif current_user.super %>
       <details>
@@ -74,7 +79,16 @@
         </div>
       <% end %>
     </div>
-
+    <div>
+      <% @al = Alquilar.where(id_user: current_user.id).find_by_activo(true)%>
+      <% if !@al.nil? %>
+        <h1>
+          <%@fin = ( @al.fin - 3*60*60)%>
+          <%= @fin.day %>/<%= @fin.month %>/<%= @fin.year %>, 
+          <% if @fin.hour < 10 %>0<% end %><%= @fin.hour %>:<% if @fin.min < 10 %>0<% end %><%= @fin.min %>
+        </h1>
+      <% end %>
+    </div>
     <div>
       <% if current_user%>
         <h1 style="margin-right: 15px;">
