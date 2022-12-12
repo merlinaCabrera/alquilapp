@@ -35,42 +35,42 @@ User.create(nombreUsuario: 'nombreC5', dni: 22_222_225, email: 'c5@cliente.com',
             password_confirmation: '123456')
 # vehiculos
 Vehiculo.create(marca: 'honda', modelo: 'civic', color: 'negro', descripcion: 'buen auto', patente: 'AA 01 BB',
-    ocupado: true, latitud: '-34.915109', longitud: '-57.952748')
+    ocupado: false, latitud: '-34.915109', longitud: '-57.952748', cercania: 4)
 Vehiculo.create(marca: 'ford', modelo: 'ka', color: 'gris', descripcion: 'facil andar', patente: 'BB 02 CC',
-    ocupado: true, latitud: '-34.922091', longitud: '-57.934704')
+    ocupado: false, latitud: '-34.922091', longitud: '-57.934704', cercania: 10)
 Vehiculo.create(marca: 'volkswagen', modelo: 'suran', color: 'blanco', descripcion: 'auto espacioso', patente: 'CC 03 DD',
-    ocupado: true, latitud: '-34.925574', longitud: '-57.957992')
+    ocupado: false, latitud: '-34.925574', longitud: '-57.957992', cercania: 3)
 Vehiculo.create(marca: 'audi', modelo: 'a3', color: 'azul', descripcion: 'cómodo', patente: 'DD 04 EE',
-    ocupado: true, latitud: '-34.919085', longitud: '-57.970668')
+    ocupado: false, latitud: '-34.919085', longitud: '-57.970668', cercania: 8)
 Vehiculo.create(marca: 'fiat', modelo: 'palio', color: 'gris', descripcion: 'seguro', patente: 'EE 05 FF',
-    ocupado: true, latitud: '-34.933723', longitud: '-57.953868')
+    ocupado: false, latitud: '-34.933723', longitud: '-57.953868', cercania: 7)
 Vehiculo.create(marca: 'renault', modelo: 'civic', color: 'negro', descripcion: 'buen auto', patente: 'AR 01 BB',
-                ocupado: true)
+                ocupado: true, cercania: 29)
 Vehiculo.create(marca: 'ford', modelo: 'ka', color: 'gris', descripcion: 'facil andar', patente: 'BR 02 CC',
-                ocupado: true)
+                ocupado: true, cercania: 20)
 Vehiculo.create(marca: 'peugeot', modelo: 'suran', color: 'blanco', descripcion: 'auto espacioso', patente: 'RC 03 DD',
-                ocupado: true)
+                ocupado: true, cercania: 19)
 Vehiculo.create(marca: 'opel', modelo: 'a3', color: 'azul', descripcion: 'confortable', patente: 'DD 04 RE',
-                ocupado: true)
+                ocupado: true, cercania: 10)
 Vehiculo.create(marca: 'fiat', modelo: 'palio', color: 'gris', descripcion: 'seguro', patente: 'EE 05 RF',
-                ocupado: true)
+                ocupado: true, cercania: 9)
 Vehiculo.create(marca: 'honda', modelo: 'civic', color: 'negro', descripcion: 'buen auto', patente: 'RA 01 BB',
-                ocupado: false)
+                ocupado: false, cercania: 5)
 Vehiculo.create(marca: 'ford', modelo: 'ka', color: 'gris', descripcion: 'facil andar', patente: 'RB 02 YC',
-                ocupado: false)
+                ocupado: false, cercania: 2)
 Vehiculo.create(marca: 'volkswagen', modelo: 'suran', color: 'blanco', descripcion: 'auto espacioso', patente: 'CR 03 DD',
-                ocupado: false)
+                ocupado: false, cercania: 4)
 Vehiculo.create(marca: 'audi', modelo: 'a3', color: 'azul', descripcion: 'confortable', patente: 'DD 54 YR',
-                ocupado: false)
+                ocupado: false, cercania: 7)
 Vehiculo.create(marca: 'fiat', modelo: 'palio', color: 'gris', descripcion: 'seguro', patente: 'ET 15 FF',
-                ocupado: false)
+                ocupado: false, cercania: 12)
 Vehiculo.create(marca: 'honda', modelo: 'civic', color: 'negro', descripcion: 'buen auto', patente: 'HH 51 BB',
-                ocupado: false)
+                ocupado: false, cercania: 17)
 Vehiculo.create(marca: 'ford', modelo: 'ka', color: 'gris', descripcion: 'facil andar', patente: 'BB 52 JJ',
-                ocupado: false)
+                ocupado: false, cercania: 18)
 Vehiculo.create(marca: 'volkswagen', modelo: 'suran', color: 'blanco', descripcion: 'auto espacioso', patente: 'GG 43 DD',
-                ocupado: false)
+                ocupado: false, cercania: 11)
 Vehiculo.create(marca: 'audi', modelo: 'a3', color: 'azul', descripcion: 'confortable', patente: 'DD 74 EU',
-                ocupado: false)
+                ocupado: false, cercania: 19)
 Vehiculo.create(marca: 'fiat', modelo: 'palio', color: 'gris', descripcion: 'seguro', patente: 'WW 66 FF',
-                ocupado: false)
+                ocupado: false, cercania: 21)

@@ -29,8 +29,8 @@
                 <% end %>
         
                 <p> Vehículos a menos de <%=params[:radio]%> cuadras: </p>
-                <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.marca}.each do |vehiculo| %> 
-                <% if !vehiculo.ocupado %>
+                <%  Vehiculo.all.sort_by{|vehiculo| vehiculo.cercania}.each do |vehiculo| %> 
+                <% if !vehiculo.ocupado && (vehiculo.cercania <= params[:radio].to_i) %>
                         <%= link_to vehiculo_path( vehiculo.id ) do %>
                             <p class="auto">
                             <div class="txt">
@@ -39,14 +39,14 @@
                                 <%= " , " %>
                                 <%= vehiculo.patente %>
                             </div>  <br>
-                            <i>  Ubicado a NNN cuadras </i>
+                            <i> Ubicado a <%= vehiculo.cercania %> cuadras </i>
                         <% end %>
 
                         <div class="lineahorizontal"></div>
                 <% end %>
             <%end%>
                 <div class="lineahorizontal"></div>
-                <% if Vehiculo.all.where(ocupado:false).count == 0 %>
+                <% if Vehiculo.all.where("cercania <= ?", params[:radio]).where(ocupado:false).count == 0 %>
                     <p>No hay vehículos disponibles dentro de este radio. Por favor, elija otra distancia.</p>
                 <% end %>
             <% else %>

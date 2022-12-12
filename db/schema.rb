@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_12_173004) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_12_181943) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -88,6 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_173004) do
     t.decimal "latitud"
     t.decimal "longitud"
     t.boolean "bloq", default: false
+    t.integer "cercania"
   end
 
   create_table "views", force: :cascade do |t|
