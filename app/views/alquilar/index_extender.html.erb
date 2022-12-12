@@ -15,7 +15,7 @@
     </br>
     <% @precio = @total + @al.precio_alquiler %>
 
-    <%= time=@al.fin-3*60*60 %>     
+    <% time=@al.fin-3*60*60 %>     
 
     <% if !@al.nil? %>
         <% if current_user.balance >= @precio %>
@@ -48,7 +48,7 @@
             <p>No dispone del dinero necesario para alquilar el vehiculo</p>
         <% end %>
     <% else %>       
-        <%= button_to 'Cancelar', alquiler_de_auto_path(@al), :method => :delete, class:"boton",  data: {
+        <%= button_to 'Finalizar', alquiler_de_auto_path(@al), :method => :delete, class:"boton",  data: {
         turbo_method: :delete,
       turbo_confirm: '¿Estas seguro?' },class:"boton" %>
     <% end %>

@@ -59,12 +59,10 @@
         <%= hidden_field_tag(:id_vehiculo,@vehiculo.id) %>
         <%= submit_tag("Extender alquiler", :class=>"boton", :name=>"submit") %>
       <% end %> </br>
-      
-      <%= button_to "Documentos", documentos_circular_path, :method => :get, class:"boton" %> </br>
 
         <%= form_tag("/alquilar/index", method: "get") do %>
           <%= hidden_field_tag(:id_vehiculo,@vehiculo.id) %>
-          <%= submit_tag("Cancelar Alquiler", :class=>"boton", :name=>"submit") %>
+          <%= submit_tag("Finalizar Alquiler", :class=>"boton", :name=>"submit") %>
         <% end %>
       <% end %>
     <%end%>

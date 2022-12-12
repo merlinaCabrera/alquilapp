@@ -56,7 +56,7 @@
             <h3><FONT COLOR="EA3A3A">El auto debe estar bloqueado!</h3>
         <% else %>
             <h3>Si usted cancela, igual deberá abonar las horas de alquiler.</h3>
-            <%= button_to 'Cancelar', alquiler_de_auto_path(@al), :method => :delete, class:"boton" %> 
+            <%= button_to 'Finalizar', alquiler_de_auto_path(@al), :method => :delete, class:"boton" %> 
         <% end %>
     <% end %>
     
