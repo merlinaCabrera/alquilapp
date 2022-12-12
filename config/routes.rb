@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get :send_order_mail, to: 'home#send_order_mail', as: :send_order_mail
 
   # supervisores
-  delete 'users/:id', to: 'users#destroy', as: 'eliminar_super'
+  delete 'users/:id', to: 'users#destroy'
   patch '/users/:id', to: 'users#update', as: 'actualizarUsuario'
   post '/users', to: 'users#create'
   get '/users/new', to: 'users#new', as: 'crear_super'
@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   get 'alquilar/index', to: 'alquilar#index', as: 'alquiler_de_auto'
   get 'alquilar/index_extender', to: 'alquilar#index_extender'
   post '/alquilar/index', to: 'alquilar#create'
+  patch '/alquilar/index_extender', to: 'alquilar#extender', as: 'extender'
+
   delete 'alquilar/index', to: 'alquilar#destroy'
   patch '/listado_usuarios', to: 'home#documentos', as: 'documentos'
 

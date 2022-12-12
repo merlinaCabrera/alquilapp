@@ -4,6 +4,11 @@
     <%= render "/home/menu_lateral"%>  
 
     <%= form_tag carga_path, method:"patch" do %>
+        <center>
+        <h3>SIMULADO</h3>
+        <h4>Suponiendo que hay una tarjeta cargada.</h4>
+        </center>
+
         <div class="field">
             <%= number_field_tag(:balance, "", class:"ingreso") %>
         </div>

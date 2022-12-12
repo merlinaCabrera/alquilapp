@@ -8,12 +8,20 @@
     <% end %>
 
     <h1 class="titulo_seccion">Extender horas</h1>
-    
-    <%= form_tag("/alquilar/index_extender", method: "get") do %>
+
+    <%@al = Alquilar.where(id_user: current_user.id).find_by_activo(true) %>
+    <% @hs_actuales =  (@al.fin - @al.inicio)/60/60 %></br>
+    <% if @hs_actuales < 24 %>
         
-        <h3>Cantidad de horas a sumar:</h3>
-        <%= select_tag(:aver, options_for_select(1..24))%> </br>
-        </br><%= submit_tag("Extender alquiler", :class=>"boton", :name=>"submit") %>
-      <% end %>
+        <% @max = 24 - @hs_actuales %>
+        <%  @max.to_i %>
+        <%= form_tag("/alquilar/index_extender", method: "get") do %>
+        
+            <h3>Las horas alquiladas más las extendidas no pueden superar las 24hs. </h3>
+            <h3>Cantidad de horas a sumar:</h3>
+            <%= select_tag(:aver, options_for_select(1..@max))%> </br>
+            </br><%= submit_tag("Extender alquiler", :class=>"boton", :name=>"submit") %>
+        <% end %>
+    <% end %>
 </div>
 </center>

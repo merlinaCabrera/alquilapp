@@ -25,4 +25,16 @@ class AlquilarController < ApplicationController
     @alquilar.save
     redirect_to root_path, notice: 'Alquiler cancelado', status: :see_other
   end
+
+  def extender
+    @alquilar = Alquilar.where(id_user: current_user.id).find_by_activo(true)
+    @alquilar.fin = params[:fin]
+    @alquilar.precio_extension = @alquilar.precio_extension + (params[:precio_extension]).to_f
+    @alquilar.extension = (params[:extension])
+    if @alquilar.save
+      redirect_to root_path, notice: 'Extension realizada con éxito', status: :see_other
+    else
+      redirect_to root_path, notice: 'Ha ocurrido un error', status: :see_other
+    end
+  end
 end

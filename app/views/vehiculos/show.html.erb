@@ -26,8 +26,10 @@
       <% if Alquilar.where(id_user: current_user.id).find_by_activo(true).nil? %>
         <%= form_tag("/alquilar/index", method: "get") do %>
           <%= hidden_field_tag(:id_vehiculo,@vehiculo.id) %>
-          <%= select_tag(:aver, options_for_select(1..24))%>
-          <%= submit_tag("Alquilar", :class=>"boton", :name=>"submit") %>
+          </br>
+          <h3><FONT COLOR="e7c078">Cantidad de horas que desea alquilar el auto:</h3>
+          <%= select_tag(:aver, options_for_select(1..24))%> </br>
+          </br><%= submit_tag("Alquilar", :class=>"boton", :name=>"submit") %>
         <% end %>
       <% else %>
     
@@ -52,7 +54,12 @@
         <% end %> </br>
 
       <% end %>
-      <%= button_to "Extender horas", extender_horas_path, :method => :get, class:"boton" %> </br>
+      
+      <%= form_tag("/extender_horas", method: "get") do %>
+        <%= hidden_field_tag(:id_vehiculo,@vehiculo.id) %>
+        <%= submit_tag("Extender alquiler", :class=>"boton", :name=>"submit") %>
+      <% end %> </br>
+      
       <%= button_to "Documentos", documentos_circular_path, :method => :get, class:"boton" %> </br>
 
         <%= form_tag("/alquilar/index", method: "get") do %>

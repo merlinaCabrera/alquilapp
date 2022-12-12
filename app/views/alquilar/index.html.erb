@@ -14,29 +14,34 @@
         <% if current_user.balance >= @total %>
             <%= form_with model: @alquilar do |f|  %>
     
-                <%= time=Time.now(in: '-03:00') %>    
+                <% time=Time.now(in: '-03:00') %>  
 
-                <div class="field">id vehiculo
-                    <%= f.text_field :id_vehiculo, value: params[:id_vehiculo]%>
+                <h3>Hora de inicio de alquiler: <%=time.strftime("%H:%M")%></h3>
+
+                <div class="field">
+                    <%= f.hidden_field :id_vehiculo, value: params[:id_vehiculo]%>
                 </div> 
 
-                <div class="field"> id usuario
-                    <%= f.text_field :id_user, value: current_user.id %>
+                <div class="field">
+                    <%= f.hidden_field :id_user, value: current_user.id %>
                 </div>
 
-                <div class="field"> hora inicio
-                    <%= f.text_field :inicio, value: time %>
+                <div class="field">
+                    <%= f.hidden_field :inicio, value: time %>
                 </div>
 
-                <div class="field"> hora fin
-                    <%= f.text_field :fin, value: time+(params[:aver].to_i*60*60) %>          
+                <div class="field">
+                    <%= f.hidden_field :fin, value: time+(params[:aver].to_i*60*60) %>          
                 </div>
 
-                <div class="field"> precio alquiler
-                    <%= f.number_field :precio_alquiler, value: @total%>
+                <h3>Hora de fin de alquiler: <%=(time+(params[:aver].to_i*60*60)).strftime("%H:%M")%></h3>
+
+
+                <div class="field">
+                    <%= f.hidden_field :precio_alquiler, value: @total%>
                 </div>
 
-                <p>el precio total será de $<%= @total%></p>
+                <p>El precio total será de $<%= @total%></p>
 
                 <div class="field">
                     <%= f.submit 'Confirmar', class:"boton" %>
@@ -46,10 +51,13 @@
             <p>No dispone del dinero necesario para alquilar el vehiculo</p>
         <% end %>
     <% else %>   
-        <h3>Si usted cancela, igual deberá abonar las horas de alquiler.</h3>
-        <%= button_to 'Cancelar', alquiler_de_auto_path(@al), :method => :delete, class:"boton",  data: {
-            turbo_method: :delete,
-            turbo_confirm: '¿Estas seguro?' },class:"boton" %>
+        <% if Vehiculo.find_by_id(@al.id_vehiculo).bloq %>
+            <h3>Si usted cancela, igual deberá abonar las horas de alquiler.</h3>
+            <h3><FONT COLOR="EA3A3A">El auto debe estar bloqueado!</h3>
+        <% else %>
+            <h3>Si usted cancela, igual deberá abonar las horas de alquiler.</h3>
+            <%= button_to 'Cancelar', alquiler_de_auto_path(@al), :method => :delete, class:"boton" %> 
+        <% end %>
     <% end %>
     
     

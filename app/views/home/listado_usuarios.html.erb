@@ -14,6 +14,7 @@
             <th class="item">Estado</th>
         </tr>
             <% User.all.where(super:false).where(admin:false).each do |user| %>
+                <% if (user.estadoDocumentos == "pendiente") || (user.estadoDocumentos == "rechazado")  %>
                     <tr>
                         <td class="item"><%= user.nombreUsuario%></td>
                         <td class="item"><%= user.dni%></td>
@@ -44,7 +45,29 @@
                                 </div>
                             <% end %>
                         </td>
-                    </tr>
+                    </tr>    
+                <% end %>
         <% end %>
+
+
+        <% User.all.where(super:false).where(admin:false).each do |user| %>
+            <% if (user.estadoDocumentos == "aprobado") %>
+                <tr>
+                    <td class="item"><%= user.nombreUsuario%></td>
+                    <td class="item"><%= user.dni%></td>
+                    <td class="item"><%= user.email%></td>
+                    <td class="item">
+                        <% if user.licencia.attached? %>
+                            <%= link_to image_tag(user.licencia, height:"20px", width:"20px"), user.licencia, target: :_blank %>
+                        <% end %>
+
+                        <% if user.dni_tarjeta.attached? %>
+                            <%= link_to image_tag(user.dni_tarjeta, height:"20px", width:"20px"), user.dni_tarjeta, target: :_blank%>
+                        <% end %>
+                    </td>
+                    <td class="item">Aprobado</td>
+                </tr>
+            <% end %>
+    <% end %>
     </table>
 </div>

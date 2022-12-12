@@ -7,14 +7,15 @@
      <%= image_tag "arrow-left.svg", class:"volver" %>    
      <% end %>
      
-     <h3> Nombre: <%= User.where(id: @user).nombreUsuario %> </h3>
-     <h3> Email: <%= @user.email %></h3>
-     <h3> DNI: <%= @user.dni %> </h3>
+     <h3> Nombre: <%= @user %> </h3>
+
      </br>
 
      <%= button_to 'Modificar Supervisor', edit_user_registration_path(@user), method: :get, class:"boton" %></br>
-     <%= button_to 'Eliminar Supervisor', eliminar_super_path(@user), method: :delete, class:"boton",  data: {
-          turbo_method: :delete,
-          turbo_confirm: '¿Estas seguro?' }, class:"boton" %>
+
+     <%= form_tag("users", method: "destroy") do %>
+          <%= hidden_field_tag(:id) %>
+          <%= submit_tag("Eliminar Supervisor", :class=>"boton", :name=>"submit") %>
+     <% end %> </br>
      </center>
 </div>

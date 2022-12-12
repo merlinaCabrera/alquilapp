@@ -8,38 +8,40 @@
     <% end %>
 
     <%@al = Alquilar.where(id_user: current_user.id).find_by_activo(true) %>
+    <% @hs_extender = params[:aver] %>
     <%@total=params[:aver].to_i*250%>
-    <p><%@total%></p>
-    <% if @al.nil? %>
-        <% if current_user.balance >= @total %>
-            <%= form_with model: @alquilar do |f|  %>
-    
-                <%= time=Time.now(in: '-03:00') %>    
 
-                <div class="field">id vehiculo
-                    <%= f.text_field :id_vehiculo, value: params[:id_vehiculo]%>
-                </div> 
 
-                <div class="field"> id usuario
-                    <%= f.text_field :id_user, value: current_user.id %>
+    </br>
+    <% @precio = @total + @al.precio_alquiler %>
+
+    <%= time=@al.fin-3*60*60 %>     
+
+    <% if !@al.nil? %>
+        <% if current_user.balance >= @precio %>
+            <%= form_tag(extender_path, method:"patch") do %>    
+
+ 
+                <div class="field"> 
+                    <%= hidden_field_tag(:fin, time+(params[:aver].to_i*60*60)) %>          
                 </div>
 
-                <div class="field"> hora inicio
-                    <%= f.text_field :inicio, value: time %>
+                <h3>Hora de fin de alquiler: <%=(time+(params[:aver].to_i*60*60)).strftime("%H:%M")%></h3>
+
+
+                <div class="field"> 
+                    <%= hidden_field_tag(:precio_extension, @total)%>
                 </div>
 
-                <div class="field"> hora fin
-                    <%= f.text_field :fin, value: time+(params[:aver].to_i*60*60) %>          
+                <div class="field"> 
+                    <%= hidden_field_tag(:extension, @hs_extender)%>
                 </div>
 
-                <div class="field"> precio alquiler
-                    <%= f.number_field :precio_alquiler, value: @total%>
-                </div>
 
-                <p>el precio total será de $<%= @total%></p>
+                <p>El precio total será de $<%= @total%></p>
 
                 <div class="field">
-                    <%= f.submit 'Confirmar', class:"boton" %>
+                    <%= submit_tag("Confirmar", class:"boton") %>
                 </div>
             <% end %>
         <% else %>
