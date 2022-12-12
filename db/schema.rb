@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_12_001557) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_12_173004) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_001557) do
     t.integer "estadoDocumentos", default: 0
     t.decimal "latitud"
     t.decimal "longitud"
+    t.string "multas"
     t.index ["dni"], name: "index_users_on_dni", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nombreUsuario"], name: "index_users_on_nombreUsuario", unique: true
