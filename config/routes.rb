@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   post '/alquilar/index', to: 'alquilar#create'
   patch '/alquilar/index_extender', to: 'alquilar#extender', as: 'extender'
 
+  get 'alquilar/factura', to: 'alquilar#factura', as: 'factura'
+
   delete 'alquilar/index', to: 'alquilar#destroy'
   patch '/listado_usuarios', to: 'home#documentos', as: 'documentos'
 

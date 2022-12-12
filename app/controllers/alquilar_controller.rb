@@ -22,6 +22,7 @@ class AlquilarController < ApplicationController
     @alquilar = Alquilar.where(id_user: current_user.id).find_by_activo(true)
     @alquilar.activo = false
     current_user.update(balance: (current_user.balance - @alquilar.precio_alquiler))
+    @alquilar.fin = Time.now
     @alquilar.save
     redirect_to root_path, notice: 'Alquiler cancelado', status: :see_other
   end

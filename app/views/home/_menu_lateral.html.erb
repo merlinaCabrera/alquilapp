@@ -88,7 +88,10 @@
       <% if !@al.nil? %>
         <% @fin = ( @al.fin - 3*60*60 )%>
         <h1 class='<%= "excedido" if Time.now > @al.fin %>'> 
-          <%= @fin.day %>/<%= @fin.month %>/<%= @fin.year %>, 
+        <center>
+        <p style="font-size: 20px; width: 80%; margin: 0 auto;"> Fin del alquiler : </p>
+        </center>  
+        <%= @fin.day %>/<%= @fin.month %>/<%= @fin.year %>, 
           <% if @fin.hour < 10 %>0<% end %><%= @fin.hour %>:<% if @fin.min < 10 %>0<% end %><%= @fin.min %>
         </h1>
       <% end %>
