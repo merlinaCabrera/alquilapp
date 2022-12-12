@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag 'style.css' %>
+
+<center>
+<div class="fondo">
+    <%= render "/home/menu_lateral"%>
+    <%= link_to :back do %>
+        <%= image_tag "arrow-left.svg", class:"volver" %>    
+    <% end %>
+
+    <h1 class="titulo_seccion">Extender horas</h1>
+    
+    <%= form_tag("/alquilar/index_extender", method: "get") do %>
+        
+        <h3>Cantidad de horas a sumar:</h3>
+        <%= select_tag(:aver, options_for_select(1..24))%> </br>
+        </br><%= submit_tag("Extender alquiler", :class=>"boton", :name=>"submit") %>
+      <% end %>
+</div>
+</center>

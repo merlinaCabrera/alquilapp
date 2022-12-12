@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag 'style.css' %>
+
+<center>
+<div class="fondo">
+    <%= render "/home/menu_lateral"%>
+    <%= link_to :back do %>
+        <%= image_tag "arrow-left.svg", class:"volver" %>    
+    <% end %>
+
+    <h1 class="titulo_seccion">Documentos que necesita para circular legalmente:</h1>
+    <%= link_to image_tag(current_user.dni_tarjeta, height:"200px", width:"200px"), current_user.dni_tarjeta, target: :_blank %>
+    <%= link_to image_tag(current_user.licencia, height:"200px", width:"200px"), current_user.licencia, target: :_blank %> </br>
+    <%= link_to image_tag("cedula_azul.png", height:"567px", width:"414px"), target: :_blank %>
+</div>
+</center>

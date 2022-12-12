@@ -1,0 +1,16 @@
+<%= stylesheet_link_tag 'style.css' %>
+
+<center>
+<div class="fondo">
+    <%= render "/home/menu_lateral"%>
+    <%= link_to :back do %>
+        <%= image_tag "arrow-left.svg", class:"volver" %>    
+    <% end %>
+
+    <div class="field">
+     <%= f.hidden_field :bloq, value:false %>
+    </div>
+    <h1 class="titulo_seccion"><FONT COLOR="EA3A3A">Auto bloqueado con éxtio</h1>
+    
+</div>
+</center>

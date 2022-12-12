@@ -1,0 +1,2 @@
+module MiAlquilerHelper
+end
