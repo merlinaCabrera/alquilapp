@@ -25,10 +25,10 @@ Rails.application.routes.draw do
   post '/listado_usuarios', to: 'home#listado_usuarios'
   get '/index', to: 'home#index', as: :inicio
 
-  get '/documentos_circular', to: 'home#documentos_circular', as: 'documentos_circular'
-  get '/extender_horas', to: 'home#extender_horas', as: 'extender_horas'
-  get '/desbloquear_auto', to: 'home#desbloquear_auto', as: 'desbloquear_auto'
-  get '/bloquear_auto', to: 'home#bloquear_auto', as: 'bloquear_auto'
+  get '/documentos_circular', to: 'mi_alquiler#documentos_circular', as: 'documentos_circular'
+  get '/extender_horas', to: 'mi_alquiler#extender_horas', as: 'extender_horas'
+  get '/desbloquear_auto', to: 'mi_alquiler#desbloquear_auto', as: 'desbloquear_auto'
+  get '/bloquear_auto', to: 'mi_alquiler#bloquear_auto', as: 'bloquear_auto'
 
   get '/finalizar_alquiler', to: 'home#finalizar_alquiler', as: 'finalizar_alquiler' 
 

@@ -32,9 +32,25 @@
       <% else %>
     
       <% if @vehiculo.bloq %>
-        <%= button_to "Bloquear auto", bloquear_auto_path(@vehiculo), :method => :get, class:"boton" %> </br>
+          <%= form_with model: @vehiculo do |f|  %>
+            <div class="field">
+              <%= f.hidden_field :bloq, value:false %>
+            </div>
+            <div class="actions">
+              <%= f.submit 'Bloquear auto' , class:"boton" %>
+            </div>
+          <% end %> </br>
+          
       <% else %>
-        <%= button_to "Desbloquear auto", desbloquear_auto_path(@vehiculo), :method => :get, class:"boton" %> </br>   
+        <%= form_with model: @vehiculo do |f|  %>
+          <div class="field">
+            <%= f.hidden_field :bloq, value:true%>
+          </div>
+          <div class="actions">
+            <%= f.submit 'Desbloquear auto' , class:"boton" %>
+          </div>
+        <% end %> </br>
+
       <% end %>
       <%= button_to "Extender horas", extender_horas_path, :method => :get, class:"boton" %> </br>
       <%= button_to "Documentos", documentos_circular_path, :method => :get, class:"boton" %> </br>

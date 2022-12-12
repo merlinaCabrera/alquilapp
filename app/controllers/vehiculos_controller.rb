@@ -38,9 +38,7 @@ class VehiculosController < ApplicationController
     @vehiculo = Vehiculo.find(params[:id])
 
     if @vehiculo.update(vehiculo_params)
-      redirect_to vehiculos_path, notice: 'Auto modificado con éxito'
-    else
-      render :edit, status: :unprocessable_entity
+      redirect_to vehiculo_path, notice: 'Sistema de bloqueo exitoso'
     end
   end
 

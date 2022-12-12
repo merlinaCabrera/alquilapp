@@ -25,4 +25,9 @@ class HomeController < ApplicationController
     @user.save
     redirect_to documentos_path
   end
+
+  def bloquear_auto  
+    Vehiculo.find_by_id(params[:id]).bloq=false
+  end
+
 end
