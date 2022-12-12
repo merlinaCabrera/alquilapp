@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag 'style.css' %>
+
+<center>
+<div class="fondo">
+    <%= render "/home/menu_lateral"%>
+    <%= link_to :back do %>
+        <%= image_tag "arrow-left.svg", class:"volver" %>    
+    <% end %>
+
+    <h1 class="titulo_seccion">Resumen de gastos:</h1>
+        <h3>Precio por las horas de alquiler: $<%= @al.precio_alquiler.to_i %></h3>
+        <h3>Precio por las horas de extensión de alquiler: $<%= @al.precio_extension.to_i %></h3>
+        <% @precio_total = @al.precio_alquiler.to_i + @al.precio_extension.to_i %>
+        <h2>Total: $<%= @precio_total %></h2>
+    
+</div>
+</center>
