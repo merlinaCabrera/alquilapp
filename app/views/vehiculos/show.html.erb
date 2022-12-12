@@ -13,11 +13,6 @@
     <h3> Color: <%= @vehiculo.color %> </h3>
     <h3> Patente: <%= @vehiculo.patente %></h3>
     <h3> Descripcion: <%= @vehiculo.descripcion%></h3>
-      <% if @vehiculo.ocupado  %>
-        <h3> Estado: Ocupado</h3>
-      <% else %>
-      <h3> Estado: Libre</h3>
-    <% end %>
     
 
     <%if current_user.admin%>
@@ -35,6 +30,15 @@
           <%= submit_tag("Alquilar", :class=>"boton", :name=>"submit") %>
         <% end %>
       <% else %>
+    
+      <% if @vehiculo.bloq %>
+        <%= button_to "Bloquear auto", bloquear_auto_path(@vehiculo), :method => :get, class:"boton" %> </br>
+      <% else %>
+        <%= button_to "Desbloquear auto", desbloquear_auto_path(@vehiculo), :method => :get, class:"boton" %> </br>   
+      <% end %>
+      <%= button_to "Extender horas", extender_horas_path, :method => :get, class:"boton" %> </br>
+      <%= button_to "Documentos", documentos_circular_path, :method => :get, class:"boton" %> </br>
+
         <%= form_tag("/alquilar/index", method: "get") do %>
           <%= hidden_field_tag(:id_vehiculo,@vehiculo.id) %>
           <%= submit_tag("Cancelar Alquiler", :class=>"boton", :name=>"submit") %>

@@ -25,9 +25,11 @@ Rails.application.routes.draw do
   post '/listado_usuarios', to: 'home#listado_usuarios'
   get '/index', to: 'home#index', as: :inicio
 
-  get '/ver_mi_alquiler', to: 'home#ver_mi_alquiler', as: 'ver_mi_alquiler'
+  get '/documentos_circular', to: 'home#documentos_circular', as: 'documentos_circular'
   get '/extender_horas', to: 'home#extender_horas', as: 'extender_horas'
   get '/desbloquear_auto', to: 'home#desbloquear_auto', as: 'desbloquear_auto'
+  get '/bloquear_auto', to: 'home#bloquear_auto', as: 'bloquear_auto'
+
   get '/finalizar_alquiler', to: 'home#finalizar_alquiler', as: 'finalizar_alquiler' 
 
   # vehiculos
@@ -40,6 +42,7 @@ Rails.application.routes.draw do
   get 'vehiculos/:id/edit', to: 'vehiculos#edit', as: :edit_vehiculo
 
   get 'alquilar/index', to: 'alquilar#index', as: 'alquiler_de_auto'
+  get 'alquilar/index_extender', to: 'alquilar#index_extender'
   post '/alquilar/index', to: 'alquilar#create'
   delete 'alquilar/index', to: 'alquilar#destroy'
   patch '/listado_usuarios', to: 'home#documentos', as: 'documentos'
