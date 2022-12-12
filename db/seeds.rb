@@ -35,15 +35,15 @@ User.create(nombreUsuario: 'nombreC5', dni: 22_222_225, email: 'c5@cliente.com',
             password_confirmation: '123456')
 # vehiculos
 Vehiculo.create(marca: 'honda', modelo: 'civic', color: 'negro', descripcion: 'buen auto', patente: 'AA 01 BB',
-                ocupado: true)
+    ocupado: true, latitud: '-34.915109', longitud: '-57.952748')
 Vehiculo.create(marca: 'ford', modelo: 'ka', color: 'gris', descripcion: 'facil andar', patente: 'BB 02 CC',
-                ocupado: true)
+    ocupado: true, latitud: '-34.922091', longitud: '-57.934704')
 Vehiculo.create(marca: 'volkswagen', modelo: 'suran', color: 'blanco', descripcion: 'auto espacioso', patente: 'CC 03 DD',
-                ocupado: true)
+    ocupado: true, latitud: '-34.925574', longitud: '-57.957992')
 Vehiculo.create(marca: 'audi', modelo: 'a3', color: 'azul', descripcion: 'cómodo', patente: 'DD 04 EE',
-                ocupado: true)
+    ocupado: true, latitud: '-34.919085', longitud: '-57.970668')
 Vehiculo.create(marca: 'fiat', modelo: 'palio', color: 'gris', descripcion: 'seguro', patente: 'EE 05 FF',
-                ocupado: true)
+    ocupado: true, latitud: '-34.933723', longitud: '-57.953868')
 Vehiculo.create(marca: 'renault', modelo: 'civic', color: 'negro', descripcion: 'buen auto', patente: 'AR 01 BB',
                 ocupado: true)
 Vehiculo.create(marca: 'ford', modelo: 'ka', color: 'gris', descripcion: 'facil andar', patente: 'BR 02 CC',
